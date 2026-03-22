@@ -119,7 +119,11 @@ higher than the FCC result of
 $p^*_{\mathrm{FCC}} = \frac{\sqrt{6}}{2}\,\tcrss \approx 1.22\,\tcrss$.
 This provides a quantitative, single-crystal-level explanation for the
 well-documented superior resistance of BCC metals to radiation-induced
-void swelling compared to FCC metals. The plastic zone surrounding the void
+void swelling compared to FCC metals. The analysis is extended to include
+$\{112\}\langle 111\rangle$ slip (24~systems total), which truncates the
+hexagon into a decagon with 10~vertices and 13~angular sectors but
+reduces the activation pressure by only 4.5\%, to
+$p^* \approx 1.75\,\tcrss$. The plastic zone surrounding the void
 is predicted to be non-circular, with a four-lobed shape reflecting the
 crystal symmetry of the $(110)$ plane.
 
@@ -191,6 +195,8 @@ the effective in-plane slip systems.
 Section~\ref{sec:yield} constructs the yield polygon.
 Section~\ref{sec:stress} derives the sector-based stress field.
 Section~\ref{sec:interior} extends the solution to the interior.
+Section~\ref{sec:combined} extends the analysis to include
+$\{112\}\langle 111\rangle$ slip.
 Section~\ref{sec:comparison} compares BCC and FCC results.
 Section~\ref{sec:numerical} presents numerical verification.
 Section~\ref{sec:discussion} discusses physical implications.
@@ -680,6 +686,103 @@ The BCC activation pressure exceeds the FCC value by a factor of
 which is \emph{exactly} $3/2$, independent of material parameters.
 
 % ============================================================
+\section{Extension to combined $\{110\}$ and $\{112\}$ slip}
+\label{sec:combined}
+% ============================================================
+
+The preceding analysis considers only the $\{110\}\langle 111\rangle$
+family. In BCC metals, the $\{112\}\langle 111\rangle$ family is often
+equally important and, at room temperature, can be the dominant slip
+family in iron and steels. This section extends the analysis to include
+both families (24~slip systems total).
+
+\subsection{Combined yield polygon}
+
+The twelve $\{112\}\langle 111\rangle$ systems are transformed to the
+$[110]$ plane strain frame using the same rotation~\eqref{eq:rotation}.
+Their in-plane Schmid coefficients introduce new yield constraints that
+truncate the $\{110\}$-only hexagon at all six vertices, producing a
+\emph{decagonal} yield polygon with 10~vertices
+(Fig.~\ref{fig:combined_yield}).
+
+The key effect is that the $\{112\}$ systems cut the tips of the hexagon
+along the $X$-axis, reducing the half-width from $\sqrt{6}/2 \approx
+1.225\,\tcrss$ to $3\sqrt{2}/4 \approx 1.061\,\tcrss$ --- a 13\%
+reduction. The horizontal faces ($Y = \pm\sqrt{3}\,\tcrss$, governed by
+$\{110\}$ systems~3 and~4) are partially retained but their extent is
+narrowed, and new inclined faces appear from the $\{112\}$ constraints.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.95\textwidth]{../figures/bcc_combined_yield_surface}
+\caption{(a)~Combined $\{110\}+\{112\}$ yield polygon (10~vertices)
+compared with the $\{110\}$-only hexagon (dashed).
+(b)~Three-way comparison: combined BCC (blue), $\{110\}$-only BCC
+(dashed), and FCC (red).}
+\label{fig:combined_yield}
+\end{figure}
+
+\subsection{Modified sector structure}
+
+The decagonal yield polygon produces a richer sector structure: 13
+angular sectors in $[0, \pi]$, compared to 6 for the $\{110\}$-only
+hexagon. The $\{112\}$ systems dominate most of the angular range;
+the $\{110\}$ systems remain active only in a narrow band near
+$\theta \approx 45^\circ$ (and its mirror at $135^\circ$), where the
+horizontal yield face $Y = \pm\sqrt{3}\,\tcrss$ survives the
+truncation. The sector structure is summarized in
+Fig.~\ref{fig:combined_sectors}.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.95\textwidth]{../figures/combined_sector_solution}
+\caption{Combined $\{110\}+\{112\}$ solution.
+(a)~Void surface hoop stress: combined (solid) versus $\{110\}$-only
+(dashed).
+(b)~Active slip system versus angle; the dashed line separates
+$\{110\}$ (below) from $\{112\}$ (above) systems.
+(c)~Mean stress magnitude; the combined polygon reduces $|\sm|$ at
+$\theta = 0^\circ$ and $90^\circ$ but preserves it near $\theta = 45^\circ$.}
+\label{fig:combined_sectors}
+\end{figure}
+
+\subsection{Modified activation pressure}
+
+The truncated yield polygon reduces the activation pressure from the
+$\{110\}$-only value to
+\begin{equation}
+\label{eq:activation_combined}
+p^*_{\{110\}+\{112\}} \approx 1.754\,\tcrss,
+\end{equation}
+a 4.5\% decrease relative to the $\{110\}$-only result
+$p^* = 3\sqrt{6}/4 \approx 1.837\,\tcrss$. The BCC activation
+pressure remains 43\% higher than the FCC value
+$p^*_{\mathrm{FCC}} = \sqrt{6}/2 \approx 1.225\,\tcrss$, so the
+conclusion that BCC crystals resist void growth more effectively than
+FCC crystals is robust to the inclusion of $\{112\}$ slip.
+
+The physical interpretation is transparent: the $\{112\}$ systems
+provide additional deformation mechanisms that soften the crystal
+response in directions where the $\{110\}$ systems are least favorably
+oriented (near $\theta = 0^\circ$ and $90^\circ$), but do not
+significantly affect the response near $\theta = 45^\circ$ where the
+$\{110\}$ systems are already well oriented.
+
+\subsection{Role of relative CRSS}
+
+The analysis above assumes equal critical resolved shear stress on both
+families, $\tcrss^{\{110\}} = \tcrss^{\{112\}}$. In practice, the
+ratio $\tcrss^{\{112\}} / \tcrss^{\{110\}}$ varies with temperature
+and alloy composition, typically ranging from 1.0 to
+1.5~\citep{christodoulou2021}. When
+$\tcrss^{\{112\}} > \tcrss^{\{110\}}$, the $\{112\}$ yield constraints
+move outward, and the combined polygon approaches the $\{110\}$-only
+hexagon. The two limiting cases --- equal CRSS (decagon) and
+$\tcrss^{\{112\}} \to \infty$ (hexagon) --- bracket the physically
+relevant range, with the activation pressure bounded between
+$1.754\,\tcrss^{\{110\}}$ and $1.837\,\tcrss^{\{110\}}$.
+
+% ============================================================
 \section{Comparison of BCC and FCC solutions}
 \label{sec:comparison}
 % ============================================================
@@ -1036,14 +1139,13 @@ formulations.
 
 Several limitations of the present analysis should be noted.
 
-First, only the $\{110\}\langle 111\rangle$ slip system family is
-considered. BCC metals, particularly at lower temperatures, also
-activate slip on $\{112\}\langle 111\rangle$ and
+First, while the $\{112\}\langle 111\rangle$ family is included in
+Section~\ref{sec:combined}, BCC metals can also activate slip on
 $\{123\}\langle 111\rangle$ planes (pencil
 glide)~\citep{christodoulou2021}. Including these additional systems
-would increase the number of effective in-plane constraints and modify
-the yield polygon from a hexagon to a higher-order polygon with more
-angular sectors.
+would further truncate the yield polygon, though the effect is expected
+to be small since $\{123\}$ slip typically has a higher CRSS than
+$\{110\}$ or $\{112\}$.
 
 Second, the material is assumed rigid-ideally plastic with no strain
 hardening. Extending to power-law hardening would convert the
@@ -1105,6 +1207,12 @@ metals.
 
 \item The plastic zone surrounding the void is non-circular, with a
 four-lobed shape reflecting the crystal symmetry of the $(110)$ plane.
+
+\item Including $\{112\}\langle 111\rangle$ slip (24~systems total)
+truncates the hexagonal yield polygon into a decagon with 10~vertices
+and 13~sectors. The activation pressure decreases by only 4.5\%
+(to $\approx 1.75\,\tcrss$), confirming that the BCC advantage over
+FCC is robust to the choice of active slip families.
 \end{enumerate}
 
 \begin{acknowledgements}
