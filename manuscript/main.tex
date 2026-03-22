@@ -1,16 +1,62 @@
-% ============================================================
-% Cylindrical Void in a Rigid-Ideally Plastic BCC Single Crystal
-% Target: International Journal of Plasticity (IJP) or
-%         Journal of the Mechanics and Physics of Solids (JMPS)
-% ============================================================
-\documentclass[smallextended,natbib]{svjour3}
-\smartqed
-\usepackage{amsmath,amssymb,bm}
-\usepackage{graphicx}
-\usepackage{booktabs}
-\usepackage{multirow}
+\documentclass{svjour3} % onecolumn (standard format)
+\smartqed % flush right qed marks, e.g. at end of proof
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{mathrsfs}
+\usepackage{times}
+\usepackage{float}
 \usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{soul}
+\let\proof\relax
+\let\endproof\relax
+
+\usepackage{amsthm}
+\usepackage{eucal}
+\usepackage{enumerate}
+\usepackage[letterpaper,margin=3cm]{geometry}
+\usepackage[title]{appendix}
+\usepackage{array}
+\usepackage{calligra}
+\usepackage{multirow}
+\usepackage{placeins}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
+\usepackage[
+pdfstartview=XYZ,
+bookmarks=true,
+colorlinks=true,
+linkcolor=blue,
+urlcolor=blue,
+citecolor=blue,
+pdftex,
+linktocpage=true, % make the page number as hyperlink in table of content
+hyperindex=true
+]{hyperref}
+
+\usepackage{lipsum}
+\usepackage{subfig}
+\usepackage{natbib}
+\setcitestyle{authoryear}
+%\setcitestyle{numbers}
+\setcitestyle{square}
+\usepackage[pdftex]{graphicx}
+\usepackage{epstopdf}
+\usepackage{booktabs}
+\usepackage{lineno}
+\usepackage{mathpazo}
 \usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{arrows}
+\usetikzlibrary{trees}
+\usepackage{indentfirst}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{mathabx}
+
 
 % Journal name
 \journalname{International Journal of Plasticity}
