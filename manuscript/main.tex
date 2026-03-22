@@ -943,10 +943,73 @@ crystal orientation.
 
 \subsection{Implications for ductile fracture models}
 
-% TODO: Discuss implications for:
-% - Crystal plasticity damage models (Keralavarma-Benzerga type)
-% - Orientation-dependent void growth rates
-% - Homogenized Gurson-type models for BCC polycrystals
+The analytical void solution derived here has direct implications for
+crystal-plasticity-aware damage models. The Gurson-type yield criteria
+developed for porous single crystals by~\citet{keralavarma2010}
+and~\citet{mbiakop2015} rely on assumed velocity fields around voids
+in anisotropic matrices. The present solution provides, for BCC crystals,
+the exact stress field from which such velocity fields can be
+constructed, offering a rigorous basis for upper-bound estimates of the
+macroscopic yield surface.
+
+In particular, the orientation-dependent activation pressure
+$p^*(\theta)$ derived here can serve as input to homogenized
+Gurson--Tvergaard--Needleman models for BCC polycrystals.
+\citet{paux2018} computed yield criteria for porous FCC, HCP, and BCC
+single crystals using limit analysis coupled with FFT-based
+full-field simulations. The analytical BCC void solution provides an
+independent check on these computational yield surfaces and, for the
+specific case of equibiaxial loading, gives the exact activation stress
+without numerical approximation.
+
+The non-circular plastic zone (Section~\ref{sec:interior}) implies that
+void coalescence in BCC crystals will be orientation-dependent:
+neighboring voids whose plastic zones are elongated toward each other
+will coalesce at lower strains than those separated along compressed
+directions. This anisotropic interaction is absent from isotropic
+Gurson-based models and is captured only by crystal-plasticity-aware
+formulations.
+
+\subsection{Limitations and extensions}
+
+Several limitations of the present analysis should be noted.
+
+First, only the $\{110\}\langle 111\rangle$ slip system family is
+considered. BCC metals, particularly at lower temperatures, also
+activate slip on $\{112\}\langle 111\rangle$ and
+$\{123\}\langle 111\rangle$ planes (pencil
+glide)~\citep{christodoulou2021}. Including these additional systems
+would increase the number of effective in-plane constraints and modify
+the yield polygon from a hexagon to a higher-order polygon with more
+angular sectors.
+
+Second, the material is assumed rigid-ideally plastic with no strain
+hardening. Extending to power-law hardening would convert the
+constant-stress sectors into regions where the stress varies within each
+sector, as demonstrated by~\citet{saeedvafa1989} for crack-tip fields
+in hardening crystals. The sector boundary angles would remain
+unchanged (they depend only on the yield polygon geometry), but the
+stress magnitudes within each sector would be modified.
+
+Third, the analysis is restricted to equibiaxial far-field loading. Under
+non-equibiaxial loading ($\sigma_1 \neq \sigma_2$), the sector structure
+becomes asymmetric and the void growth rate acquires a dependence on
+stress triaxiality and Lode angle. This extension, which would produce
+the first analytical single-crystal generalization of the
+Rice--Tracey~\citep{rice1969} void growth rate formula, is the subject
+of ongoing work.
+
+Fourth, the void axis is fixed along $[110]$. Other crystallographic
+orientations ($[100]$, $[111]$) would produce different numbers of
+effective in-plane systems and different yield polygon geometries. For
+$[100]$, preliminary analysis suggests four effective systems (octagonal
+yield polygon) rather than three.
+
+Finally, non-Schmid effects and the temperature dependence of the
+critical resolved shear stress, both important in BCC metals at low
+temperatures, are not considered. These effects would modify the yield
+conditions on individual slip systems and could break the symmetry of
+the yield polygon.
 
 % ============================================================
 \section{Conclusions}
