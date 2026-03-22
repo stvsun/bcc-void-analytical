@@ -117,9 +117,10 @@ The activation pressure for plastic flow around the void is found to be
 $p^* = \frac{3\sqrt{6}}{4}\,\tcrss \approx 1.84\,\tcrss$, which is 50\%
 higher than the FCC result of
 $p^*_{\mathrm{FCC}} = \frac{\sqrt{6}}{2}\,\tcrss \approx 1.22\,\tcrss$.
-This provides a quantitative, single-crystal-level explanation for the
-well-documented superior resistance of BCC metals to radiation-induced
-void swelling compared to FCC metals. The analysis is extended to include
+The 50\% higher activation pressure offers a single-crystal-level
+rationale for the well-documented superior resistance of BCC metals to
+radiation-induced void swelling compared to FCC metals. The analysis
+is extended to include
 $\{112\}\langle 111\rangle$ slip (24~systems total), which truncates the
 hexagon into a decagon with 10~vertices and 13~angular sectors but
 reduces the activation pressure by only 4.5\%, to
@@ -180,27 +181,23 @@ radiation-induced void swelling compared to FCC austenitic
 steels~\citep{garner2010,zinkle2013}. A quantitative, single-crystal-level
 understanding of this difference has been lacking.
 
-The present work fills this gap by deriving the analytical stress field
-around a cylindrical void in a rigid-ideally plastic BCC single crystal
-with $\{110\}\langle 111\rangle$ slip, constituting Part~IV of the Kysar
-series. The analysis reveals that: (i)~the BCC yield polygon is an
-elongated hexagon rotated by $\arctan(2\sqrt{2})/2 \approx 35.3^\circ$
-relative to FCC; (ii)~the activation pressure for void growth is exactly
-50\% higher than FCC; and (iii)~the plastic zone around the void is
-non-circular, with a four-lobed shape reflecting the crystal symmetry.
+This paper derives the analytical stress field around a cylindrical
+void in a rigid-ideally plastic BCC single crystal with
+$\{110\}\langle 111\rangle$ slip, constituting Part~IV of the series
+initiated by~\citet{kysar2005}. The analysis reveals that:
+(i)~the BCC yield polygon is an elongated hexagon rotated by
+$\arctan(2\sqrt{2})/2 \approx 35.3^\circ$ relative to FCC;
+(ii)~the activation pressure for void growth is exactly 50\% higher
+than FCC; and (iii)~the plastic zone around the void is non-circular,
+with a four-lobed shape reflecting the crystal symmetry.
 
-The remainder of this paper is organized as follows.
-Section~\ref{sec:crystal} defines the BCC crystal geometry and derives
-the effective in-plane slip systems.
-Section~\ref{sec:yield} constructs the yield polygon.
-Section~\ref{sec:stress} derives the sector-based stress field.
-Section~\ref{sec:interior} extends the solution to the interior.
-Section~\ref{sec:combined} extends the analysis to include
-$\{112\}\langle 111\rangle$ slip.
-Section~\ref{sec:comparison} compares BCC and FCC results.
-Section~\ref{sec:numerical} presents numerical verification.
-Section~\ref{sec:discussion} discusses physical implications.
-Section~\ref{sec:conclusions} concludes.
+After deriving the yield polygon and sector-based stress field for
+$\{110\}\langle 111\rangle$ slip
+(Sections~\ref{sec:crystal}--\ref{sec:interior}), we extend the
+analysis to include $\{112\}\langle 111\rangle$ slip
+(Section~\ref{sec:combined}), compare with FCC
+(Section~\ref{sec:comparison}), and verify the predictions numerically
+using crystal plasticity finite elements (Section~\ref{sec:numerical}).
 
 % ============================================================
 \section{Crystal geometry and effective slip systems}
@@ -305,11 +302,11 @@ $\alpha$ & $a^\alpha$ & $b^\alpha$ \\
 \end{tabular}
 \end{table}
 
-A key finding is that systems 1 and 2, which lie on the $(110)$ plane
-containing the void axis, have \emph{identically zero} in-plane Schmid
-tensor components. These systems contribute only anti-plane shear
-deformation and do not participate in the plane strain yield surface. This
-is a structural consequence of the $(110)$ plane being perpendicular to the
+Systems 1 and 2, which lie on the $(110)$ plane containing the void
+axis, have \emph{identically zero} in-plane Schmid tensor components.
+These systems contribute only anti-plane shear deformation and do not
+participate in the plane strain yield surface; this follows
+geometrically from the $(110)$ plane being perpendicular to the
 deformation plane.
 
 The ten active systems (3--12) produce three \emph{distinct} yield
@@ -332,8 +329,8 @@ constraints:
 For plane strain, individual 3D systems combine pairwise to eliminate
 out-of-plane strain components ($d_{33} = d_{13} = d_{23} = 0$). Systems
 3 and 4 form a same-plane pair on $(1\bar{1}0)$. The remaining pairs
-(e.g., 5+12, 8+9) involve cross-plane combinations --- a structural
-difference from FCC, where all effective pairs are same-plane.
+(e.g., 5+12, 8+9) involve cross-plane combinations, unlike FCC where
+all effective pairs are same-plane.
 
 % ============================================================
 \section{Yield polygon in the Mohr stress plane}
@@ -797,9 +794,9 @@ $p^* = 3\sqrt{6}/4 \approx 1.837\,\tcrss$. The BCC activation
 pressure remains 43\% higher than the FCC value
 $p^*_{\mathrm{FCC}} = \sqrt{6}/2 \approx 1.225\,\tcrss$, so the
 conclusion that BCC crystals resist void growth more effectively than
-FCC crystals is robust to the inclusion of $\{112\}$ slip.
+FCC crystals holds even when $\{112\}$ slip is included.
 
-The physical interpretation is transparent: the $\{112\}$ systems
+Physically, the $\{112\}$ systems
 provide additional deformation mechanisms that soften the crystal
 response in directions where the $\{110\}$ systems are least favorably
 oriented (near $\theta = 0^\circ$ and $90^\circ$), but do not
@@ -895,7 +892,7 @@ may have different hardening characteristics than same-plane pairings,
 a distinction that becomes important when extending to strain-hardening
 crystals.
 
-Additionally, BCC has two systems (1 and~2 on the $(110)$ plane) with
+BCC also has two systems (1 and~2 on the $(110)$ plane) with
 identically zero in-plane Schmid tensor --- they contribute only
 anti-plane shear. No such systems exist for FCC with $[110]$ void axis.
 This reduces the effective number of in-plane BCC systems from 12 to 10
@@ -903,7 +900,7 @@ and has implications for any plane strain problem on the $(110)$ plane.
 
 \subsection{Activation pressure}
 
-The most consequential difference is the activation pressure. As
+The activation pressure is the most important distinction. As
 shown in Section~\ref{sec:activation}, the ratio
 $p^*_{\mathrm{BCC}}/p^*_{\mathrm{FCC}} = 3/2$ exactly~\eqref{eq:ratio}.
 This is a purely geometric consequence of the yield polygon dimensions,
@@ -1175,7 +1172,7 @@ formulations.
 
 \subsection{Limitations and extensions}
 
-Several limitations of the present analysis should be noted.
+The present analysis has several limitations.
 
 First, while the $\{112\}\langle 111\rangle$ family is included in
 Section~\ref{sec:combined}, BCC metals can also activate slip on
@@ -1239,9 +1236,8 @@ with exact boundaries at $\theta_1 = \frac{1}{2}\arctan(2\sqrt{2})
 
 \item The activation pressure is
 $p^* = \frac{3\sqrt{6}}{4}\,\tcrss \approx 1.84\,\tcrss$, which is
-exactly $3/2$ times the FCC value. This provides a quantitative
-explanation for the superior radiation void swelling resistance of BCC
-metals.
+exactly $3/2$ times the FCC value, rationalizing the superior radiation
+void swelling resistance of BCC metals.
 
 \item The plastic zone surrounding the void is non-circular, with a
 four-lobed shape reflecting the crystal symmetry of the $(110)$ plane.
@@ -1249,8 +1245,8 @@ four-lobed shape reflecting the crystal symmetry of the $(110)$ plane.
 \item Including $\{112\}\langle 111\rangle$ slip (24~systems total)
 truncates the hexagonal yield polygon into a decagon with 10~vertices
 and 13~sectors. The activation pressure decreases by only 4.5\%
-(to $\approx 1.75\,\tcrss$), confirming that the BCC advantage over
-FCC is robust to the choice of active slip families.
+(to $\approx 1.75\,\tcrss$), confirming that the BCC advantage over FCC persists regardless of
+which slip families are active.
 \end{enumerate}
 
 \begin{acknowledgements}
