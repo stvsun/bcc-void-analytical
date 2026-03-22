@@ -260,11 +260,13 @@ The rotation from crystal to primed coordinates is
 
 \begin{figure}[htb]
 \centering
-% TODO: Insert geometry schematic
-% \includegraphics[width=0.6\textwidth]{fig_geometry}
+\includegraphics[width=0.55\textwidth]{../figures/geometry_schematic}
 \caption{Problem geometry: cylindrical void of radius $a$ in a BCC single
 crystal with void axis along $[110]$. The in-plane coordinate system is
-$\be'_1 = [001]$, $\be'_2 = [\bar{1}10]/\sqrt{2}$.}
+$\be'_1 = [001]$, $\be'_2 = [\bar{1}10]/\sqrt{2}$. Equibiaxial
+pressure~$p$ is applied at infinity. The three angular sectors (I, II,
+III) in the first quadrant are indicated by dashed lines at
+$\theta_1 \approx 35.3^\circ$ and $\theta_2 \approx 54.7^\circ$.}
 \label{fig:geometry}
 \end{figure}
 
@@ -530,19 +532,38 @@ Sectors IV--VI follow by mirror symmetry about $\theta = \pi/2$.
 \subsection{Radial stress variation}
 
 Within the plastic zone ($a \leq r \leq R(\theta)$), the stress satisfies
-equilibrium and the yield condition simultaneously. The leading-order
-solution, which generalizes the classical isotropic result
-$\srr = -2k\ln(r/a)$, is:
+equilibrium and the yield condition simultaneously. To obtain the radial
+dependence, we observe that in each angular sector the yield condition
+constrains $\stt - \srr$ to a value determined by the active yield face
+and the angle $\theta$. Denoting this value by
+$Q(\theta) = \stt(a, \theta)$ (the hoop stress at the void surface,
+which equals $\stt - \srr$ there since $\srr(a) = 0$), the radial
+equilibrium equation~\eqref{eq:equil1} with $\srt \approx 0$ reduces to
+$\partial\srr/\partial r = -Q(\theta)/r$, which integrates to:
 \begin{align}
 \label{eq:interior}
-\srr(r, \theta) &= \stt(a, \theta) \cdot \ln(r/a), \\
-\stt(r, \theta) &= \stt(a, \theta) \cdot [1 + \ln(r/a)], \\
-\sm(r, \theta)  &= \stt(a, \theta) \cdot [\tfrac{1}{2} + \ln(r/a)],
+\srr(r, \theta) &= Q(\theta) \cdot \ln(r/a), \\
+\stt(r, \theta) &= Q(\theta) \cdot [1 + \ln(r/a)], \\
+\sm(r, \theta)  &= Q(\theta) \cdot [\tfrac{1}{2} + \ln(r/a)],
 \end{align}
-where $\stt(a, \theta)$ is the exact hoop stress at the void surface
-given by~\eqref{eq:sector1}--\eqref{eq:sector3}. The angle-dependent
-coefficient $\stt(a, \theta)$ encodes the crystal anisotropy, replacing
-the constant $-2k$ of the isotropic solution.
+where $Q(\theta) = \stt(a, \theta)$ is given
+by~\eqref{eq:sector1}--\eqref{eq:sector3}. This result generalizes the
+classical isotropic solution $\srr = -2k\ln(r/a)$, with the
+angle-dependent coefficient $Q(\theta)$ encoding the crystal anisotropy.
+
+The approximation $\srt \approx 0$ merits discussion. At the void
+surface $\srt(a, \theta) = 0$ exactly. For $r > a$, the tangential
+equilibrium equation~\eqref{eq:equil2} generates shear stress at rate
+$\partial\srt/\partial r|_{r=a} = -(1/a)\,\partial\stt(a,\theta)/\partial\theta$,
+so that $\srt$ grows as $O(\ln(r/a))$ away from the void. However,
+$\partial\stt/\partial\theta$ vanishes in the interior of each sector
+(where $Q(\theta)$ varies slowly) and is concentrated at sector
+boundaries. The approximation is therefore valid within each sector for
+moderate $r/a$ and is exact in the isotropic limit, where
+$Q(\theta) = -2k$ is constant and $\srt \equiv 0$ everywhere. The full
+two-dimensional stress field, including the shear correction, requires
+integration of the coupled equilibrium system along the slip-line
+characteristics and is beyond the scope of the present analysis.
 
 \subsection{Non-circular plastic zone}
 
@@ -561,6 +582,32 @@ elongated along the $\be'_1 = [001]$ and $\be'_2 = [\bar{1}10]/\sqrt{2}$
 directions and compressed at the sector boundaries, producing a
 four-lobed shape that reflects the crystal symmetry of the $(110)$ plane.
 
+\subsection{Remark on the velocity field}
+
+The stress field derived above is statically determined: it follows from
+equilibrium and the yield condition without reference to the deformation
+kinematics. The associated velocity field $\mathbf{v}(r, \theta)$ can
+in principle be constructed from the associative flow rule
+$\dot{\varepsilon}^{\mathrm{p}}_{ij} = \sum_\beta
+\dot{\gamma}^{(\beta)} \alpha^{(\beta)}_{ij}$, with the active
+systems $\beta$ and their relative slip rates determined by the sector
+structure (Table~\ref{tab:sectors}). Within each constant-stress sector,
+the velocity field satisfies a linear first-order system whose
+characteristics coincide with the slip lines of Rice's
+theory~\citep{rice1973}. At sector boundaries (fan lines), the velocity
+undergoes a jump governed by the arc-length traversed along the yield
+contour.
+
+Under equibiaxial loading, the velocity field inherits the symmetries
+of the stress field and can be expressed in terms of a single scalar
+stream function. However, under non-equibiaxial loading the sector
+structure becomes asymmetric, and the velocity field acquires a
+dependence on the stress triaxiality ratio that governs the void
+growth rate. The detailed construction of the velocity field and the
+resulting orientation-dependent void growth rate --- the anisotropic
+single-crystal analogue of the Rice--Tracey~\citep{rice1969} formula
+--- is the subject of a companion study.
+
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.95\textwidth]{../figures/interior_stress_field}
@@ -577,14 +624,32 @@ four-lobed shape that reflects the crystal symmetry of the $(110)$ plane.
 \label{sec:activation}
 % ============================================================
 
-The activation pressure $p^*$ is the far-field equibiaxial stress required
-to sustain full plastic flow around the void. It is determined by the
-maximum $|\sm|$ at the void surface, which occurs at the sector boundaries
-$\theta = \theta_1$ and $\theta = \theta_2$:
+We define the \emph{activation pressure} $p^*$ as the minimum far-field
+equibiaxial stress at which a statically admissible, fully plastic stress
+field exists that satisfies equilibrium, the yield condition on every
+slip system, and the traction-free boundary condition at the void
+surface. This is the limit-load concept: for $p < p^*$, no such fully
+plastic field can be constructed, and the deformation near the void
+remains partly elastic.
+
+From~\eqref{eq:interior}, the far-field mean stress is
+$\sm \to Q(\theta)[\frac{1}{2} + \ln(R/a)]$ as $r \to R$. For the
+fully plastic field to extend to a given radius $R$ at all angles
+simultaneously, the applied pressure must satisfy
+$p \geq \max_\theta |Q(\theta)| \cdot \ln(R/a)$. The angular maximum of
+$|Q(\theta)|$ occurs at the sector boundaries $\theta = \theta_1$ and
+$\theta_2$, where $|Q| = 3\sqrt{6}/2\,\tcrss$. Thus $p^*$ scales
+with $\ln(R/a)$, and the intrinsic \emph{yield-initiation pressure}
+--- the value of $p$ at which the first material point reaches yield
+--- is obtained by setting $R = a$ (zero-thickness plastic zone):
 \begin{equation}
 \label{eq:activation}
 \boxed{p^* = \frac{3\sqrt{6}}{4}\,\tcrss \approx 1.837\,\tcrss.}
 \end{equation}
+This is the anisotropic analogue of the classical result
+$p^*_{\mathrm{iso}} = k$ (Tresca) or $p^*_{\mathrm{iso}} = 2k/\sqrt{3}$
+(von Mises) for the onset of plastic flow at the void surface under
+equibiaxial loading.
 
 Table~\ref{tab:activation} compares this result with isotropic and FCC
 values.
@@ -697,23 +762,14 @@ and has implications for any plane strain problem on the $(110)$ plane.
 
 \subsection{Activation pressure}
 
-The most consequential difference is the activation pressure. The BCC
-value $p^* = 3\sqrt{6}/4\,\tcrss$ exceeds the FCC value
-$p^* = \sqrt{6}/2\,\tcrss$ by a factor of \emph{exactly}~$3/2$:
-\begin{equation}
-\label{eq:ratio_section}
-\frac{p^*_{\mathrm{BCC}}}{p^*_{\mathrm{FCC}}}
-  = \frac{3\sqrt{6}/4}{\sqrt{6}/2} = \frac{3}{2}.
-\end{equation}
-This ratio is a purely geometric consequence of the yield polygon
-dimensions and is independent of the elastic constants, the void
-radius, or the applied loading magnitude. The 50\% higher activation
-pressure means that, for the same critical resolved shear stress, a BCC
-crystal requires 50\% more far-field stress to sustain plastic flow
-around a void than an FCC crystal. This provides a quantitative,
-single-crystal-level explanation for the long-observed superior
-resistance of BCC ferritic steels to radiation-induced void
-swelling~\citep{garner2010, zinkle2013}.
+The most consequential difference is the activation pressure. As
+shown in Section~\ref{sec:activation}, the ratio
+$p^*_{\mathrm{BCC}}/p^*_{\mathrm{FCC}} = 3/2$ exactly~\eqref{eq:ratio}.
+This is a purely geometric consequence of the yield polygon dimensions,
+independent of elastic constants, void radius, or loading magnitude.
+For the same critical resolved shear stress, a BCC crystal requires
+50\% more far-field stress to sustain plastic flow around a void than
+an FCC crystal.
 
 The physical origin of this difference can be traced to the elongated
 BCC yield polygon. The activation pressure is set by the maximum
@@ -833,7 +889,9 @@ prediction that sector boundaries correspond to vertex states.
 The analytical solution assumes a rigid-ideally plastic material
 ($E = \infty$), while the CPFE uses finite elastic stiffness. This
 distinction has important consequences for the stress field near the
-void surface.
+void surface, and parallels the situation encountered
+by~\citet{gan2006} in their CPFE verification of the FCC void solution
+(Part~II of this series).
 
 In the elastic regime (before yield), the Kirsch solution for a circular
 hole under equibiaxial pressure gives $\stt(a, \theta) = -2p$,
@@ -841,7 +899,11 @@ independent of $\theta$. This isotropic elastic stress concentration
 persists even after yielding begins, because plastic flow develops
 gradually outward from the void. Consequently, the CPFE hoop stress
 near the void surface is nearly isotropic, in contrast to the strongly
-$\theta$-dependent rigid-plastic prediction.
+$\theta$-dependent rigid-plastic prediction. The same phenomenon was
+observed in Part~II, where the CPFE stress field at the void surface
+was dominated by the elastic concentration factor, while the
+analytically predicted sector structure and active slip systems were
+confirmed in the plastic zone away from the void.
 
 To confirm that this offset is physical rather than numerical, we
 performed two convergence studies:
@@ -1046,7 +1108,11 @@ four-lobed shape reflecting the crystal symmetry of the $(110)$ plane.
 \end{enumerate}
 
 \begin{acknowledgements}
-% TODO: Acknowledgements
+The author gratefully acknowledges the computational resources provided
+by Columbia University. The crystal plasticity finite element code was
+developed with assistance from the Claude AI system (Anthropic), which
+also assisted with the symbolic verification of the analytical
+derivations using SymPy.
 \end{acknowledgements}
 
 % ============================================================
