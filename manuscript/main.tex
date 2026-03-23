@@ -570,66 +570,167 @@ $45^\circ$ is a symmetry line.}
 \label{sec:interior}
 % ============================================================
 
-\subsection{Exact stress field via Airy stress function}
+\subsection{General mathematical form}
 
-Following~\citet{kysar2005}, the stress at an interior point
-$(r, \theta)$ is determined by tracing the $\alpha$- and $\beta$-line
-characteristics back to the void surface (or to a symmetry axis)
-where the stress is known. Within each sector, a single slip system
-is active, so $\sigma'_{12} = A$ is constant in the rotated
-$(x'_1, x'_2)$ frame aligned with the active system's $\alpha$- and
-$\beta$-lines. The remaining stress components $\sigma'_{11}$ and
-$\sigma'_{22}$ are constant on individual $\alpha$- and $\beta$-lines
-respectively, and are determined from the boundary conditions.
+In a region where only one effective slip system is active, the stress
+is most conveniently expressed in a rotated $(x'_1, x'_2)$ frame
+with $x'_1$ along the $\alpha$-line and $x'_2$ along the $\beta$-line.
+The resolved shear stress is then constant:
+$\sigma'_{12} = \pm\beta\tcrss =: A$, and the equilibrium
+equations~\eqref{eq:equil1}--\eqref{eq:equil2} reduce
+to~\citep{kysar2005}
+\begin{equation}
+\label{eq:equil_reduced}
+\frac{\partial\sigma'_{11}}{\partial x'_1}
+  = \frac{\partial\sigma'_{22}}{\partial x'_2} = 0,
+\end{equation}
+so that $\sigma'_{11}$ is constant on each $\alpha$-line and
+$\sigma'_{22}$ is constant on each $\beta$-line. Their values are
+determined by tracing each characteristic back to the boundary where
+the stress is known --- the void surface or a symmetry axis.
 
-The BCC parameters for each sector are:
-\begin{itemize}
-\item \textbf{Sector~I} (sys~5,12; $\phi_{\mathrm{I}} =
-  -\frac{1}{2}\arctan(2\sqrt{2}) \approx -35.3^\circ$;
-  $A_{\mathrm{I}} = 2\sqrt{3}/3$):
-both $\alpha$- and $\beta$-lines intersect the void surface. The
-stresses in the rotated frame are
+\subsection{Stress sector I}
+
+System~(5,12) is active in Sector~I ($0 \leq \theta \leq \theta_1$),
+with the $\alpha$-line direction at angle
+$\phi_{\mathrm{I}} = -\frac{1}{2}\arctan(2\sqrt{2}) \approx -35.3^\circ$
+and $A_{\mathrm{I}} = 2\sqrt{3}/3$.
+
+At an interior point $P_1$ at polar coordinates $(r, \theta)$,
+both the $\alpha$- and $\beta$-lines intersect the void surface.
+The $\alpha$-line through $P_1$ meets the void at
+$\theta_{s1} = \phi_{\mathrm{I}} - \arcsin[(r/a)\sin(\phi_{\mathrm{I}} - \theta)]$,
+and the $\beta$-line at
+$\theta_{t1} = \phi_{\mathrm{I}} - \arccos[(r/a)\cos(\phi_{\mathrm{I}} - \theta)]$.
+Substituting into the void surface stress~\eqref{eq:sector1} gives
 \begin{align}
+\label{eq:s11_sector_I}
 \sigma'_{11} &= \frac{A_{\mathrm{I}}(r/a)\sin(\phi_{\mathrm{I}} - \theta)}
   {\sqrt{1 - (r/a)^2\sin^2(\phi_{\mathrm{I}} - \theta)}}, \\
+\label{eq:s22_sector_I}
 \sigma'_{22} &= \frac{A_{\mathrm{I}}(r/a)\cos(\phi_{\mathrm{I}} - \theta)}
   {\sqrt{1 - (r/a)^2\cos^2(\phi_{\mathrm{I}} - \theta)}}, \\
 \sigma'_{12} &= A_{\mathrm{I}}.
 \end{align}
+These formulas are valid in the domain
+$r/a \leq 1/|\sin(\phi_{\mathrm{I}} - \theta)|$ and
+$r/a \leq 1/|\cos(\phi_{\mathrm{I}} - \theta)|$, which is the region
+where the characteristics from $P_1$ reach the void surface.
 
-\item \textbf{Sector~II} (sys~3,4; $\phi_{\mathrm{II}} = 0$;
-  $A_{\mathrm{II}} = \sqrt{3}$):
-both characteristics intersect the void, with the rotated frame
-coinciding with the Cartesian frame.
+Introducing the change of variable
+$\xi = (r/a)\cos(\theta - \phi_{\mathrm{I}})$ and
+$\eta = (r/a)\sin(\theta - \phi_{\mathrm{I}})$, the stresses take the form
+$\sigma'_{11} = -A_{\mathrm{I}}\eta/\sqrt{1-\eta^2}$,
+$\sigma'_{22} = A_{\mathrm{I}}\xi/\sqrt{1-\xi^2}$. The Airy stress
+function in the $(\xi, \eta)$ system is obtained by integration:
+\begin{equation}
+\label{eq:airy_I}
+\Psi_{\mathrm{I}}(\xi, \eta) = \frac{A_{\mathrm{I}}}{2}
+  \left(\eta\sqrt{1-\eta^2} + \sin^{-1}\eta
+  - 2\xi\eta - \xi\sqrt{1-\xi^2} - \sin^{-1}\xi\right).
+\end{equation}
 
-\item \textbf{Sector~III} (sys~6,11;
-  $\phi_{\mathrm{III}} = +\frac{1}{2}\arctan(2\sqrt{2}) \approx +35.3^\circ$;
-  $A_{\mathrm{III}} = 2\sqrt{3}/3$):
-the $\beta$-lines intersect the void surface (giving $\sigma'_{22}$),
-while the $\alpha$-lines reach the $x_2$-axis symmetry boundary. The
-stress $\sigma'_{11}$ on any $\alpha$-line is determined by the symmetry
-condition at vertex $V_6 = (-\sqrt{6}/2, 0)$:
+\subsection{Stress sector II}
+
+System~(3,4) is active in Sector~II
+($\theta_1 \leq \theta \leq \theta_2$), with
+$\phi_{\mathrm{II}} = 0$ and $A_{\mathrm{II}} = \sqrt{3}$. Since
+$\phi_{\mathrm{II}} = 0$, the rotated frame coincides with the
+Cartesian frame: $\alpha$-lines are horizontal and $\beta$-lines are
+vertical. Both families intersect the void surface, and the stresses
+are
+\begin{align}
+\label{eq:s11_sector_II}
+\sigma'_{11} &= \frac{-A_{\mathrm{II}}(r/a)\sin\theta}
+  {\sqrt{1 - (r/a)^2\sin^2\theta}}, \\
+\label{eq:s22_sector_II}
+\sigma'_{22} &= \frac{-A_{\mathrm{II}}(r/a)\cos\theta}
+  {\sqrt{1 - (r/a)^2\cos^2\theta}}, \\
+\sigma'_{12} &= A_{\mathrm{II}}.
+\end{align}
+The Airy stress function in the
+$(x_1, x_2) = ((r/a)\cos\theta,\; (r/a)\sin\theta)$ system is
+\begin{equation}
+\label{eq:airy_II}
+\Psi_{\mathrm{II}}(x_1, x_2) = \frac{A_{\mathrm{II}}}{2}
+  \left(x_2\sqrt{1-x_2^2} + \sin^{-1}x_2
+  - 2x_1 x_2 + x_1\sqrt{1-x_1^2} + \sin^{-1}x_1\right).
+\end{equation}
+
+\subsection{Stress sector III}
+
+System~(6,11) is active in Sector~III
+($\theta_2 \leq \theta \leq \pi/2$), with
+$\phi_{\mathrm{III}} = +\frac{1}{2}\arctan(2\sqrt{2}) \approx +35.3^\circ$
+and $A_{\mathrm{III}} = 2\sqrt{3}/3$. The faces $V_3 \to V_4$ and
+$V_5 \to V_6$ are parallel, so the characteristic direction
+$\phi_{\mathrm{III}}$ for Sector~III is the same as
+$|\phi_{\mathrm{I}}|$ for Sector~I.
+
+In Sector~III, the $\beta$-lines intersect the void surface (giving
+$\sigma'_{22}$ via the same formula as Sector~I), but the $\alpha$-lines
+reach the $x_2$-axis symmetry boundary instead. The $\alpha$-line from
+$P_3$ at $(r, \theta)$ intersects $x_1 = 0$ at radius
+\begin{equation}
+r^*/a = (r/a)\,\frac{|\sin(\phi_{\mathrm{III}} - \theta)|}{\sin\phi_{\mathrm{III}}}.
+\end{equation}
+On the $x_2$-axis, the stress state lies at vertex
+$V_6 = (-\sqrt{6}/2, 0)$, which imposes a fixed relationship between
+$\sigma'_{11}$ and $\sigma'_{22}$ in the rotated frame:
 \begin{equation}
 \label{eq:axis_condition}
-\frac{\sigma'_{11} - \sigma'_{22}}{2\tcrss} = -\frac{\sqrt{6}}{6},
+\frac{\sigma'_{11} - \sigma'_{22}}{2\tcrss} = -\frac{\sqrt{6}}{6}.
 \end{equation}
-which gives the modified formula
-\begin{equation}
-\label{eq:sector_III_s11}
-\sigma'_{11} = \frac{A_{\mathrm{III}}(r/a)\sin(\phi_{\mathrm{III}} - \theta)}
+Using $\sigma'_{22}(r^*)$ from the $\beta$-line formula and propagating
+$\sigma'_{11}$ along the $\alpha$-line yields the modified expressions
+\begin{align}
+\label{eq:s11_sector_III}
+\sigma'_{11} &= \frac{A_{\mathrm{III}}(r/a)\sin(\phi_{\mathrm{III}} - \theta)}
   {\sqrt{2 - (r/a)^2\sin^2(\phi_{\mathrm{III}} - \theta)}}
-  - \frac{\sqrt{6}}{3}\,\tcrss.
-\end{equation}
-The factor of~2 (instead of~1) under the radical and the additive
-constant~$-\sqrt{6}/3$ distinguish this from the Sector~I formula.
-\end{itemize}
+  - \frac{\sqrt{6}}{3}\,\tcrss, \\
+\label{eq:s22_sector_III}
+\sigma'_{22} &= \frac{A_{\mathrm{III}}(r/a)\cos(\phi_{\mathrm{III}} - \theta)}
+  {\sqrt{1 - (r/a)^2\cos^2(\phi_{\mathrm{III}} - \theta)}}, \\
+\sigma'_{12} &= A_{\mathrm{III}}.
+\end{align}
+The factor of~2 under the radical in~\eqref{eq:s11_sector_III} and the
+additive constant $-\sqrt{6}/3$ both arise from the symmetry
+condition~\eqref{eq:axis_condition}: the $\alpha$-line effectively
+``sees'' a mirror image of the void across the $x_2$-axis, doubling
+the effective distance, while the vertex stress state introduces the
+offset. The corresponding Airy stress function is
+\begin{multline}
+\label{eq:airy_III}
+\Psi_{\mathrm{III}}(\xi, \eta) = \frac{A_{\mathrm{III}}}{2}
+  \biggl(\eta\sqrt{2-\eta^2}
+  + 2\sin^{-1}\!\Bigl(\frac{\eta}{\sqrt{2}}\Bigr)
+  - 2\xi\eta \\
+  - \xi\sqrt{1-\xi^2} - \sin^{-1}\xi
+  - \frac{\sqrt{6}}{3}\,\eta^2\biggr),
+\end{multline}
+where $\xi = (r/a)\cos(\theta - \phi_{\mathrm{III}})$ and
+$\eta = (r/a)\sin(\theta - \phi_{\mathrm{III}})$.
 
-\noindent These formulas are the exact analogues of Eqs.~(17), (23),
-and~(30) in~\citet{kysar2005}, with the FCC angles replaced by the BCC
-values. Each stress $\sigma'_{ij}$ is converted to Cartesian and then
-to polar coordinates via standard tensor rotation. The resulting
-field includes the shear stress $\srt(r, \theta)$, which is in general
-non-zero for $r > a$ (Fig.~\ref{fig:interior}).
+\subsection{Conversion to polar coordinates}
+
+The stresses $\sigma'_{11}$, $\sigma'_{22}$, $\sigma'_{12}$ in each
+sector are converted to Cartesian coordinates via the rotation
+$\phi_k$ of the active system:
+\begin{align}
+\sigma_{11} &= \tfrac{1}{2}(\sigma'_{11} + \sigma'_{22})
+  + \tfrac{1}{2}(\sigma'_{11} - \sigma'_{22})\cos 2\phi_k
+  - \sigma'_{12}\sin 2\phi_k, \\
+\sigma_{22} &= \tfrac{1}{2}(\sigma'_{11} + \sigma'_{22})
+  - \tfrac{1}{2}(\sigma'_{11} - \sigma'_{22})\cos 2\phi_k
+  + \sigma'_{12}\sin 2\phi_k, \\
+\sigma_{12} &= \tfrac{1}{2}(\sigma'_{11} - \sigma'_{22})\sin 2\phi_k
+  + \sigma'_{12}\cos 2\phi_k,
+\end{align}
+and then to polar coordinates via~\eqref{eq:polar_cart}. The resulting
+field includes $\srt(r, \theta) \neq 0$ for $r > a$, in contrast to
+the isotropic solution where $\srt \equiv 0$.
+Figure~\ref{fig:interior} shows the four stress components; the
+``star'' pattern in $\srr$ reflects the 12 slip sector boundaries.
 
 \subsection{Structural simplification relative to FCC}
 
