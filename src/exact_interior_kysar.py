@@ -236,11 +236,11 @@ def stt_exact_void(theta):
     s2 = np.sin(2*theta)
     schmid = [
         (0, 0), (0, 0),
-        (0, -np.sqrt(3)/3), (0, -np.sqrt(3)/3),
-        (np.sqrt(6)/3, np.sqrt(3)/6), (-np.sqrt(6)/3, np.sqrt(3)/6),
-        (-np.sqrt(6)/3, -np.sqrt(3)/6), (np.sqrt(6)/3, -np.sqrt(3)/6),
+        (0, np.sqrt(3)/3), (0, np.sqrt(3)/3),
         (np.sqrt(6)/3, -np.sqrt(3)/6), (-np.sqrt(6)/3, -np.sqrt(3)/6),
         (-np.sqrt(6)/3, np.sqrt(3)/6), (np.sqrt(6)/3, np.sqrt(3)/6),
+        (np.sqrt(6)/3, np.sqrt(3)/6), (-np.sqrt(6)/3, np.sqrt(3)/6),
+        (-np.sqrt(6)/3, -np.sqrt(3)/6), (np.sqrt(6)/3, -np.sqrt(3)/6),
     ]
     R_min = 1e10
     for k in range(2, 12):

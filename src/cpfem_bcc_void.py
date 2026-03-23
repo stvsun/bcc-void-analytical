@@ -127,7 +127,7 @@ class BCCCrystalPlasticity:
         # Coordinate system: e1' = [001], e2' = [-110]/√2, e3' = [110]/√2
         R = np.array([
             [0, 0, 1],
-            [-1/np.sqrt(2), 1/np.sqrt(2), 0],
+            [1/np.sqrt(2), -1/np.sqrt(2), 0],
             [1/np.sqrt(2), 1/np.sqrt(2), 0],
         ])
 
@@ -483,11 +483,11 @@ def analytical_void_surface_stress(theta, tau_crss=1.0):
     # Yield face coefficients
     schmid_sys = [
         (0, 0), (0, 0),
-        (0, -np.sqrt(3)/3), (0, -np.sqrt(3)/3),
-        (np.sqrt(6)/3, np.sqrt(3)/6), (-np.sqrt(6)/3, np.sqrt(3)/6),
-        (-np.sqrt(6)/3, -np.sqrt(3)/6), (np.sqrt(6)/3, -np.sqrt(3)/6),
+        (0, np.sqrt(3)/3), (0, np.sqrt(3)/3),
         (np.sqrt(6)/3, -np.sqrt(3)/6), (-np.sqrt(6)/3, -np.sqrt(3)/6),
         (-np.sqrt(6)/3, np.sqrt(3)/6), (np.sqrt(6)/3, np.sqrt(3)/6),
+        (np.sqrt(6)/3, np.sqrt(3)/6), (-np.sqrt(6)/3, np.sqrt(3)/6),
+        (-np.sqrt(6)/3, -np.sqrt(3)/6), (np.sqrt(6)/3, -np.sqrt(3)/6),
     ]
 
     R_min = float('inf')

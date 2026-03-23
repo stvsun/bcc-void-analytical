@@ -41,7 +41,7 @@ ax.text(arrow_len + 0.15, 0.15,
 ax.annotate('', xy=(0, arrow_len), xytext=(0, 0),
             arrowprops=dict(arrowstyle='->', color='red', lw=2))
 ax.text(0.15, arrow_len + 0.1,
-        r"$\mathbf{e}'_2 = [\bar{1}10]/\sqrt{2}$", fontsize=12,
+        r"$\mathbf{e}'_2 = [1\bar{1}0]/\sqrt{2}$", fontsize=12,
         color='red', ha='left', va='bottom')
 
 # Polar coordinates

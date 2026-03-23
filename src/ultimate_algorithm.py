@@ -61,7 +61,7 @@ class UltimateAlgorithmBCC:
         """Set up BCC {110}<111> Schmid tensors in the plane strain frame."""
         R = np.array([
             [0, 0, 1],
-            [-1/np.sqrt(2), 1/np.sqrt(2), 0],
+            [1/np.sqrt(2), -1/np.sqrt(2), 0],
             [1/np.sqrt(2), 1/np.sqrt(2), 0],
         ])
 

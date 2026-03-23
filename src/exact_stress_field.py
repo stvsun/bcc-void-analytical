@@ -62,7 +62,7 @@ print("=" * 70)
 # Let me recompute everything exactly.
 R_exact = Matrix([
     [0, 0, 1],
-    [-1/sqrt(2), 1/sqrt(2), 0],
+    [1/sqrt(2), -1/sqrt(2), 0],
     [1/sqrt(2), 1/sqrt(2), 0],
 ])
 
