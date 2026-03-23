@@ -240,7 +240,7 @@ strain coordinate system is defined by (Fig.~\ref{fig:geometry}):
 \begin{equation}
 \label{eq:coords}
 \be'_1 = [001], \qquad
-\be'_2 = \frac{1}{\sqrt{2}}[\bar{1}10], \qquad
+\be'_2 = \frac{1}{\sqrt{2}}[1\bar{1}0], \qquad
 \be'_3 = \frac{1}{\sqrt{2}}[110].
 \end{equation}
 The rotation from crystal to primed coordinates is
@@ -248,7 +248,7 @@ The rotation from crystal to primed coordinates is
 \label{eq:rotation}
 \bR = \begin{pmatrix}
 0 & 0 & 1 \\
--1/\sqrt{2} & 1/\sqrt{2} & 0 \\
+1/\sqrt{2} & -1/\sqrt{2} & 0 \\
 1/\sqrt{2} & 1/\sqrt{2} & 0
 \end{pmatrix}.
 \end{equation}
@@ -258,7 +258,7 @@ The rotation from crystal to primed coordinates is
 \includegraphics[width=0.55\textwidth]{../figures/geometry_schematic}
 \caption{Problem geometry: cylindrical void of radius $a$ in a BCC single
 crystal with void axis along $[110]$. The in-plane coordinate system is
-$\be'_1 = [001]$, $\be'_2 = [\bar{1}10]/\sqrt{2}$. Equibiaxial
+$\be'_1 = [001]$, $\be'_2 = [1\bar{1}0]/\sqrt{2}$. Equibiaxial
 pressure~$p$ is applied at infinity. The three angular sectors (I, II,
 III) in the first quadrant are indicated by dashed lines at
 $\theta_1 \approx 35.3^\circ$ and $\theta_2 \approx 54.7^\circ$.}
@@ -285,11 +285,11 @@ $\alpha$ & $a^\alpha$ & $b^\alpha$ &
 $\alpha$ & $a^\alpha$ & $b^\alpha$ \\
 \midrule
 1, 2  & $0$ & $0$ &
-7, 10 & $-\sqrt{6}/3$ & $-\sqrt{3}/6$ \\
-3, 4  & $0$ & $-\sqrt{3}/3$ &
-8, 9  & $+\sqrt{6}/3$ & $-\sqrt{3}/6$ \\
-5, 12 & $+\sqrt{6}/3$ & $+\sqrt{3}/6$ &
-6, 11 & $-\sqrt{6}/3$ & $+\sqrt{3}/6$ \\
+7, 10 & $-\sqrt{6}/3$ & $+\sqrt{3}/6$ \\
+3, 4  & $0$ & $+\sqrt{3}/3$ &
+8, 9  & $+\sqrt{6}/3$ & $+\sqrt{3}/6$ \\
+5, 12 & $+\sqrt{6}/3$ & $-\sqrt{3}/6$ &
+6, 11 & $-\sqrt{6}/3$ & $-\sqrt{3}/6$ \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -306,15 +306,15 @@ constraints:
 \begin{align}
 \label{eq:yield_constraints}
 \text{(I)} & \quad
-  \left\lvert -\frac{\sqrt{3}}{3}\,Y \right\rvert \leq \tcrss
+  \left\lvert \frac{\sqrt{3}}{3}\,Y \right\rvert \leq \tcrss
   & & \text{(systems 3, 4)}, \\
 \text{(II)} & \quad
   \left\lvert \frac{\sqrt{6}}{3}\,X
-            + \frac{\sqrt{3}}{6}\,Y \right\rvert \leq \tcrss
+            - \frac{\sqrt{3}}{6}\,Y \right\rvert \leq \tcrss
   & & \text{(systems 5, 12)}, \\
 \text{(III)} & \quad
   \left\lvert -\frac{\sqrt{6}}{3}\,X
-             + \frac{\sqrt{3}}{6}\,Y \right\rvert \leq \tcrss
+             - \frac{\sqrt{3}}{6}\,Y \right\rvert \leq \tcrss
   & & \text{(systems 6, 11)}.
 \end{align}
 
@@ -339,12 +339,12 @@ The six vertices, in units of $\tcrss$, are:
 \begin{equation}
 \label{eq:vertices}
 \begin{aligned}
-V_1 &= \bigl(-\tfrac{\sqrt{6}}{4},\; -\sqrt{3}\bigr), &
-V_2 &= \bigl(+\tfrac{\sqrt{6}}{4},\; -\sqrt{3}\bigr), &
-V_3 &= \bigl(+\tfrac{\sqrt{6}}{2},\; 0\bigr), \\
-V_4 &= \bigl(+\tfrac{\sqrt{6}}{4},\; +\sqrt{3}\bigr), &
-V_5 &= \bigl(-\tfrac{\sqrt{6}}{4},\; +\sqrt{3}\bigr), &
-V_6 &= \bigl(-\tfrac{\sqrt{6}}{2},\; 0\bigr).
+V_1 &= \bigl(-\tfrac{\sqrt{6}}{2},\; 0\bigr), &
+V_2 &= \bigl(-\tfrac{\sqrt{6}}{4},\; -\sqrt{3}\bigr), &
+V_3 &= \bigl(+\tfrac{\sqrt{6}}{4},\; -\sqrt{3}\bigr), \\
+V_4 &= \bigl(+\tfrac{\sqrt{6}}{2},\; 0\bigr), &
+V_5 &= \bigl(+\tfrac{\sqrt{6}}{4},\; +\sqrt{3}\bigr), &
+V_6 &= \bigl(-\tfrac{\sqrt{6}}{4},\; +\sqrt{3}\bigr).
 \end{aligned}
 \end{equation}
 The polygon has half-width $|X|_{\max} = \sqrt{6}/2 \approx 1.225\,\tcrss$
@@ -361,12 +361,12 @@ aspect ratio (height/width) of $\sqrt{8/3} \approx 1.633$.
 \toprule
 Face & Equation & Active systems \\
 \midrule
-$V_1 \to V_2$ & $Y = -\sqrt{3}$  & 3, 4 \\
-$V_2 \to V_3$ & $\frac{\sqrt{6}}{3}X - \frac{\sqrt{3}}{6}Y = 1$ & 8, 9 \\
-$V_3 \to V_4$ & $\frac{\sqrt{6}}{3}X + \frac{\sqrt{3}}{6}Y = 1$ & 5, 12 \\
-$V_4 \to V_5$ & $Y = +\sqrt{3}$  & 3, 4 \\
-$V_5 \to V_6$ & $-\frac{\sqrt{6}}{3}X - \frac{\sqrt{3}}{6}Y = 1$ & 7, 10 \\
-$V_6 \to V_1$ & $-\frac{\sqrt{6}}{3}X + \frac{\sqrt{3}}{6}Y = -1$ & 6, 11 \\
+$V_1 \to V_2$ & $-\frac{\sqrt{6}}{3}X - \frac{\sqrt{3}}{6}Y = 1$ & 6, 11 \\
+$V_2 \to V_3$ & $\frac{\sqrt{3}}{3}Y = -1$  & 3, 4 \\
+$V_3 \to V_4$ & $\frac{\sqrt{6}}{3}X - \frac{\sqrt{3}}{6}Y = 1$ & 5, 12 \\
+$V_4 \to V_5$ & $-\frac{\sqrt{6}}{3}X - \frac{\sqrt{3}}{6}Y = -1$ & 6, 11 \\
+$V_5 \to V_6$ & $\frac{\sqrt{3}}{3}Y = 1$  & 3, 4 \\
+$V_6 \to V_1$ & $\frac{\sqrt{6}}{3}X - \frac{\sqrt{3}}{6}Y = -1$ & 5, 12 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -468,8 +468,8 @@ which gives the sector boundaries listed in Table~\ref{tab:sectors}.
 Sector & $\theta$ range & Active face & Systems \\
 \midrule
 I   & $0 < \theta < \theta_1$ & $V_3 \to V_4$ & 5, 12 \\
-II  & $\theta_1 < \theta < \theta_2$ & $V_4 \to V_5$ & 3, 4 \\
-III & $\theta_2 < \theta < \pi/2$ & $V_5 \to V_6$ & 6, 11 \\
+II  & $\theta_1 < \theta < \theta_2$ & $V_5 \to V_6$ & 3, 4 \\
+III & $\theta_2 < \theta < \pi/2$ & $V_6 \to V_1$ & 6, 11 \\
 IV  & $\pi/2 < \theta < \pi - \theta_2$ & mirror of III & 5, 12 \\
 V   & $\pi - \theta_2 < \theta < \pi - \theta_1$ & mirror of II & 3, 4 \\
 VI  & $\pi - \theta_1 < \theta < \pi$ & mirror of I & 6, 11 \\
@@ -483,15 +483,15 @@ $\theta_2 = \frac{1}{2}[\pi - \arctan(2\sqrt{2})] \approx 54.74^\circ$.
 \subsection{Exact void surface stress in each sector}
 
 \paragraph{Sector~I} ($0 < \theta < \theta_1$; face $V_3 \to V_4$,
-$\frac{\sqrt{6}}{3}X + \frac{\sqrt{3}}{6}Y = \tcrss$):
+$\frac{\sqrt{6}}{3}X - \frac{\sqrt{3}}{6}Y = \tcrss$):
 \begin{equation}
 \label{eq:sector1}
 \sm(\theta) = \frac{-6\,\tcrss}
-  {\sqrt{3}\sin 2\theta + 2\sqrt{6}\cos 2\theta}, \qquad
+  {2\sqrt{6}\cos 2\theta + \sqrt{3}\sin 2\theta}, \qquad
 \stt(\theta) = 2\,\sm(\theta).
 \end{equation}
 
-\paragraph{Sector~II} ($\theta_1 < \theta < \theta_2$; face $V_4 \to V_5$,
+\paragraph{Sector~II} ($\theta_1 < \theta < \theta_2$; face $V_5 \to V_6$,
 $Y = \sqrt{3}\,\tcrss$):
 \begin{equation}
 \label{eq:sector2}
@@ -500,12 +500,12 @@ $Y = \sqrt{3}\,\tcrss$):
 \sigma_{12} = \sqrt{3}\,\tcrss \;\text{(constant)}.
 \end{equation}
 
-\paragraph{Sector~III} ($\theta_2 < \theta < \pi/2$; face $V_5 \to V_6$,
-$-\frac{\sqrt{6}}{3}X + \frac{\sqrt{3}}{6}Y = -\tcrss$):
+\paragraph{Sector~III} ($\theta_2 < \theta < \pi/2$; face $V_6 \to V_1$,
+$\frac{\sqrt{6}}{3}X - \frac{\sqrt{3}}{6}Y = -\tcrss$):
 \begin{equation}
 \label{eq:sector3}
 \sm(\theta) = \frac{6\,\tcrss}
-  {\sqrt{3}\sin 2\theta - 2\sqrt{6}\cos 2\theta}, \qquad
+  {2\sqrt{6}\cos 2\theta - \sqrt{3}\sin 2\theta}, \qquad
 \stt(\theta) = 2\,\sm(\theta).
 \end{equation}
 Sectors IV--VI follow by mirror symmetry about $\theta = \pi/2$.
@@ -733,7 +733,7 @@ $\phi_1 = \arctan(\sqrt{2}) \approx 54.7^\circ$ differs from the sector
 boundary angle $\gamma = \arctan(1/\sqrt{2}) \approx 35.3^\circ$ by
 about $19.5^\circ$, causing $\alpha$-lines from one sector to cross
 into adjacent sectors at finite radius and producing a curved sector
-boundary~\citep[Section~3.8]{kysar2005}. In BCC, $\phi_1 = \gamma$
+boundary~\citep[Section~3.8]{kysar2005}. In BCC, $|\phi_1| = \gamma$
 exactly: the characteristic direction coincides with the sector
 boundary. The $\alpha$-lines of system~(5,12) run \emph{along} the
 sector boundary rather than crossing it, so the curved boundary
@@ -744,7 +744,7 @@ the complete exact stress field.
 This structural simplification is a geometric consequence of the BCC
 yield polygon: the elongation that produces
 $\arctan(2\sqrt{2})$ in both the vertex angle and the characteristic
-angle ensures $\phi_1 = \gamma$. It does not occur in FCC or HCP.
+angle ensures $|\phi_1| = \gamma$. It does not occur in FCC or HCP.
 
 \subsection{Non-circular plastic zone}
 
@@ -759,7 +759,7 @@ Since $\abs{\stt(a, \theta)}$ varies with $\theta$ --- from a minimum of
 $\sqrt{6}\,\tcrss$ at $\theta = 0^\circ$ and $90^\circ$ to a maximum of
 $\frac{3\sqrt{6}}{2}\,\tcrss$ at the sector boundaries --- the plastic
 zone is \emph{non-circular} (Fig.~\ref{fig:interior}). The zone is
-elongated along the $\be'_1 = [001]$ and $\be'_2 = [\bar{1}10]/\sqrt{2}$
+elongated along the $\be'_1 = [001]$ and $\be'_2 = [1\bar{1}0]/\sqrt{2}$
 directions and compressed at the sector boundaries, producing a
 four-lobed shape that reflects the crystal symmetry of the $(110)$ plane.
 
@@ -1210,7 +1210,7 @@ $R(\theta)$ varies with angle, producing a non-circular plastic zone
 whose shape is consistent with the analytical
 prediction~\eqref{eq:plastic_zone}: elongated along
 $\theta = 0^\circ$ and $90^\circ$ (the $[001]$ and
-$[\bar{1}10]/\sqrt{2}$ directions) and compressed at the sector
+$[1\bar{1}0]/\sqrt{2}$ directions) and compressed at the sector
 boundaries, reflecting the crystal symmetry of the $(110)$ plane.
 
 % ============================================================
@@ -1319,7 +1319,7 @@ and recent mesoscale simulations indicate that BCC slip mode selection
 affects void growth rates at phase boundaries~\citep{fei2025}. These
 effects would modify the yield conditions on individual slip systems
 and could break both the symmetry of the yield polygon and the
-$\phi_1 = \gamma$ degeneracy that simplifies the BCC sector structure.
+$|\phi_1| = \gamma$ degeneracy that simplifies the BCC sector structure.
 Incorporating non-Schmid effects into the present framework is a
 natural extension.
 
