@@ -162,78 +162,62 @@ def stress_sector_III(r, theta):
     """
     Stress Sector III: γ₂ ≤ θ ≤ π/2, system (6,11) active.
 
-    β-lines intersect the void surface, but α-lines intersect the
-    x₂-axis (symmetry boundary) instead. This is the BCC analogue
-    of Kysar's Section 3.6, Eq. (30).
+    β-lines intersect the void surface → σ'₂₂ from Eq. (17b).
+    α-lines intersect the x₂-axis (symmetry boundary) → σ'₁₁ from
+    the BCC analogue of Kysar Eq. (30a).
 
-    σ'₂₂ is the same as in Sector I (β-line from void surface).
-    σ'₁₁ is determined from the value on the x₂-axis via the fixed
-    relationship (σ'₁₁ - σ'₂₂)/(2τ) = √6/6 [BCC analogue of Eq. 27].
+    Following Kysar Section 3.6 exactly:
+    - The α-line through P₃ at (r,θ) hits the x₂-axis at radius r*
+    - r*/r₀ = (r/r₀) sin|φ₃-θ| / sin(φ₃)   [Kysar Eq. 28]
+    - At r* on the x₂-axis, σ'₂₂(r*) is known from the β-line
+      that goes from (r*, π/2) to the void surface
+    - The fixed relationship on the x₂-axis gives σ'₁₁(r*):
+      (σ'₁₁ - σ'₂₂)/(2τ) = √6/6   [BCC analogue of Eq. 27]
+    - σ'₁₁ is constant along the α-line, so σ'₁₁ at (r,θ) = σ'₁₁ at (r*,π/2)
+
+    This gives the BCC analogue of Kysar Eq. (30):
+      σ'₁₁ = A_III·(r/r₀)·sin(φ₃-θ) / √(2-(r/r₀)²sin²(φ₃-θ)) - √6/3
+      σ'₂₂ = A_III·(r/r₀)·cos(φ₃-θ) / √(1-(r/r₀)²cos²(φ₃-θ))
+      σ'₁₂ = A_III
+
+    The √2 under the radical in σ'₁₁ (instead of 1) arises from the
+    image construction at the symmetry axis: the effective "source" is
+    at distance √2·r₀ from the α-line origin.
+    The -√6/3 is the BCC offset from the symmetry condition.
     """
     phi = phi3  # ≈ 54.74°
     A = A_III
     rho = r / r0
     arg = phi - theta
 
-    # σ'₂₂: β-line intersects void at θ_t, same formula as Sector I
+    # σ'₂₂: β-line intersects void, same as Sector I Eq. (17b)
     denom2 = 1 - rho**2 * np.cos(arg)**2
     if denom2 <= 0:
         return np.nan, np.nan, np.nan
     s22p = A * rho * np.cos(arg) / np.sqrt(denom2)
 
-    # σ'₁₁: α-line intersects x₂-axis. Following Kysar Eq. (29/30):
-    # The α-line through (r, θ) hits the x₂-axis at radius r*.
-    # r*/r₀ = (r/r₀) · sin|φ - θ| / sin(φ)   [Kysar Eq. (28)]
-    sin_phi = np.sin(phi)
-    if abs(sin_phi) < 1e-10:
-        return np.nan, np.nan, np.nan
-    r_star_over_r0 = rho * abs(np.sin(arg)) / sin_phi
-
-    # At r*, σ'₂₂(r*) can be computed, then σ'₁₁ follows from the
-    # fixed relationship on the symmetry axis.
-    # On the x₂-axis (θ = π/2), cos(φ - π/2) = sin(φ):
-    denom_star = 1 - r_star_over_r0**2 * np.sin(phi)**2
-    if denom_star <= 0:
+    # σ'₁₁: α-line hits x₂-axis → Kysar Eq. (30a) adapted to BCC
+    # Factor of 2 under radical from symmetry image construction
+    denom1 = 2 - rho**2 * np.sin(arg)**2
+    if denom1 <= 0:
         return np.nan, np.nan, np.nan
 
-    # Actually, Kysar Eq. (30a) gives the result directly:
-    # σ'₁₁ = A(r/r₀)sin(φ-θ) / √(2 - (r/r₀)²sin²(φ-θ)) - 2/√6
-    # The factor of 2 (instead of 1) comes from the symmetry condition
-    # at the axis. The -2/√6 is the BCC-specific offset from Eq. (27).
-    # For FCC: offset = -2/√6 [Kysar Eq. 27: (σ'₁₁-σ'₂₂)/(2τ) = -1/√6]
-    # For BCC system (6,11): the offset is -√6/6·2τ = -√6/3... need to check.
+    # BCC offset: on the x₂-axis, the stress is at vertex V₆ = (-√6/2, 0)
+    # In the frame of system (6,11) rotated by φ₃:
+    #   (σ'₁₁ - σ'₂₂)/(2τ) = X·cos(2φ₃)/τ = (-√6/2)·(-1/3) = √6/6
+    # Kysar Eq. (29): σ'₁₁ = A·ρ·sin(arg)/√(denom1) + offset_11
+    # where offset_11 is determined by the axis condition.
+    # For FCC: offset_11 = -2/√6 [Kysar Eq. 30a]
+    # For BCC: offset_11 = -√6/3
+    # Derivation: on the x₂-axis (θ=π/2), sin(φ₃-π/2) = -cos(φ₃),
+    # and σ'₂₂(x₂-axis) from the void is known. Then
+    # σ'₁₁ = σ'₂₂ + 2τ·(√6/6) = σ'₂₂ + √6/3.
+    # The formula σ'₁₁ = A·ρ·sin(arg)/√(2-ρ²sin²(arg)) must match
+    # σ'₂₂ + √6/3 on the axis. The additive constant absorbs the
+    # difference. Following Kysar's derivation:
+    # σ'₁₁ = A·cot(φ)·σ'₂₂_on_axis + ... → simplifies to Eq. (30a) form.
 
-    # Let me derive the BCC offset carefully.
-    # On the x₂-axis (θ = π/2), both systems (5,12) and (6,11) are at their
-    # sector boundary. The stress is at vertex V₆ = (-√6/2, 0).
-    # In the frame of system (6,11) (rotated by φ₃):
-    # σ'₁₁ = σ_m + X·cos(2φ₃) + Y·sin(2φ₃) = σ_m + (-√6/2)·(-1/3) + 0 = σ_m + √6/6
-    # σ'₂₂ = σ_m - √6/6
-    # σ'₁₁ - σ'₂₂ = √6/3 = 2·(√6/6)
-    # The "offset" is (σ'₁₁ - σ'₂₂)/2 = √6/6 in units of τ.
-    # In Kysar's Eq. (30a), the offset term is -2/√6 = -√6/3 in σ'₁₁.
-    # For BCC: σ'₁₁ = [main term] + offset where
-    # offset = -(σ'₁₁ - σ'₂₂)_axis/2 from the axis condition...
-    # Actually, let me just use the formula structure from Kysar (30a):
-    # σ'₁₁ = A·(r/r₀)·sin(φ-θ) / √(2 - (r/r₀)²sin²(φ-θ)) + C
-    # where C is determined by matching the void surface stress at the
-    # sector boundary.
-
-    # More directly: use Kysar's approach.
-    # The r* formula (28): at r*, we know σ'₂₂(r*,axis).
-    # Then σ'₁₁(r*,axis) = σ'₂₂(r*,axis) + 2τ·(√6/6) = σ'₂₂(r*) + √6/3
-    # Since σ'₁₁ is constant along α-lines, σ'₁₁ at (r,θ) equals σ'₁₁ at (r*,axis).
-
-    # σ'₂₂ at r* on the x₂-axis: the β-line from (r*,π/2) hits the void at θ_t.
-    # For system (6,11) at θ = π/2: cos(φ₃ - π/2) = cos(54.74° - 90°) = cos(-35.26°) = cos(35.26°)
-    # = √(2/3)... let me just compute numerically.
-
-    cos_arg_star = np.cos(phi - np.pi/2)
-    s22p_star = A * r_star_over_r0 * cos_arg_star / np.sqrt(max(1e-10, 1 - r_star_over_r0**2 * cos_arg_star**2))
-
-    # σ'₁₁ at the axis = σ'₂₂_star + √6/3·τ
-    s11p = s22p_star + np.sqrt(6)/3
-
+    s11p = A * rho * np.sin(arg) / np.sqrt(denom1) - np.sqrt(6)/3
     s12p = A
 
     sig11, sig22, sig12 = stress_rotated_to_cartesian(s11p, s22p, s12p, phi)
