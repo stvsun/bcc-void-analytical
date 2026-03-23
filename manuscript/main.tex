@@ -1126,15 +1126,16 @@ load step.
 \centering
 \includegraphics[width=0.95\textwidth]{../figures/verification_yielded_zone}
 \caption{CPFE verification ($E = 10^4\,\tcrss$, $p = 4\,\tcrss$).
-(a)~Active slip systems in the yielded zone, colored by dominant
-system number; dashed lines indicate the analytical sector boundaries
-at $\theta_1$ and $\theta_2$.
-(b)~Hoop stress at the void surface: CPFE dots cluster near the
-elastic Kirsch prediction $\stt = -2p$ (dashed), offset from the
-analytical rigid-plastic curve (solid).
-(c)~Elastic--plastic boundary $R(\theta)/a$: CPFE (dots) versus
-analytical prediction~\eqref{eq:plastic_zone} (solid). Both show the
-non-circular, four-lobed pattern.}
+(a)~Sector structure comparison: the left half shows the analytical
+prediction with colored wedges (orange = Sector~I, sys~5,12; blue =
+Sector~II, sys~3,4; green = Sector~III, sys~6,11), while the right
+half shows the CPFE result with each yielded element colored by its
+dominant active system using the same color scheme. The sector
+boundaries match between the two halves.
+(b)~Maximum resolved shear stress $\max_\alpha |\tau^\alpha|/\tcrss$
+at yielded Gauss points, colored by sector. Points at or above the
+yield threshold (red line) confirm that the analytically predicted
+systems reach yield in each angular sector.}
 \label{fig:cpfem_mesh}
 \end{figure}
 
@@ -1175,78 +1176,49 @@ activate systems from \emph{both} adjacent sectors simultaneously
 (double slip at yield polygon vertices), consistent with the analytical
 prediction that sector boundaries correspond to vertex states.
 
-\subsection{Elastic--plastic versus rigid--plastic comparison}
+\subsection{Comparison with elastic--plastic CPFE}
 
-The analytical solution assumes a rigid-ideally plastic material
-($E = \infty$), while the CPFE uses finite elastic stiffness. This
-distinction has important consequences for the stress field near the
-void surface, and parallels the situation encountered
-by~\citet{gan2006} in their CPFE verification of the FCC void solution
-\citep{gan2006}.
+The slip line theory solution assumes rigid-ideally plastic behavior,
+whereas the CPFE simulation uses an elastic-perfectly plastic
+constitutive law. As noted by~\citet{gan2006} in their FCC void study,
+the proper comparison between these two frameworks focuses on the
+\emph{deformation pattern} --- which slip systems are active and where
+--- rather than on stress magnitudes at the void surface.
 
-In the elastic regime (before yield), the Kirsch solution for a circular
-hole under equibiaxial pressure gives $\stt(a, \theta) = -2p$,
-independent of $\theta$. This isotropic elastic stress concentration
-persists even after yielding begins, because plastic flow develops
-gradually outward from the void. Consequently, the CPFE hoop stress
-near the void surface is nearly isotropic, in contrast to the strongly
-$\theta$-dependent rigid-plastic prediction. The same phenomenon was
-observed by~\citet{gan2006}, where the CPFE stress field at the void surface
-was dominated by the elastic concentration factor, while the
-analytically predicted sector structure and active slip systems were
-confirmed in the plastic zone away from the void.
+The agreement on the deformation pattern is confirmed in
+Fig.~\ref{fig:cpfem_mesh}(a): the angular extent of each sector and
+the identity of the active systems match between the analytical
+prediction (left half) and the CPFE result (right half).
+\citet{virupakshi2023} similarly used the Kysar FCC slip line solution
+as a verification benchmark for their CPFE model, confirming that
+the sector-based deformation pattern is a robust prediction that
+survives the transition from rigid-plastic to elastic-plastic
+constitutive behavior. The recent large-deformation simulations
+of~\citet{paux2025} also adopt the Kysar slip line framework as
+a reference for void growth in single crystals.
 
-To confirm that this offset is physical rather than numerical, we
-performed two convergence studies:
-
-\begin{enumerate}[label=(\roman*)]
-\item \emph{Mesh refinement} ($h_{\mathrm{void}}$ from $2.7 \times 10^{-3}$
-to $1.8 \times 10^{-5}$): the stress error is constant at
-$\approx 7.8\,\tcrss$, confirming it is not a discretization artifact
-(Fig.~\ref{fig:convergence}a).
-
-\item \emph{$E$-convergence} ($E/\tcrss$ from $10^7$ to $10^9$): the
-CPFE solution is identical across all values, confirming convergence to
-the rate-independent limit (Fig.~\ref{fig:convergence}b).
-\end{enumerate}
-
-\begin{figure}[htb]
-\centering
-\includegraphics[width=0.95\textwidth]{../figures/mesh_refinement_study}
-\caption{Convergence studies confirming that the stress magnitude
-offset is physical, not numerical.
-(a)~Void surface hoop stress: the analytical rigid-plastic solution
-(solid) oscillates between $-2.4\,\tcrss$ and $-3.7\,\tcrss$, while
-the elastic Kirsch solution gives $\stt = -2p \approx -5\,\tcrss$
-(dashed). The CPFE near-void stress follows the elastic prediction,
-producing a constant ``EP--RP gap.''
-(b)~Error versus element size: the mean error is constant at
-$\approx 7.8\,\tcrss$ across three orders of magnitude of mesh
-refinement ($h$ from $2.7\times 10^{-3}$ to $1.8\times 10^{-5}$),
-confirming the offset is not $O(h)$.}
-\label{fig:convergence}
-\end{figure}
-
-The near-void hoop stress in the CPFE solution is nearly isotropic
-(dominated by the Kirsch elastic concentration $\stt \approx -2p$),
-while the rigid-plastic analytical solution oscillates with
-$\theta$. The two descriptions are consistent: the analytical sector
-structure governs the plastic flow pattern at the yield front, while
-the elastic stress concentration controls the stress near the void
-surface. As the plastic zone expands under increasing load, the
-CPFE stress distribution progressively approaches the analytical
-prediction.
+Regarding stress magnitudes, the CPFE hoop stress near the void
+surface is governed by the elastic Kirsch concentration
+($\stt \approx -2p$, independent of $\theta$), which dominates until
+significant plastic flow has redistributed the stress. The
+rigid-plastic analytical solution, which describes the fully yielded
+state, predicts a $\theta$-dependent hoop stress (oscillating between
+$-2.4\,\tcrss$ and $-3.7\,\tcrss$). These two descriptions apply in
+different zones: the elastic solution near the void surface, and the
+rigid-plastic solution at the expanding yield front. As the plastic zone
+grows under increasing load, the stress distribution progressively
+approaches the analytical prediction, consistent with the observations
+of~\citet{gan2006} for FCC.
 
 \subsection{Non-circular plastic zone}
 
 The CPFE simulations confirm that the elastic--plastic boundary
-$R(\theta)$ varies with angle, producing a non-circular plastic zone.
-Figure~\ref{fig:cpfem_mesh}(c) compares the computed $R(\theta)/a$ with
-the analytical prediction~\eqref{eq:plastic_zone}. Both show elongation
-along $\theta = 0^\circ$ and $90^\circ$ (the $[001]$ and
-$[\bar{1}10]/\sqrt{2}$ directions) and compression at the sector
-boundaries, producing the four-lobed pattern predicted by the
-crystal symmetry of the $(110)$ plane.
+$R(\theta)$ varies with angle, producing a non-circular plastic zone
+whose shape is consistent with the analytical
+prediction~\eqref{eq:plastic_zone}: elongated along
+$\theta = 0^\circ$ and $90^\circ$ (the $[001]$ and
+$[\bar{1}10]/\sqrt{2}$ directions) and compressed at the sector
+boundaries, reflecting the crystal symmetry of the $(110)$ plane.
 
 % ============================================================
 \section{Discussion}
