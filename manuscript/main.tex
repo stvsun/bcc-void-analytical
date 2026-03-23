@@ -1126,14 +1126,16 @@ load step.
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.95\textwidth]{../figures/verification_yielded_zone}
-\caption{CPFE verification results ($E = 10^4\,\tcrss$, $p = 4\,\tcrss$).
-(a)~Hoop stress at the void surface: CPFE (dots) versus analytical
-(line). The magnitude offset is due to the elastic stress concentration
-absent in the rigid-plastic theory.
-(b)~Elastic--plastic boundary $R(\theta)/a$.
-(c)~Active slip systems in the yielded zone, colored by dominant system.
-(d,e)~Contour plots of $\srr$ and $\stt$.
-(f)~$\stt$ versus $r/a$ along radial lines in the yielded zone.}
+\caption{CPFE verification ($E = 10^4\,\tcrss$, $p = 4\,\tcrss$).
+(a)~Active slip systems in the yielded zone, colored by dominant
+system number; dashed lines indicate the analytical sector boundaries
+at $\theta_1$ and $\theta_2$.
+(b)~Hoop stress at the void surface: CPFE dots cluster near the
+elastic Kirsch prediction $\stt = -2p$ (dashed), offset from the
+analytical rigid-plastic curve (solid).
+(c)~Elastic--plastic boundary $R(\theta)/a$: CPFE (dots) versus
+analytical prediction~\eqref{eq:plastic_zone} (solid). Both show the
+non-circular, four-lobed pattern.}
 \label{fig:cpfem_mesh}
 \end{figure}
 
@@ -1252,16 +1254,12 @@ the sector-induced oscillation.
 
 The CPFE simulations confirm that the elastic--plastic boundary
 $R(\theta)$ varies with angle, producing a non-circular plastic zone.
-Figure~\ref{fig:cpfem_mesh}(b) compares the computed $R(\theta)/a$ with
+Figure~\ref{fig:cpfem_mesh}(c) compares the computed $R(\theta)/a$ with
 the analytical prediction~\eqref{eq:plastic_zone}. Both show elongation
 along $\theta = 0^\circ$ and $90^\circ$ (the $[001]$ and
 $[\bar{1}10]/\sqrt{2}$ directions) and compression at the sector
 boundaries, producing the four-lobed pattern predicted by the
 crystal symmetry of the $(110)$ plane.
-
-The $\srr$ contour plot (Fig.~\ref{fig:cpfem_mesh}d) directly visualizes
-this anisotropy: the stress concentration pattern around the void is not
-axisymmetric but reflects the underlying crystal structure.
 
 % ============================================================
 \section{Discussion}
