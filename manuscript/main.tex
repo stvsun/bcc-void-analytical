@@ -570,41 +570,88 @@ $45^\circ$ is a symmetry line.}
 \label{sec:interior}
 % ============================================================
 
-\subsection{Radial stress variation}
+\subsection{Exact stress field via Airy stress function}
 
-Within the plastic zone ($a \leq r \leq R(\theta)$), the stress satisfies
-equilibrium and the yield condition simultaneously. To obtain the radial
-dependence, we observe that in each angular sector the yield condition
-constrains $\stt - \srr$ to a value determined by the active yield face
-and the angle $\theta$. Denoting this value by
-$Q(\theta) = \stt(a, \theta)$ (the hoop stress at the void surface,
-which equals $\stt - \srr$ there since $\srr(a) = 0$), the radial
-equilibrium equation~\eqref{eq:equil1} with $\srt \approx 0$ reduces to
-$\partial\srr/\partial r = -Q(\theta)/r$, which integrates to:
+Following~\citet{kysar2005}, the stress at an interior point
+$(r, \theta)$ is determined by tracing the $\alpha$- and $\beta$-line
+characteristics back to the void surface (or to a symmetry axis)
+where the stress is known. Within each sector, a single slip system
+is active, so $\sigma'_{12} = A$ is constant in the rotated
+$(x'_1, x'_2)$ frame aligned with the active system's $\alpha$- and
+$\beta$-lines. The remaining stress components $\sigma'_{11}$ and
+$\sigma'_{22}$ are constant on individual $\alpha$- and $\beta$-lines
+respectively, and are determined from the boundary conditions.
+
+The BCC parameters for each sector are:
+\begin{itemize}
+\item \textbf{Sector~I} (sys~5,12; $\phi_{\mathrm{I}} =
+  -\frac{1}{2}\arctan(2\sqrt{2}) \approx -35.3^\circ$;
+  $A_{\mathrm{I}} = 2\sqrt{3}/3$):
+both $\alpha$- and $\beta$-lines intersect the void surface. The
+stresses in the rotated frame are
 \begin{align}
-\label{eq:interior}
-\srr(r, \theta) &= Q(\theta) \cdot \ln(r/a), \\
-\stt(r, \theta) &= Q(\theta) \cdot [1 + \ln(r/a)], \\
-\sm(r, \theta)  &= Q(\theta) \cdot [\tfrac{1}{2} + \ln(r/a)],
+\sigma'_{11} &= \frac{A_{\mathrm{I}}(r/a)\sin(\phi_{\mathrm{I}} - \theta)}
+  {\sqrt{1 - (r/a)^2\sin^2(\phi_{\mathrm{I}} - \theta)}}, \\
+\sigma'_{22} &= \frac{A_{\mathrm{I}}(r/a)\cos(\phi_{\mathrm{I}} - \theta)}
+  {\sqrt{1 - (r/a)^2\cos^2(\phi_{\mathrm{I}} - \theta)}}, \\
+\sigma'_{12} &= A_{\mathrm{I}}.
 \end{align}
-where $Q(\theta) = \stt(a, \theta)$ is given
-by~\eqref{eq:sector1}--\eqref{eq:sector3}. This result generalizes the
-classical isotropic solution $\srr = -2k\ln(r/a)$, with the
-angle-dependent coefficient $Q(\theta)$ encoding the crystal anisotropy.
 
-The approximation $\srt \approx 0$ merits discussion. At the void
-surface $\srt(a, \theta) = 0$ exactly. For $r > a$, the tangential
-equilibrium equation~\eqref{eq:equil2} generates shear stress at rate
-$\partial\srt/\partial r|_{r=a} = -(1/a)\,\partial\stt(a,\theta)/\partial\theta$,
-so that $\srt$ grows as $O(\ln(r/a))$ away from the void. However,
-$\partial\stt/\partial\theta$ vanishes in the interior of each sector
-(where $Q(\theta)$ varies slowly) and is concentrated at sector
-boundaries. The approximation is therefore valid within each sector for
-moderate $r/a$ and is exact in the isotropic limit, where
-$Q(\theta) = -2k$ is constant and $\srt \equiv 0$ everywhere. The full
-two-dimensional stress field, including the shear correction, requires
-integration of the coupled equilibrium system along the slip-line
-characteristics and is beyond the scope of the present analysis.
+\item \textbf{Sector~II} (sys~3,4; $\phi_{\mathrm{II}} = 0$;
+  $A_{\mathrm{II}} = \sqrt{3}$):
+both characteristics intersect the void, with the rotated frame
+coinciding with the Cartesian frame.
+
+\item \textbf{Sector~III} (sys~6,11;
+  $\phi_{\mathrm{III}} = +\frac{1}{2}\arctan(2\sqrt{2}) \approx +35.3^\circ$;
+  $A_{\mathrm{III}} = 2\sqrt{3}/3$):
+the $\beta$-lines intersect the void surface (giving $\sigma'_{22}$),
+while the $\alpha$-lines reach the $x_2$-axis symmetry boundary. The
+stress $\sigma'_{11}$ on any $\alpha$-line is determined by the symmetry
+condition at vertex $V_6 = (-\sqrt{6}/2, 0)$:
+\begin{equation}
+\label{eq:axis_condition}
+\frac{\sigma'_{11} - \sigma'_{22}}{2\tcrss} = -\frac{\sqrt{6}}{6},
+\end{equation}
+which gives the modified formula
+\begin{equation}
+\label{eq:sector_III_s11}
+\sigma'_{11} = \frac{A_{\mathrm{III}}(r/a)\sin(\phi_{\mathrm{III}} - \theta)}
+  {\sqrt{2 - (r/a)^2\sin^2(\phi_{\mathrm{III}} - \theta)}}
+  - \frac{\sqrt{6}}{3}\,\tcrss.
+\end{equation}
+The factor of~2 (instead of~1) under the radical and the additive
+constant~$-\sqrt{6}/3$ distinguish this from the Sector~I formula.
+\end{itemize}
+
+\noindent These formulas are the exact analogues of Eqs.~(17), (23),
+and~(30) in~\citet{kysar2005}, with the FCC angles replaced by the BCC
+values. Each stress $\sigma'_{ij}$ is converted to Cartesian and then
+to polar coordinates via standard tensor rotation. The resulting
+field includes the shear stress $\srt(r, \theta)$, which is in general
+non-zero for $r > a$ (Fig.~\ref{fig:interior}).
+
+\subsection{Structural simplification relative to FCC}
+
+A notable difference from the FCC solution is that the BCC sectors
+I--III extend radially without forming additional stress sectors at
+moderate $r/a$. In FCC, the characteristic angle
+$\phi_1 = \arctan(\sqrt{2}) \approx 54.7^\circ$ differs from the sector
+boundary angle $\gamma = \arctan(1/\sqrt{2}) \approx 35.3^\circ$ by
+about $19.5^\circ$, causing $\alpha$-lines from one sector to cross
+into adjacent sectors at finite radius and producing a curved sector
+boundary~\citep[Section~3.8]{kysar2005}. In BCC, $\phi_1 = \gamma$
+exactly: the characteristic direction coincides with the sector
+boundary. The $\alpha$-lines of system~(5,12) run \emph{along} the
+sector boundary rather than crossing it, so the curved boundary
+construction degenerates and no additional sectors arise in the
+near-void region. The six primary sectors (I--VI) therefore provide
+the complete exact stress field.
+
+This structural simplification is a geometric consequence of the BCC
+yield polygon: the elongation that produces
+$\arctan(2\sqrt{2})$ in both the vertex angle and the characteristic
+angle ensures $\phi_1 = \gamma$. It does not occur in FCC or HCP.
 
 \subsection{Non-circular plastic zone}
 
