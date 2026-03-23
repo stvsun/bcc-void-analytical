@@ -1111,13 +1111,17 @@ the rate-independent limit (Fig.~\ref{fig:convergence}b).
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.95\textwidth]{../figures/mesh_refinement_study}
-\caption{Convergence studies.
-(a)~Hoop stress at the void surface for five mesh refinement levels.
-(b)~Error versus element size $h$: the error is constant (not
-$O(h)$ or $O(h^2)$), confirming the offset is the elastic--plastic
-versus rigid--plastic gap rather than a discretization error.
-(c)~Distance of innermost element centroid from the void surface.
-(d)~Error at specific angles versus $h$.}
+\caption{Convergence studies confirming that the stress magnitude
+offset is physical, not numerical.
+(a)~Void surface hoop stress: the analytical rigid-plastic solution
+(solid) oscillates between $-2.4\,\tcrss$ and $-3.7\,\tcrss$, while
+the elastic Kirsch solution gives $\stt = -2p \approx -5\,\tcrss$
+(dashed). The CPFE near-void stress follows the elastic prediction,
+producing a constant ``EP--RP gap.''
+(b)~Error versus element size: the mean error is constant at
+$\approx 7.8\,\tcrss$ across three orders of magnitude of mesh
+refinement ($h$ from $2.7\times 10^{-3}$ to $1.8\times 10^{-5}$),
+confirming the offset is not $O(h)$.}
 \label{fig:convergence}
 \end{figure}
 
