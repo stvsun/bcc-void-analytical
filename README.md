@@ -13,6 +13,14 @@ Analytical stress field around a cylindrical void in a rigid-ideally plastic bod
 - BCC/FCC activation pressure ratio: exactly 3/2
 - Systems 1,2 on the (110) plane have zero in-plane Schmid factor (anti-plane only)
 
+**Exact interior stress field (Kysar-type Airy stress function solution):**
+- Closed-form σ'_ij(r, θ) in each sector via characteristic tracing back to void surface or symmetry axis
+- Sector I (sys 5,12): φ = −arctan(2√2)/2, A = 2√3/3, both characteristics reach void
+- Sector II (sys 3,4): φ = 0, A = √3, both characteristics reach void
+- Sector III (sys 6,11): φ = +arctan(2√2)/2, A = 2√3/3, α-lines reach x₂-axis symmetry boundary (modified Eq. 30 with √2 factor and −√6/3 offset)
+- σ_rθ ≠ 0 in the interior — no approximations
+- **φ₁ = γ degeneracy:** the characteristic angle equals the sector boundary angle, so no curved sector boundary forms (unlike FCC where 8+ sectors are needed). The 6 primary sectors provide the complete exact field.
+
 **Combined {110}+{112}⟨111⟩ slip (24 systems):**
 - Yield polygon: decagon (10 vertices), truncating all 6 hexagonal vertices
 - 13 sectors; {112} systems dominate most of the angular range
@@ -38,7 +46,9 @@ src/                  Python scripts (NumPy, SymPy, SciPy, Matplotlib)
   exact_stress_field.py           Exact SymPy void surface stress
   sector_solution.py              Numerical sector structure
   combined_sector_solution.py     Combined {110}+{112} sectors
-  interior_stress_field.py        Interior field and plastic zone boundary
+  exact_interior_kysar.py         Exact Kysar-type Airy stress function solution
+  extended_sectors.py             Extended sectors analysis (φ₁=γ degeneracy)
+  interior_stress_field.py        Leading-order interior field (historical)
   ultimate_algorithm.py           Rate-independent CPFEM (Borja 2013)
   cpfem_bcc_void.py               FEM solver and post-processing
   mesh_refinement_study.py        h-convergence study

@@ -698,12 +698,14 @@ single-crystal analogue of the Rice--Tracey~\citep{rice1969} formula
 
 \begin{figure}[htb]
 \centering
-\includegraphics[width=0.95\textwidth]{../figures/interior_stress_field}
-\caption{Interior stress field. (a)~Hoop stress at void surface.
-(b,c)~Radial and hoop stress versus $r/a$.
-(d)~Contour plot of $\srr(r, \theta)$.
-(e)~Non-circular plastic zone boundary (solid = BCC, dashed = isotropic).
-(f)~Plastic zone radius versus angle.}
+\includegraphics[width=0.95\textwidth]{../figures/exact_interior_kysar}
+\caption{Exact interior stress field from the Airy stress function
+solution (Sections~5.1). (a)~$\srr/\tcrss$, (b)~$\stt/\tcrss$,
+(c)~$\srt/\tcrss$, (d)~$\sm/\tcrss$. The ``star'' pattern in $\srr$
+reflects the 12 slip sector boundaries. Note that $\srt \neq 0$ away
+from the void surface (panel c), in contrast to the isotropic solution
+where $\srt \equiv 0$. Dashed lines indicate sector boundaries at
+$\theta_1$ and $\theta_2$.}
 \label{fig:interior}
 \end{figure}
 
@@ -720,8 +722,10 @@ surface. This is the limit-load concept: for $p < p^*$, no such fully
 plastic field can be constructed, and the deformation near the void
 remains partly elastic.
 
-From~\eqref{eq:interior}, the far-field mean stress is
-$\sm \to Q(\theta)[\frac{1}{2} + \ln(R/a)]$ as $r \to R$. For the
+From the exact interior solution (Section~\ref{sec:interior}), the
+radial stress grows logarithmically: $\srr \sim Q(\theta)\ln(r/a)$ where
+$Q(\theta) = \stt(a, \theta)$, so that $\sm \to
+Q(\theta)[\frac{1}{2} + \ln(R/a)]$ as $r \to R$. For the
 fully plastic field to extend to a given radius $R$ at all angles
 simultaneously, the applied pressure must satisfy
 $p \geq \max_\theta |Q(\theta)| \cdot \ln(R/a)$. The angular maximum of
@@ -1181,7 +1185,7 @@ in-plane slip systems from 12 to 10.
 \subsection{Non-circular plastic zone}
 
 The predicted four-lobed plastic zone shape
-(Fig.~\ref{fig:interior}e) is a direct consequence of the crystal
+(cf.\ Eq.~\eqref{eq:plastic_zone}) is a direct consequence of the crystal
 anisotropy and represents a qualitative difference from isotropic
 solutions. This shape will affect void-void interactions in polycrystalline
 materials: the plastic zones of adjacent voids will overlap at
