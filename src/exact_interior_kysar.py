@@ -185,29 +185,28 @@ def stress_sector_III(r, theta):
     at distance √2·r₀ from the α-line origin.
     The -√6/3 is the BCC offset from the symmetry condition.
     """
-    phi = phi3  # ≈ 54.74°
-    A = A_III
+    # CORRECTED: φ for Sector III = +arctan(2√2)/2 ≈ +35.26°
+    # (same direction as Sector I — faces V₃→V₄ and V₅→V₆ are parallel)
+    phi_III = np.arctan(2*np.sqrt(2)) / 2  # ≈ +35.26°
+    A = A_III  # = +2√3/3
     rho = r / r0
-    arg = phi - theta
+    arg = phi_III - theta
 
-    # σ'₂₂: β-line intersects void, same as Sector I Eq. (17b)
+    # σ'₂₂: β-line intersects void, Eq. (17b)
     denom2 = 1 - rho**2 * np.cos(arg)**2
     if denom2 <= 0:
         return np.nan, np.nan, np.nan
     s22p = A * rho * np.cos(arg) / np.sqrt(denom2)
 
-    # σ'₁₁: α-line hits x₂-axis → Kysar Eq. (30a) adapted to BCC
-    # Factor of 2 under radical from symmetry image construction
+    # σ'₁₁: α-line hits x₂-axis → Eq. (30a) with √2 factor
     denom1 = 2 - rho**2 * np.sin(arg)**2
     if denom1 <= 0:
         return np.nan, np.nan, np.nan
 
-    # BCC offset: on the x₂-axis, the stress is at vertex V₆ = (-√6/2, 0)
-    # In the frame of system (6,11) rotated by φ₃:
-    #   (σ'₁₁ - σ'₂₂)/(2τ) = X·cos(2φ₃)/τ = (-√6/2)·(-1/3) = √6/6
-    # Kysar Eq. (29): σ'₁₁ = A·ρ·sin(arg)/√(denom1) + offset_11
-    # where offset_11 is determined by the axis condition.
-    # For FCC: offset_11 = -2/√6 [Kysar Eq. 30a]
+    # BCC offset from x₂-axis symmetry: at V₆ = (-√6/2, 0),
+    # in frame rotated by φ_III = 35.26°:
+    # cos(2φ_III) = 1/3 → (σ'₁₁-σ'₂₂)/(2τ) = (-√6/2)(1/3) = -√6/6
+    # So σ'₁₁ = σ'₂₂ - √6/3 → offset = -√6/3
     # For BCC: offset_11 = -√6/3
     # Derivation: on the x₂-axis (θ=π/2), sin(φ₃-π/2) = -cos(φ₃),
     # and σ'₂₂(x₂-axis) from the void is known. Then
@@ -220,7 +219,7 @@ def stress_sector_III(r, theta):
     s11p = A * rho * np.sin(arg) / np.sqrt(denom1) - np.sqrt(6)/3
     s12p = A
 
-    sig11, sig22, sig12 = stress_rotated_to_cartesian(s11p, s22p, s12p, phi)
+    sig11, sig22, sig12 = stress_rotated_to_cartesian(s11p, s22p, s12p, phi_III)
     return cartesian_to_polar(sig11, sig22, sig12, theta)
 
 
