@@ -82,8 +82,8 @@ hyperindex=true
 
 \begin{document}
 
-\title{Cylindrical void in a rigid-ideally plastic single crystal.
-Part~IV: Body-centered cubic crystal}
+\title{Analytical stress field around a cylindrical void in a
+BCC single crystal with $\{110\}$ and $\{112\}$ slip}
 
 \author{WaiChing Sun}
 
@@ -160,17 +160,16 @@ asymptotic crack-tip stress fields in FCC and BCC single crystals.
 sectors, demonstrating that FCC and BCC crystals produce distinct
 crack-tip fields.
 
-\citet{kysar2005} (hereafter referred to as Part~I) applied Rice's
-anisotropic slip line theory to derive the complete stress field around a
-cylindrical void in an FCC single crystal. The void axis was aligned with
-$[110]$, reducing the twelve $\{111\}\langle 110\rangle$ slip systems to
-three effective in-plane systems. The resulting hexagonal yield polygon
-and sector-based stress field provided the first analytical benchmark for
-void growth in anisotropic single crystals. \citet{gan2006} (Part~II)
-validated the analytical solution against experiments on copper single
-crystals and crystal plasticity finite element (CPFE) simulations.
-\citet{gan2007} (Part~III) extended the analysis to hexagonal close-packed
-(HCP) crystals.
+\citet{kysar2005} applied Rice's anisotropic slip line theory to derive
+the complete stress field around a cylindrical void in an FCC single
+crystal. The void axis was aligned with $[110]$, reducing the twelve
+$\{111\}\langle 110\rangle$ slip systems to three effective in-plane
+systems. The resulting hexagonal yield polygon and sector-based stress
+field provided the first analytical benchmark for void growth in
+anisotropic single crystals. \citet{gan2006} validated the FCC
+analytical solution against experiments on copper single crystals and
+crystal plasticity finite element (CPFE) simulations. \citet{gan2007}
+extended the analysis to hexagonal close-packed (HCP) crystals.
 
 Despite the practical importance of BCC metals --- iron, tungsten,
 molybdenum, and their alloys form the backbone of structural engineering
@@ -183,8 +182,8 @@ understanding of this difference has been lacking.
 
 This paper derives the analytical stress field around a cylindrical
 void in a rigid-ideally plastic BCC single crystal with
-$\{110\}\langle 111\rangle$ slip, constituting Part~IV of the series
-initiated by~\citet{kysar2005}. The analysis reveals that:
+$\{110\}\langle 111\rangle$ slip, following the methodology
+of~\citet{kysar2005}. The analysis reveals that:
 (i)~the BCC yield polygon is an elongated hexagon rotated by
 $\arctan(2\sqrt{2})/2 \approx 35.3^\circ$ relative to FCC;
 (ii)~the activation pressure for void growth is exactly 50\% higher
@@ -1183,7 +1182,7 @@ The analytical solution assumes a rigid-ideally plastic material
 distinction has important consequences for the stress field near the
 void surface, and parallels the situation encountered
 by~\citet{gan2006} in their CPFE verification of the FCC void solution
-(Part~II of this series).
+\citep{gan2006}.
 
 In the elastic regime (before yield), the Kirsch solution for a circular
 hole under equibiaxial pressure gives $\stt(a, \theta) = -2p$,
@@ -1192,7 +1191,7 @@ persists even after yielding begins, because plastic flow develops
 gradually outward from the void. Consequently, the CPFE hoop stress
 near the void surface is nearly isotropic, in contrast to the strongly
 $\theta$-dependent rigid-plastic prediction. The same phenomenon was
-observed in Part~II, where the CPFE stress field at the void surface
+observed by~\citet{gan2006}, where the CPFE stress field at the void surface
 was dominated by the elastic concentration factor, while the
 analytically predicted sector structure and active slip systems were
 confirmed in the plastic zone away from the void.
@@ -1297,12 +1296,12 @@ macroscopic yield surface.
 In particular, the orientation-dependent activation pressure
 $p^*(\theta)$ derived here can serve as input to homogenized
 Gurson--Tvergaard--Needleman models for BCC polycrystals.
-\citet{paux2018} computed yield criteria for porous FCC, HCP, and BCC
-single crystals using limit analysis coupled with FFT-based
-full-field simulations. The analytical BCC void solution provides an
-independent check on these computational yield surfaces and, for the
-specific case of equibiaxial loading, gives the exact activation stress
-without numerical approximation.
+\citet{paux2018} and \citet{senac2022,senac2023} computed yield criteria
+for porous FCC, HCP, and BCC single crystals using limit analysis
+coupled with FFT-based full-field simulations. The analytical BCC void
+solution provides an independent check on these computational yield
+surfaces and, for the specific case of equibiaxial loading, gives the
+exact activation stress without numerical approximation.
 
 The non-circular plastic zone (Section~\ref{sec:interior}) implies that
 void coalescence in BCC crystals will be orientation-dependent:
@@ -1348,9 +1347,16 @@ yield polygon) rather than three.
 
 Finally, non-Schmid effects and the temperature dependence of the
 critical resolved shear stress, both important in BCC metals at low
-temperatures, are not considered. These effects would modify the yield
-conditions on individual slip systems and could break the symmetry of
-the yield polygon.
+temperatures, are not considered. Atomistic studies of screw
+dislocations in BCC metals show that non-glide stress components
+alter the effective yield condition~\citep{qin1992, groger2024},
+and recent mesoscale simulations indicate that BCC slip mode selection
+affects void growth rates at phase boundaries~\citep{fei2025}. These
+effects would modify the yield conditions on individual slip systems
+and could break both the symmetry of the yield polygon and the
+$\phi_1 = \gamma$ degeneracy that simplifies the BCC sector structure.
+Incorporating non-Schmid effects into the present framework is a
+natural extension.
 
 % ============================================================
 \section{Conclusions}
@@ -1387,8 +1393,22 @@ four-lobed shape reflecting the crystal symmetry of the $(110)$ plane.
 \item Including $\{112\}\langle 111\rangle$ slip (24~systems total)
 truncates the hexagonal yield polygon into a decagon with 10~vertices
 and 13~sectors. The activation pressure decreases by only 4.5\%
-(to $\approx 1.75\,\tcrss$), confirming that the BCC advantage over FCC persists regardless of
-which slip families are active.
+(to $\approx 1.75\,\tcrss$), confirming that the BCC advantage over
+FCC persists regardless of which slip families are active.
+
+\item Closed-form Airy stress functions $\Psi_{\mathrm{I}}$,
+$\Psi_{\mathrm{II}}$, $\Psi_{\mathrm{III}}$ are derived in each
+sector, providing the exact two-dimensional stress field
+$\sigma_{ij}(r, \theta)$ including $\srt \neq 0$. In Sector~III, the
+$\alpha$-lines reach the $x_2$-axis symmetry boundary rather than the
+void surface, introducing a $\sqrt{2}$ factor and a $-\sqrt{6}/3$
+offset in the stress expression.
+
+\item The characteristic angle $\phi_1 = \frac{1}{2}\arctan(2\sqrt{2})$
+coincides with the sector boundary angle $\gamma$. This degeneracy,
+absent in FCC and HCP, means the six primary sectors provide the
+complete exact stress field without the curved sector boundaries
+required in FCC~\citep[Section~3.8]{kysar2005}.
 \end{enumerate}
 
 \begin{acknowledgements}
@@ -1398,6 +1418,136 @@ developed with assistance from the Claude AI system (Anthropic), which
 also assisted with the symbolic verification of the analytical
 derivations using SymPy.
 \end{acknowledgements}
+
+% ============================================================
+\begin{appendices}
+
+\section{Derivation of the stress field in Sector~I}
+\label{app:sector_I}
+
+This appendix gives the step-by-step derivation of the stress field
+in Sector~I, following the geometrical construction
+of~\citet{kysar2005}. The derivations for Sectors~II and~III proceed
+analogously with the modifications noted in
+Sections~\ref{sec:interior}.
+
+Consider a point $P_1$ at polar coordinates $(r, \theta)$ inside
+Sector~I, where system~(5,12) is active with
+$\phi_{\mathrm{I}} = -\frac{1}{2}\arctan(2\sqrt{2})$ and
+$A_{\mathrm{I}} = 2\sqrt{3}/3$. The $\alpha$-line through $P_1$
+(at angle $\phi_{\mathrm{I}}$ from $x_1$) intersects the void surface
+at angle $\theta_{s1}$, and the $\beta$-line (perpendicular to the
+$\alpha$-line) intersects the void at $\theta_{t1}$.
+
+\paragraph{Geometric relations.}
+Applying the sine rule to the triangle formed by the void center,
+$P_1$, and the $\alpha$-line's intersection with the void:
+\begin{align}
+\label{eq:app_theta_s1}
+\theta_{s1} &= \phi_{\mathrm{I}}
+  - \arcsin\!\left[\frac{r}{a}\sin(\phi_{\mathrm{I}} - \theta)\right], \\
+\label{eq:app_theta_t1}
+\theta_{t1} &= \phi_{\mathrm{I}}
+  - \arccos\!\left[\frac{r}{a}\cos(\phi_{\mathrm{I}} - \theta)\right].
+\end{align}
+These are valid when $r/a \leq 1/|\sin(\phi_{\mathrm{I}} - \theta)|$
+and $r/a \leq 1/|\cos(\phi_{\mathrm{I}} - \theta)|$, i.e.\ when both
+characteristics reach the void.
+
+\paragraph{Stress from the void surface.}
+Since $\sigma'_{11}$ is constant along each $\alpha$-line, its value
+at $P_1$ equals $\sigma'_{11}$ on the void at $\theta = \theta_{s1}$.
+On the void surface, $\srr = \srt = 0$ and the circumferential stress
+is given by~\eqref{eq:sector1}. Resolving the void surface stress into
+the rotated $(x'_1, x'_2)$ frame and using the
+identities~$\sin[\arcsin^{-1}x] = \sqrt{1-x^2}$ and
+$\cos[\arccos^{-1}x] = \sqrt{1-x^2}$ yields
+\begin{align}
+\sigma'_{11} &= \frac{A_{\mathrm{I}}(r/a)\sin(\phi_{\mathrm{I}} - \theta)}
+  {\sqrt{1 - (r/a)^2\sin^2(\phi_{\mathrm{I}} - \theta)}}, \\
+\sigma'_{22} &= \frac{A_{\mathrm{I}}(r/a)\cos(\phi_{\mathrm{I}} - \theta)}
+  {\sqrt{1 - (r/a)^2\cos^2(\phi_{\mathrm{I}} - \theta)}}.
+\end{align}
+
+\paragraph{Airy stress function.}
+Introducing $\xi = (r/a)\cos(\theta - \phi_{\mathrm{I}})$ and
+$\eta = (r/a)\sin(\theta - \phi_{\mathrm{I}})$, the stresses become
+$\sigma'_{11} = -A_{\mathrm{I}}\eta/\sqrt{1-\eta^2}$ and
+$\sigma'_{22} = A_{\mathrm{I}}\xi/\sqrt{1-\xi^2}$, with
+$\sigma'_{12} = A_{\mathrm{I}}$. Since $\sigma'_{11} = \partial^2\Psi/\partial\eta^2$
+and $\sigma'_{22} = \partial^2\Psi/\partial\xi^2$, direct integration
+gives
+\begin{equation}
+\Psi_{\mathrm{I}} = \frac{A_{\mathrm{I}}}{2}
+  \Bigl(\eta\sqrt{1-\eta^2} + \sin^{-1}\!\eta
+  - 2\xi\eta - \xi\sqrt{1-\xi^2} - \sin^{-1}\!\xi\Bigr).
+\end{equation}
+
+\paragraph{Verification.}
+The stress function satisfies the governing partial differential
+equation for the yield condition of system~(5,12), which in polar
+coordinates reads~\citep[Eq.~(7)]{kysar2005}
+\begin{equation}
+\tfrac{1}{2}\sin[2(\phi - \theta)]
+  \Bigl(\tfrac{1}{r}\tfrac{\partial\Psi}{\partial r}
+  + \tfrac{1}{r^2}\tfrac{\partial^2\Psi}{\partial\theta^2}
+  - \tfrac{\partial^2\Psi}{\partial r^2}\Bigr)
+  - \cos[2(\phi - \theta)]
+  \Bigl(\tfrac{1}{r^2}\tfrac{\partial\Psi}{\partial\theta}
+  - \tfrac{1}{r}\tfrac{\partial^2\Psi}{\partial r\partial\theta}\Bigr)
+  \pm \beta\tcrss = 0.
+\end{equation}
+Substitution of $\Psi_{\mathrm{I}}$ and simplification (verified
+symbolically with SymPy) confirms that the equation is identically
+satisfied. Setting $r = a$ in the stress expressions recovers the
+traction-free boundary conditions $\srr(a, \theta) = \srt(a, \theta) = 0$
+and the circumferential stress~\eqref{eq:sector1}.
+
+% --------------------------------------------------------
+\section{Symmetry condition for Sector~III}
+\label{app:sector_III}
+
+In Sector~III ($\theta_2 \leq \theta \leq \pi/2$), the $\alpha$-lines
+of system~(6,11) at angle $\phi_{\mathrm{III}} = +\frac{1}{2}\arctan(2\sqrt{2})$
+do not reach the void surface; they intersect the $x_2$-axis
+($x_1 = 0$) instead. The $\alpha$-line through a point $P_3$ at
+$(r, \theta)$ meets the $x_2$-axis at radius
+\begin{equation}
+\label{eq:app_rstar}
+\frac{r^*}{a} = \frac{r}{a}\,
+  \frac{|\sin(\phi_{\mathrm{III}} - \theta)|}{\sin\phi_{\mathrm{III}}}.
+\end{equation}
+
+On the $x_2$-axis, the stress state lies at vertex
+$V_6 = (-\sqrt{6}/2, 0)$ of the yield polygon. In the Cartesian frame,
+$\sigma_{11} = \sm - \sqrt{6}/2$, $\sigma_{22} = \sm + \sqrt{6}/2$,
+$\sigma_{12} = 0$. Rotating to the $(x'_1, x'_2)$ frame at angle
+$\phi_{\mathrm{III}}$ and using $\cos(2\phi_{\mathrm{III}}) = 1/3$:
+\begin{equation}
+\sigma'_{11} - \sigma'_{22}
+  = (\sigma_{11} - \sigma_{22})\cos(2\phi_{\mathrm{III}})
+  = (-\sqrt{6})\cdot\tfrac{1}{3}
+  = -\frac{\sqrt{6}}{3},
+\end{equation}
+which gives the symmetry condition~\eqref{eq:axis_condition}:
+$(\sigma'_{11} - \sigma'_{22})/(2\tcrss) = -\sqrt{6}/6$.
+
+At $(r^*, \pi/2)$ on the $x_2$-axis, $\sigma'_{22}$ is determined by
+the $\beta$-line that reaches the void surface, and $\sigma'_{11}$
+follows from the symmetry condition. Since $\sigma'_{11}$ is constant
+along the $\alpha$-line, its value at $P_3$ equals the value at
+$(r^*, \pi/2)$. Combining with the $\beta$-line formula for
+$\sigma'_{22}$ at $P_3$ yields the modified Sector~III
+expressions~\eqref{eq:s11_sector_III}--\eqref{eq:s22_sector_III}.
+
+The factor of~$2$ under the radical in~\eqref{eq:s11_sector_III}
+arises because the $\alpha$-line from $P_3$ reaches the $x_2$-axis at
+$r^*$ where the effective ``source'' is the mirror image of the void
+across the symmetry axis, doubling the geometric path factor from
+$1$ to $2$. The additive constant $-\sqrt{6}/3\,\tcrss$ is the offset
+from the vertex stress state at $V_6$.
+
+\end{appendices}
 
 % ============================================================
 \bibliographystyle{plainnat}
