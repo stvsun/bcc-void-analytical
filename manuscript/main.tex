@@ -799,27 +799,57 @@ curved boundary $C_2$ arises from the $\beta$-line at
 $\theta = \theta_2$: the vertical line
 $x'_1 = \cos\theta_2 = 1/\sqrt{3}$.
 
-\paragraph{Secondary sectors.}
-In the region between the radial boundary $\theta = \theta_1$ and $C_1$
-(and its mirror between $C_2$ and $\theta_2$), the characteristics of
-the adjacent sectors overlap: the horizontal $\alpha$-lines of
-Sector~II reach the void in Sector~I's angular range ($\theta < \theta_1$),
-while the vertical $\beta$-lines hit $C_1$ where the stress is at vertex
-$V_5$. Computing the stress in these secondary sectors requires matching
-the Sector~I and Sector~II solutions along $C_1$. Since $C_1$ is a fan
-line (the stress transitions through vertex $V_5$ there), the matching
-involves: (i)~propagating $\sigma_{11}$ from the void surface in Sector~I
-along horizontal lines into the secondary region, (ii)~propagating
-$\sigma_{22}$ from $C_1$ along vertical lines, and (iii)~determining
-$\sigma_{12}$ from the equilibrium equations with these boundary data.
-This characteristic matching, analogous to the secondary sector
-construction in FCC~\citep[Section~3.8]{kysar2005}, is the subject of
-ongoing work.
+\paragraph{Concentrated fan and secondary sectors.}
+The boundaries $C_1$ and $C_2$ are \emph{fan lines}: the stress
+transitions from one yield face to the next through vertex~$V_5$.
+For a \emph{polygonal} yield surface, the fan is concentrated on a
+line rather than spread over a sector (as for a smooth yield
+curve). Rice's generalized Hencky equation gives $\diff\sm \pm
+\diff s = 0$ along characteristics, where $s$ is the arc length
+along the yield contour~\citep{rice1973}. At a vertex of a polygon,
+$\diff s = 0$ (the vertex is a point, not an arc), so
+$\diff\sm = 0$: the mean stress is \emph{continuous} across the
+fan.
+
+Across $C_1$, the resolved shear stress $\sigma'_{12}$ jumps from
+$A_{\mathrm{I}}$ (on the Sector~I face) to $\sigma'_{12}(V_5)$ (at the
+vertex), and $\sigma'_{22}$ jumps from its Airy value to the matched
+value $\sigma'_{22} = 2\sm(V_5) - \sigma'_{11}$ that enforces the
+continuity of~$\sm$. This concentrated fan is the polygonal analogue
+of the curved secondary sectors in FCC~\citep[Section~3.8]{kysar2005}.
+
+In the secondary sector beyond $C_1$ (between $C_1$ and $\theta_1$),
+the stress is at vertex~$V_5$ with constant mean stress
+\begin{equation}
+\label{eq:sm_secondary}
+\sm = -\frac{3\sqrt{6}}{4}\,\tcrss \approx -1.84\,\tcrss
+\end{equation}
+throughout the region (Fig.~\ref{fig:complete_field}). This value
+equals the activation pressure~\eqref{eq:activation}, confirming
+that the secondary sector carries the limit-load stress state.
+The equilibrium equations with vertex stress ($X = \sqrt{6}/4$,
+$Y = \sqrt{3}$, both constant) require $\partial\sm/\partial x =
+\partial\sm/\partial y = 0$, so the constant-$\sm$ result follows
+from equilibrium alone.
 
 \paragraph{Reduced Sector II.}
 The primary Sector~II domain is bounded by $C_1$ and $C_2$
 rather than by the radial lines $\theta = \theta_1$ and
 $\theta_2$, reducing its angular span at large $r/a$.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.95\textwidth]{../figures/complete_field_matched}
+\caption{Complete stress field in the first quadrant with matched fan
+transition. (a)~$\srr/\tcrss$, (b)~$\stt/\tcrss$,
+(c)~$\srt/\tcrss$, (d)~$\sm/\tcrss$. Primary sectors (near void)
+show Airy stress function gradients; secondary sectors (beyond the
+dotted $r_{\mathrm{crit}}$ curve and the solid $C_1$ boundary) show
+the constant vertex stress $\sm = -3\sqrt{6}/4\,\tcrss$. The
+concentrated fan at $C_1$ is visible as a sharp transition in
+panels~(a) and~(d).}
+\label{fig:complete_field}
+\end{figure}
 
 \begin{figure}[htb]
 \centering
@@ -1480,12 +1510,18 @@ sector, providing the exact near-void stress field
 $\sigma_{ij}(r, \theta)$ including $\srt \neq 0$. In Sector~III, the
 $\alpha$-lines reach the $x_2$-axis symmetry boundary rather than the
 void surface; the reflection and the vertex stress condition cancel
-exactly, yielding the same functional form as Sector~I. The Airy
-solutions are valid within a domain
-$r < r_{\mathrm{crit}}(\theta)$ bounded by the first characteristic
-that crosses a sector boundary ($r_{\mathrm{crit}}/a \approx
-1.2$--$1.4$). Beyond this domain, curved secondary sectors are
-constructed with closed-form curved boundaries $C_1$ and $C_2$.
+exactly, yielding the same functional form as Sector~I.
+
+\item Beyond the primary sector domain
+$r < r_{\mathrm{crit}}(\theta)$ ($r_{\mathrm{crit}}/a \approx
+1.2$--$1.4$), characteristics cross sector boundaries and the stress
+transitions through a concentrated fan at the curved boundary $C_1$.
+For a polygonal yield surface, Rice's Hencky equation gives
+$\diff\sm = 0$ at each vertex ($\diff s = 0$), so the mean stress
+is continuous across $C_1$. In the secondary sector beyond $C_1$,
+the stress is at vertex $V_5$ with constant
+$\sm = -3\sqrt{6}/4\,\tcrss = -p^*$, providing the exact far-field
+stress state that carries the limit load.
 \end{enumerate}
 
 \begin{acknowledgements}
