@@ -1,43 +1,44 @@
-# Cylindrical Void in a BCC Single Crystal (Part IV)
+# Analytical Stress Field Around a Cylindrical Void in a BCC Single Crystal
 
-Analytical stress field around a cylindrical void in a rigid-ideally plastic body-centered cubic single crystal, using Rice's (1973) anisotropic slip-line theory. This extends the series by Kysar et al. (2005, FCC) and Gan & Kysar (2007, HCP) to BCC crystals with {110}⟨111⟩ and {112}⟨111⟩ slip.
+Analytical stress field around a cylindrical void in a rigid-ideally plastic body-centered cubic single crystal, using Rice's (1973) anisotropic slip-line theory. This extends the FCC solution of Kysar et al. (2005) and the HCP solution of Gan & Kysar (2007) to BCC crystals with {110}⟨111⟩ and {112}⟨111⟩ slip.
 
-**Manuscript:** `manuscript/main.tex` (19 pages, Springer svjour3 format, targets IJP/JMPS)
+**Manuscript:** `manuscript/main.tex` (22 pages, Springer svjour3 format, targets IJP)
 
 ## Main Results
 
-**{110}⟨111⟩ slip (12 systems):**
-- Yield polygon: hexagon with vertices (±√6/2, 0), (±√6/4, ±√3) in τ_CRSS units
-- 6 angular sectors in [0°, 180°] with boundaries at arctan(2√2)/2 ≈ 35.26° and (π − arctan(2√2))/2 ≈ 54.74°
-- Activation pressure: p* = 3√6/4 τ_CRSS ≈ 1.837 τ_CRSS
-- BCC/FCC activation pressure ratio: exactly 3/2
-- Systems 1,2 on the (110) plane have zero in-plane Schmid factor (anti-plane only)
+**{110}⟨111⟩ slip (12 systems, 3 effective in-plane constraints):**
+- Yield polygon: elongated hexagon with vertices (±√6/2, 0), (±√6/4, ±√3)
+- 6 angular sectors with boundaries at θ₁ = arctan(2√2)/2 ≈ 35.26° and θ₂ ≈ 54.74°
+- Sector I (sys 8,9, face V₄→V₅), Sector II (sys 3,4, face V₅→V₆), Sector III (sys 5,12, face V₆→V₁)
+- Activation pressure: p* = 3√6/4 τ_CRSS ≈ 1.837 τ_CRSS (exactly 3/2 times FCC)
+- Systems 1,2 have zero in-plane Schmid factor; systems 6,7,10,11 produce redundant constraints
 
-**Exact interior stress field (Kysar-type Airy stress function solution):**
-- Closed-form σ'_ij(r, θ) in each sector via characteristic tracing back to void surface or symmetry axis
-- Sector I (sys 5,12): φ = −arctan(2√2)/2, A = 2√3/3, both characteristics reach void
-- Sector II (sys 3,4): φ = 0, A = √3, both characteristics reach void
-- Sector III (sys 6,11): φ = +arctan(2√2)/2, A = 2√3/3, α-lines reach x₂-axis symmetry boundary (modified Eq. 30 with √2 factor and −√6/3 offset)
-- σ_rθ ≠ 0 in the interior — no approximations
-- **φ₁ = γ degeneracy:** the characteristic angle equals the sector boundary angle, so no curved sector boundary forms (unlike FCC where 8+ sectors are needed). The 6 primary sectors provide the complete exact field.
+**Exact near-void interior stress field (Kysar-type Airy stress functions):**
+- Closed-form σ'_ij(r, θ) in each sector via characteristic tracing
+- All three sectors share the same functional form: σ'₁₁ = A ρ sin(φ-θ)/√(1-ρ²sin²(φ-θ)), σ'₂₂ = -A ρ cos(φ-θ)/√(1-ρ²cos²(φ-θ))
+- Sector III: the α-line reflection off the x₂-axis and the vertex V₁ condition cancel exactly, giving the same form as Sector I (no √2 factor or offset)
+- Valid domain: r < r_crit(θ), where r_crit ≈ 1.2–1.4a
+
+**Secondary sectors (beyond r_crit):**
+- Curved boundary C₁: α-line from void at θ₁, parametric: (cosγ + t sinγ, sinγ + t cosγ)
+- Curved boundary C₂: vertical β-line from void at θ₂ (x = 1/√3)
+- Secondary sector Ia (between θ₁ and C₁): constant-stress sector, σ_m ≈ −1.84 τ_CRSS
+- Secondary sector IIIa (between C₂ and θ₂): mirrors Ia by symmetry
 
 **Combined {110}+{112}⟨111⟩ slip (24 systems):**
-- Yield polygon: decagon (10 vertices), truncating all 6 hexagonal vertices
-- 13 sectors; {112} systems dominate most of the angular range
+- Yield polygon: decagon (10 vertices), 13 sectors
 - Activation pressure drops 4.5% to ≈ 1.754 τ_CRSS; still 43% above FCC
-- Equal-CRSS (decagon) and τ^{112} → ∞ (hexagon) bracket the physical range
 
-**CPFEM verification (Ultimate Algorithm, Borja 2013):**
+**CPFE verification:**
 - Sector structure confirmed with 100% match in all angular sectors
 - Non-circular plastic zone confirmed (four-lobed pattern)
-- Elastic-plastic vs rigid-plastic distinction characterized via mesh refinement and E-convergence studies
 
 ## Repository Structure
 
 ```
 manuscript/           LaTeX paper (svjour3 class, plainnat bibliography)
-  main.tex            Main manuscript (19 pages)
-  references.bib      22 entries
+  main.tex            Main manuscript (22 pages)
+  references.bib      Bibliography
   svjour3.cls         Springer journal class
 
 src/                  Python scripts (NumPy, SymPy, SciPy, Matplotlib)
@@ -46,24 +47,20 @@ src/                  Python scripts (NumPy, SymPy, SciPy, Matplotlib)
   exact_stress_field.py           Exact SymPy void surface stress
   sector_solution.py              Numerical sector structure
   combined_sector_solution.py     Combined {110}+{112} sectors
-  exact_interior_kysar.py         Exact Kysar-type Airy stress function solution
-  extended_sectors.py             Extended sectors analysis (φ₁=γ degeneracy)
-  interior_stress_field.py        Leading-order interior field (historical)
+  exact_interior_kysar.py         Kysar-type Airy stress function solution
+  secondary_sectors_full.py       Secondary sector computation
+  secondary_sectors_sympy.py      SymPy symbolic derivation
+  complete_sector_map.py          Complete sector map (primary + secondary)
+  domain_of_validity.py           r_crit(θ) computation and figure
+  sector_III_derivation.py        Sector III formula derivation
+  verify_criticisms.py            Characteristic geometry verification
   ultimate_algorithm.py           Rate-independent CPFEM (Borja 2013)
   cpfem_bcc_void.py               FEM solver and post-processing
-  mesh_refinement_study.py        h-convergence study
-  convergence_E_study.py          E → ∞ convergence study
-  normalized_pattern_comparison.py   Angular pattern analysis
-  verify_yielded_zone.py          Yielded-zone verification
-  fig_yield_surface_comparison.py    Publication figure generation
-  fig_geometry_schematic.py          Geometry schematic
-  fig_stress_sectors_map.py          Sector map figure
+  fig_yield_surface_comparison.py Publication figure generation
+  fig_geometry_schematic.py       Geometry schematic
+  fig_stress_sectors_map.py       Sector map figure
 
 figures/              Generated figures (PNG, 200 dpi)
-
-plan_paper1.md        Completion plan for this paper
-plan_paper2.md        Plan for Paper 2 (non-equibiaxial loading)
-TODO_paper_completion.md   Remaining items
 ```
 
 ## Quick Start
@@ -75,9 +72,9 @@ pip install numpy sympy scipy matplotlib
 python src/derive_bcc_slip_systems.py
 python src/exact_stress_field.py
 
-# Run the combined {110}+{112} analysis
-python src/derive_bcc_combined_slip.py
-python src/combined_sector_solution.py
+# Generate interior field with secondary sectors
+python src/exact_interior_kysar.py
+python src/complete_sector_map.py
 
 # Run CPFEM verification
 python src/ultimate_algorithm.py

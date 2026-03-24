@@ -283,11 +283,11 @@ $\alpha$ & $a^\alpha$ & $b^\alpha$ &
 $\alpha$ & $a^\alpha$ & $b^\alpha$ \\
 \midrule
 1, 2  & $0$ & $0$ &
-7, 10 & $-\sqrt{6}/3$ & $+\sqrt{3}/6$ \\
+7, 10 & $-\sqrt{6}/6$ & $+\sqrt{3}/6$ \\
 3, 4  & $0$ & $+\sqrt{3}/3$ &
 8, 9  & $+\sqrt{6}/3$ & $+\sqrt{3}/6$ \\
 5, 12 & $+\sqrt{6}/3$ & $-\sqrt{3}/6$ &
-6, 11 & $-\sqrt{6}/3$ & $-\sqrt{3}/6$ \\
+6, 11 & $-\sqrt{6}/6$ & $-\sqrt{3}/6$ \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -300,7 +300,9 @@ geometrically from the $(110)$ plane being perpendicular to the
 deformation plane.
 
 The ten active systems (3--12) produce three \emph{distinct} yield
-constraints:
+constraints (with systems 6, 7, 10, 11 producing weaker, redundant
+constraints, so that only six systems effectively define the yield
+polygon):
 \begin{align}
 \label{eq:yield_constraints}
 \text{(I)} & \quad
@@ -311,10 +313,15 @@ constraints:
             - \frac{\sqrt{3}}{6}\,Y \right\rvert \leq \tcrss
   & & \text{(systems 5, 12)}, \\
 \text{(III)} & \quad
-  \left\lvert -\frac{\sqrt{6}}{3}\,X
-             - \frac{\sqrt{3}}{6}\,Y \right\rvert \leq \tcrss
-  & & \text{(systems 6, 11)}.
+  \left\lvert \frac{\sqrt{6}}{3}\,X
+             + \frac{\sqrt{3}}{6}\,Y \right\rvert \leq \tcrss
+  & & \text{(systems 8, 9)}.
 \end{align}
+Systems 6, 7, 10, and 11 have smaller Schmid coefficients
+($|a^\alpha| = \sqrt{6}/6$ rather than $\sqrt{6}/3$) and therefore
+produce weaker, redundant constraints that lie strictly outside the
+yield polygon defined by (I)--(III). Consequently, only six systems
+(3, 4, 5, 8, 9, 12) define the yield polygon vertices.
 
 For plane strain, individual 3D systems combine pairwise to eliminate
 out-of-plane strain components ($d_{33} = d_{13} = d_{23} = 0$). Systems
@@ -359,12 +366,12 @@ aspect ratio (height/width) of $\sqrt{8/3} \approx 1.633$.
 \toprule
 Face & Equation & Active systems \\
 \midrule
-$V_1 \to V_2$ & $-\frac{\sqrt{6}}{3}X - \frac{\sqrt{3}}{6}Y = 1$ & 6, 11 \\
+$V_1 \to V_2$ & $\frac{\sqrt{6}}{3}X + \frac{\sqrt{3}}{6}Y = -1$ & 8, 9 \\
 $V_2 \to V_3$ & $\frac{\sqrt{3}}{3}Y = -1$  & 3, 4 \\
 $V_3 \to V_4$ & $\frac{\sqrt{6}}{3}X - \frac{\sqrt{3}}{6}Y = 1$ & 5, 12 \\
-$V_4 \to V_5$ & $\frac{\sqrt{6}}{3}X + \frac{\sqrt{3}}{6}Y = 1$ & 6, 11 \\
+$V_4 \to V_5$ & $\frac{\sqrt{6}}{3}X + \frac{\sqrt{3}}{6}Y = 1$ & 8, 9 \\
 $V_5 \to V_6$ & $\frac{\sqrt{3}}{3}Y = 1$  & 3, 4 \\
-$V_6 \to V_1$ & $-\frac{\sqrt{6}}{3}X + \frac{\sqrt{3}}{6}Y = 1$ & 5, 12 \\
+$V_6 \to V_1$ & $\frac{\sqrt{6}}{3}X - \frac{\sqrt{3}}{6}Y = -1$ & 5, 12 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -465,10 +472,10 @@ which gives the sector boundaries listed in Table~\ref{tab:sectors}.
 \toprule
 Sector & $\theta$ range & Active face & Systems \\
 \midrule
-I   & $0 < \theta < \theta_1$ & $V_4 \to V_5$ & 6, 11 \\
+I   & $0 < \theta < \theta_1$ & $V_4 \to V_5$ & 8, 9 \\
 II  & $\theta_1 < \theta < \theta_2$ & $V_5 \to V_6$ & 3, 4 \\
 III & $\theta_2 < \theta < \pi/2$ & $V_6 \to V_1$ & 5, 12 \\
-IV  & $\pi/2 < \theta < \pi - \theta_2$ & mirror of III & 6, 11 \\
+IV  & $\pi/2 < \theta < \pi - \theta_2$ & mirror of III & 8, 9 \\
 V   & $\pi - \theta_2 < \theta < \pi - \theta_1$ & mirror of II & 3, 4 \\
 VI  & $\pi - \theta_1 < \theta < \pi$ & mirror of I & 5, 12 \\
 \bottomrule
@@ -583,7 +590,7 @@ the stress is known --- the void surface or a symmetry axis.
 
 \subsection{Stress sector I}
 
-System~(6,11) is active in Sector~I ($0 \leq \theta \leq \theta_1$),
+System~(8,9) is active in Sector~I ($0 \leq \theta \leq \theta_1$),
 on face $V_4 \to V_5$ with equation
 $\frac{\sqrt{6}}{3}X + \frac{\sqrt{3}}{6}Y = \tcrss$.
 The $\alpha$-line direction is at angle
@@ -636,7 +643,7 @@ function in the $(\xi, \eta)$ system is obtained by integration:
 \label{eq:airy_I}
 \Psi_{\mathrm{I}}(\xi, \eta) = \frac{A_{\mathrm{I}}}{2}
   \left(\eta\sqrt{1-\eta^2} + \sin^{-1}\eta
-  + 2\xi\eta + \xi\sqrt{1-\xi^2} + \sin^{-1}\xi\right).
+  - 2\xi\eta + \xi\sqrt{1-\xi^2} + \sin^{-1}\xi\right).
 \end{equation}
 
 \subsection{Stress sector II}
@@ -686,7 +693,7 @@ $\alpha$-lines reach the $x_2$-axis symmetry boundary and reflect. The
 $\alpha$-line from $P_3$ at $(r, \theta)$ intersects $x_1 = 0$ at
 $y_1 = (r/a)\cos(\theta - \phi_{\mathrm{III}})/\sin\phi_{\mathrm{III}}$.
 On the $x_2$-axis, the stress state lies at vertex
-$V_4 = (-\sqrt{6}/2, 0)$, which imposes
+$V_1 = (-\sqrt{6}/2, 0)$, which imposes
 $\sigma'_{11} - \sigma'_{22} = -\sqrt{6}\tcrss/3$
 \label{eq:axis_condition}
 in the rotated frame. The reflected $\alpha$-line reaches the image void
@@ -709,7 +716,7 @@ The corresponding Airy stress function is
 \label{eq:airy_III}
 \Psi_{\mathrm{III}}(\xi, \eta) = \frac{A_{\mathrm{III}}}{2}
   \left(\eta\sqrt{1-\eta^2} + \sin^{-1}\eta
-  + 2\xi\eta + \xi\sqrt{1-\xi^2} + \sin^{-1}\xi\right),
+  - 2\xi\eta + \xi\sqrt{1-\xi^2} + \sin^{-1}\xi\right),
 \end{equation}
 where $\xi = (r/a)\cos(\theta - \phi_{\mathrm{III}})$ and
 $\eta = (r/a)\sin(\theta - \phi_{\mathrm{III}})$.
@@ -1100,7 +1107,7 @@ In particular, the BCC constraint from systems~3 and~4 (on the
 $(1\bar{1}0)$ plane) produces horizontal yield lines
 $Y = \pm\sqrt{3}\,\tcrss$ that are farther from the origin than the
 corresponding FCC constraint, widening the polygon in the $Y$ direction.
-The inclined constraints from systems~5,12 and 6,11 have the same
+The inclined constraints from systems~5,12 and 8,9 have the same
 slope as in FCC but are shifted, resulting in a hexagon that is rotated
 by $\arctan(2\sqrt{2})/2 \approx 35.3^\circ$ relative to the FCC
 hexagon (Fig.~\ref{fig:yield_surface}b).
@@ -1112,7 +1119,7 @@ sector boundary angles differ. The BCC boundaries are governed by
 $\arctan(2\sqrt{2}) \approx 70.53^\circ$ while the FCC boundaries
 involve $\arctan(\sqrt{2}) \approx 54.74^\circ$. Physically, this
 means the angular extent of each slip sector is different: in BCC,
-Sector~I (systems~6, 11) spans $35.3^\circ$, whereas the analogous
+Sector~I (systems~8, 9) spans $35.3^\circ$, whereas the analogous
 FCC sector spans $27.4^\circ$.
 
 A structural difference appears in how the effective in-plane systems
@@ -1148,8 +1155,8 @@ The physical origin of this difference can be traced to the elongated
 BCC yield polygon. The activation pressure is set by the maximum
 $|\sm|$ at the void surface, which occurs at the sector boundaries
 where the stress state is at a vertex of the yield polygon. The BCC
-vertices $V_4 = (\sqrt{6}/4, \sqrt{3})$ and
-$V_5 = (-\sqrt{6}/4, \sqrt{3})$ are farther from the $X$-axis than the
+vertices $V_5 = (\sqrt{6}/4, \sqrt{3})$ and
+$V_6 = (-\sqrt{6}/4, \sqrt{3})$ are farther from the $X$-axis than the
 corresponding FCC vertices, producing a larger $|\sm|$ and hence a
 higher activation pressure.
 
@@ -1211,8 +1218,8 @@ load step.
 \includegraphics[width=0.95\textwidth]{../figures/verification_yielded_zone}
 \caption{CPFE verification ($E = 10^4\,\tcrss$, $p = 4\,\tcrss$).
 (a)~Sector structure comparison: the left half shows the analytical
-prediction with colored wedges (orange = Sector~I, sys~5,12; blue =
-Sector~II, sys~3,4; green = Sector~III, sys~6,11), while the right
+prediction with colored wedges (orange = Sector~I, sys~8,9; blue =
+Sector~II, sys~3,4; green = Sector~III, sys~5,12), while the right
 half shows the CPFE result with each yielded element colored by its
 dominant active system using the same color scheme. The sector
 boundaries match between the two halves.
@@ -1242,7 +1249,7 @@ out of the total yielded elements in that sector.}
 \toprule
 Sector & $\theta$ range & Predicted systems & CPFE match \\
 \midrule
-I   & $0^\circ$--$35.26^\circ$     & 6, 11 & 180/180 (100\%) \\
+I   & $0^\circ$--$35.26^\circ$     & 8, 9 & 180/180 (100\%) \\
 II  & $35.26^\circ$--$54.74^\circ$ & 3, 4  & 120/120 (100\%) \\
 III & $54.74^\circ$--$90^\circ$    & 5, 12 & 180/180 (100\%) \\
 \bottomrule
@@ -1487,7 +1494,7 @@ analogously with the modifications noted in
 Sections~\ref{sec:interior}.
 
 Consider a point $P_1$ at polar coordinates $(r, \theta)$ inside
-Sector~I, where system~(6,11) is active on face $V_4 \to V_5$ with
+Sector~I, where system~(8,9) is active on face $V_4 \to V_5$ with
 $\phi_{\mathrm{I}} = -\frac{1}{2}\arctan(2\sqrt{2})$ and
 $A_{\mathrm{I}} = 2\sqrt{3}/3$. The $\alpha$-line through $P_1$
 (at angle $\phi_{\mathrm{I}} + 90^\circ$ from $x'_1$) intersects the
@@ -1536,12 +1543,12 @@ $\sigma'_{22} = \partial^2\Psi/\partial\xi^2$, direct integration gives
 \begin{equation}
 \Psi_{\mathrm{I}} = \frac{A_{\mathrm{I}}}{2}
   \Bigl(\eta\sqrt{1-\eta^2} + \sin^{-1}\!\eta
-  + 2\xi\eta + \xi\sqrt{1-\xi^2} + \sin^{-1}\!\xi\Bigr).
+  - 2\xi\eta + \xi\sqrt{1-\xi^2} + \sin^{-1}\!\xi\Bigr).
 \end{equation}
 
 \paragraph{Verification.}
 The stress function satisfies the governing partial differential
-equation for the yield condition of system~(6,11), which in polar
+equation for the yield condition of system~(8,9), which in polar
 coordinates reads~\citep[Eq.~(7)]{kysar2005}
 \begin{equation}
 \tfrac{1}{2}\sin[2(\phi - \theta)]
@@ -1564,7 +1571,7 @@ and the circumferential stress~\eqref{eq:sector1}.
 \label{app:sector_III}
 
 In Sector~III ($\theta_2 \leq \theta \leq \pi/2$), the $\alpha$-lines
-of system~(6,11) at angle $\phi_{\mathrm{III}} = +\frac{1}{2}\arctan(2\sqrt{2})$
+of system~(5,12) at angle $\phi_{\mathrm{III}} = +\frac{1}{2}\arctan(2\sqrt{2})$
 do not reach the void surface; they intersect the $x_2$-axis
 ($x_1 = 0$) instead. The $\alpha$-line through a point $P_3$ at
 $(r, \theta)$ meets the $x_2$-axis at radius
@@ -1575,7 +1582,7 @@ $(r, \theta)$ meets the $x_2$-axis at radius
 \end{equation}
 
 On the $x_2$-axis, the stress state lies at vertex
-$V_6 = (-\sqrt{6}/2, 0)$ of the yield polygon. In the Cartesian frame,
+$V_1 = (-\sqrt{6}/2, 0)$ of the yield polygon. In the Cartesian frame,
 $\sigma_{11} = \sm - \sqrt{6}/2$, $\sigma_{22} = \sm + \sqrt{6}/2$,
 $\sigma_{12} = 0$. Rotating to the $(x'_1, x'_2)$ frame at angle
 $\phi_{\mathrm{III}}$ and using $\cos(2\phi_{\mathrm{III}}) = 1/3$:

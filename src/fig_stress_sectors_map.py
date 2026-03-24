@@ -17,7 +17,7 @@ the directions of the effective slip systems. In Kysar's notation:
 For BCC, the 3 effective systems have angles (from derive_bcc_slip_systems.py):
   System A (sys 3,4): φ_A  (pure shear, along e2')
   System B (sys 5,12): φ_B
-  System C (sys 6,11): φ_C
+  System C (sys 8,9): φ_C
 
 The stress sectors are regions bounded by:
   - The void surface (r = a)
@@ -148,9 +148,9 @@ d_pt = np.array([0.0, 1.0])  # θ = π/2
 # the interior stress field formulas.
 
 # For the void surface stress, we already know the sectors:
-# Sector I:   0 < θ < θ₁ (sys 5,12 active, face V3→V4)
-# Sector II:  θ₁ < θ < θ₂ (sys 3,4 active, face V4→V5)
-# Sector III: θ₂ < θ < π/2 (sys 6,11 active, face V5→V6)
+# Sector I:   0 < θ < θ₁ (sys 8,9 active, face V4→V5)
+# Sector II:  θ₁ < θ < θ₂ (sys 3,4 active, face V5→V6)
+# Sector III: θ₂ < θ < π/2 (sys 5,12 active, face V6→V1)
 
 # For the interior (r > a), within the leading-order approximation,
 # the active face at each (r, θ) is the same as at the void surface
@@ -480,7 +480,7 @@ ax.text(0.35, -1.6, r'$\mathrm{IV_a}$', fontsize=10, color='#D32F2F',
                   edgecolor='#D32F2F', alpha=0.9), zorder=10)
 
 # Active systems labels
-ax.text(1.3, 0.25, 'sys 6,11', fontsize=9, color='#E65100',
+ax.text(1.3, 0.25, 'sys 8,9', fontsize=9, color='#E65100',
         ha='center', rotation=0, style='italic')
 ax.text(1.15, 0.85, 'sys 3,4', fontsize=9, color='#1565C0',
         ha='center', rotation=45, style='italic')
