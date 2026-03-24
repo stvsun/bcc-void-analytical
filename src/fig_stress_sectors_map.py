@@ -480,11 +480,11 @@ ax.text(0.35, -1.6, r'$\mathrm{IV_a}$', fontsize=10, color='#D32F2F',
                   edgecolor='#D32F2F', alpha=0.9), zorder=10)
 
 # Active systems labels
-ax.text(1.3, 0.25, 'sys 5,12', fontsize=9, color='#E65100',
+ax.text(1.3, 0.25, 'sys 6,11', fontsize=9, color='#E65100',
         ha='center', rotation=0, style='italic')
 ax.text(1.15, 0.85, 'sys 3,4', fontsize=9, color='#1565C0',
         ha='center', rotation=45, style='italic')
-ax.text(0.55, 1.4, 'sys 6,11', fontsize=9, color='#2E7D32',
+ax.text(0.55, 1.4, 'sys 5,12', fontsize=9, color='#2E7D32',
         ha='center', rotation=65, style='italic')
 
 # Legend for curved boundaries

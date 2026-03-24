@@ -362,9 +362,9 @@ Face & Equation & Active systems \\
 $V_1 \to V_2$ & $-\frac{\sqrt{6}}{3}X - \frac{\sqrt{3}}{6}Y = 1$ & 6, 11 \\
 $V_2 \to V_3$ & $\frac{\sqrt{3}}{3}Y = -1$  & 3, 4 \\
 $V_3 \to V_4$ & $\frac{\sqrt{6}}{3}X - \frac{\sqrt{3}}{6}Y = 1$ & 5, 12 \\
-$V_4 \to V_5$ & $-\frac{\sqrt{6}}{3}X - \frac{\sqrt{3}}{6}Y = -1$ & 6, 11 \\
+$V_4 \to V_5$ & $\frac{\sqrt{6}}{3}X + \frac{\sqrt{3}}{6}Y = 1$ & 6, 11 \\
 $V_5 \to V_6$ & $\frac{\sqrt{3}}{3}Y = 1$  & 3, 4 \\
-$V_6 \to V_1$ & $\frac{\sqrt{6}}{3}X - \frac{\sqrt{3}}{6}Y = -1$ & 5, 12 \\
+$V_6 \to V_1$ & $-\frac{\sqrt{6}}{3}X + \frac{\sqrt{3}}{6}Y = 1$ & 5, 12 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -465,12 +465,12 @@ which gives the sector boundaries listed in Table~\ref{tab:sectors}.
 \toprule
 Sector & $\theta$ range & Active face & Systems \\
 \midrule
-I   & $0 < \theta < \theta_1$ & $V_3 \to V_4$ & 5, 12 \\
+I   & $0 < \theta < \theta_1$ & $V_4 \to V_5$ & 6, 11 \\
 II  & $\theta_1 < \theta < \theta_2$ & $V_5 \to V_6$ & 3, 4 \\
-III & $\theta_2 < \theta < \pi/2$ & $V_6 \to V_1$ & 6, 11 \\
-IV  & $\pi/2 < \theta < \pi - \theta_2$ & mirror of III & 5, 12 \\
+III & $\theta_2 < \theta < \pi/2$ & $V_6 \to V_1$ & 5, 12 \\
+IV  & $\pi/2 < \theta < \pi - \theta_2$ & mirror of III & 6, 11 \\
 V   & $\pi - \theta_2 < \theta < \pi - \theta_1$ & mirror of II & 3, 4 \\
-VI  & $\pi - \theta_1 < \theta < \pi$ & mirror of I & 6, 11 \\
+VI  & $\pi - \theta_1 < \theta < \pi$ & mirror of I & 5, 12 \\
 \bottomrule
 \end{tabular}\\[4pt]
 \footnotesize
@@ -480,8 +480,8 @@ $\theta_2 = \frac{1}{2}[\pi - \arctan(2\sqrt{2})] \approx 54.74^\circ$.
 
 \subsection{Exact void surface stress in each sector}
 
-\paragraph{Sector~I} ($0 < \theta < \theta_1$; face $V_3 \to V_4$,
-$\frac{\sqrt{6}}{3}X - \frac{\sqrt{3}}{6}Y = \tcrss$):
+\paragraph{Sector~I} ($0 < \theta < \theta_1$; face $V_4 \to V_5$,
+$\frac{\sqrt{6}}{3}X + \frac{\sqrt{3}}{6}Y = \tcrss$):
 \begin{equation}
 \label{eq:sector1}
 \sm(\theta) = \frac{-6\,\tcrss}
@@ -499,7 +499,7 @@ $Y = \sqrt{3}\,\tcrss$):
 \end{equation}
 
 \paragraph{Sector~III} ($\theta_2 < \theta < \pi/2$; face $V_6 \to V_1$,
-$\frac{\sqrt{6}}{3}X - \frac{\sqrt{3}}{6}Y = -\tcrss$):
+$\frac{\sqrt{6}}{3}X - \frac{\sqrt{3}}{6}Y = -\tcrss$, i.e.\ systems 5, 12):
 \begin{equation}
 \label{eq:sector3}
 \sm(\theta) = \frac{6\,\tcrss}
@@ -583,8 +583,10 @@ the stress is known --- the void surface or a symmetry axis.
 
 \subsection{Stress sector I}
 
-System~(5,12) is active in Sector~I ($0 \leq \theta \leq \theta_1$),
-with the $\alpha$-line direction at angle
+System~(6,11) is active in Sector~I ($0 \leq \theta \leq \theta_1$),
+on face $V_4 \to V_5$ with equation
+$\frac{\sqrt{6}}{3}X + \frac{\sqrt{3}}{6}Y = \tcrss$.
+The $\alpha$-line direction is at angle
 $\phi_{\mathrm{I}} = -\frac{1}{2}\arctan(2\sqrt{2}) \approx -35.3^\circ$
 and $A_{\mathrm{I}} = 2\sqrt{3}/3$.
 
@@ -670,13 +672,14 @@ At $\theta = \pi/4$: $r_{\mathrm{crit}} = \sqrt{2}\,a \approx 1.41\,a$.
 
 \subsection{Stress sector III}
 
-System~(6,11) is active in Sector~III
-($\theta_2 \leq \theta \leq \pi/2$), with
+System~(5,12) is active in Sector~III
+($\theta_2 \leq \theta \leq \pi/2$), on face $V_6 \to V_1$ with
+equation $\frac{\sqrt{6}}{3}X - \frac{\sqrt{3}}{6}Y = -\tcrss$.
+The characteristic direction is
 $\phi_{\mathrm{III}} = +\frac{1}{2}\arctan(2\sqrt{2}) \approx +35.3^\circ$
-and $A_{\mathrm{III}} = 2\sqrt{3}/3$. The faces $V_3 \to V_4$ and
-$V_5 \to V_6$ are parallel, so the characteristic direction
-$\phi_{\mathrm{III}}$ for Sector~III is the same as
-$|\phi_{\mathrm{I}}|$ for Sector~I.
+and $A_{\mathrm{III}} = 2\sqrt{3}/3$. The faces $V_4 \to V_5$ and
+$V_6 \to V_1$ are parallel, so $|\phi_{\mathrm{III}}| =
+|\phi_{\mathrm{I}}|$.
 
 In Sector~III, the $\beta$-lines intersect the void surface, while the
 $\alpha$-lines reach the $x_2$-axis symmetry boundary and reflect. The
@@ -1109,7 +1112,7 @@ sector boundary angles differ. The BCC boundaries are governed by
 $\arctan(2\sqrt{2}) \approx 70.53^\circ$ while the FCC boundaries
 involve $\arctan(\sqrt{2}) \approx 54.74^\circ$. Physically, this
 means the angular extent of each slip sector is different: in BCC,
-Sector~I (systems~5, 12) spans $35.3^\circ$, whereas the analogous
+Sector~I (systems~6, 11) spans $35.3^\circ$, whereas the analogous
 FCC sector spans $27.4^\circ$.
 
 A structural difference appears in how the effective in-plane systems
@@ -1239,9 +1242,9 @@ out of the total yielded elements in that sector.}
 \toprule
 Sector & $\theta$ range & Predicted systems & CPFE match \\
 \midrule
-I   & $0^\circ$--$35.26^\circ$     & 5, 12 & 180/180 (100\%) \\
+I   & $0^\circ$--$35.26^\circ$     & 6, 11 & 180/180 (100\%) \\
 II  & $35.26^\circ$--$54.74^\circ$ & 3, 4  & 120/120 (100\%) \\
-III & $54.74^\circ$--$90^\circ$    & 6, 11 & 180/180 (100\%) \\
+III & $54.74^\circ$--$90^\circ$    & 5, 12 & 180/180 (100\%) \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1454,13 +1457,13 @@ $\Psi_{\mathrm{II}}$, $\Psi_{\mathrm{III}}$ are derived in each
 sector, providing the exact near-void stress field
 $\sigma_{ij}(r, \theta)$ including $\srt \neq 0$. In Sector~III, the
 $\alpha$-lines reach the $x_2$-axis symmetry boundary rather than the
-void surface, introducing a $\sqrt{2}$ factor and a $-\sqrt{6}/3$
-offset in the stress expression. The Airy solutions are valid within
-a domain $r < r_{\mathrm{crit}}(\theta)$ bounded by the first
-characteristic that crosses a sector boundary
-($r_{\mathrm{crit}}/a \approx 1.2$--$1.4$). Beyond this domain,
-curved secondary sectors analogous to those in
-FCC~\citep{kysar2005} are required.
+void surface; the reflection and the vertex stress condition cancel
+exactly, yielding the same functional form as Sector~I. The Airy
+solutions are valid within a domain
+$r < r_{\mathrm{crit}}(\theta)$ bounded by the first characteristic
+that crosses a sector boundary ($r_{\mathrm{crit}}/a \approx
+1.2$--$1.4$). Beyond this domain, curved secondary sectors are
+constructed with closed-form curved boundaries $C_1$ and $C_2$.
 \end{enumerate}
 
 \begin{acknowledgements}
@@ -1484,12 +1487,13 @@ analogously with the modifications noted in
 Sections~\ref{sec:interior}.
 
 Consider a point $P_1$ at polar coordinates $(r, \theta)$ inside
-Sector~I, where system~(5,12) is active with
+Sector~I, where system~(6,11) is active on face $V_4 \to V_5$ with
 $\phi_{\mathrm{I}} = -\frac{1}{2}\arctan(2\sqrt{2})$ and
 $A_{\mathrm{I}} = 2\sqrt{3}/3$. The $\alpha$-line through $P_1$
-(at angle $\phi_{\mathrm{I}}$ from $x_1$) intersects the void surface
-at angle $\theta_{s1}$, and the $\beta$-line (perpendicular to the
-$\alpha$-line) intersects the void at $\theta_{t1}$.
+(at angle $\phi_{\mathrm{I}} + 90^\circ$ from $x'_1$) intersects the
+void surface at angle $\theta_{s1}$, and the $\beta$-line (at angle
+$\phi_{\mathrm{I}}$ from $x'_1$) intersects the void at
+$\theta_{t1}$.
 
 \paragraph{Geometric relations.}
 Applying the sine rule to the triangle formed by the void center,
@@ -1517,7 +1521,7 @@ $\cos[\arccos^{-1}x] = \sqrt{1-x^2}$ yields
 \begin{align}
 \sigma'_{11} &= \frac{A_{\mathrm{I}}(r/a)\sin(\phi_{\mathrm{I}} - \theta)}
   {\sqrt{1 - (r/a)^2\sin^2(\phi_{\mathrm{I}} - \theta)}}, \\
-\sigma'_{22} &= \frac{A_{\mathrm{I}}(r/a)\cos(\phi_{\mathrm{I}} - \theta)}
+\sigma'_{22} &= \frac{-A_{\mathrm{I}}(r/a)\cos(\phi_{\mathrm{I}} - \theta)}
   {\sqrt{1 - (r/a)^2\cos^2(\phi_{\mathrm{I}} - \theta)}}.
 \end{align}
 
@@ -1525,19 +1529,19 @@ $\cos[\arccos^{-1}x] = \sqrt{1-x^2}$ yields
 Introducing $\xi = (r/a)\cos(\theta - \phi_{\mathrm{I}})$ and
 $\eta = (r/a)\sin(\theta - \phi_{\mathrm{I}})$, the stresses become
 $\sigma'_{11} = -A_{\mathrm{I}}\eta/\sqrt{1-\eta^2}$ and
-$\sigma'_{22} = A_{\mathrm{I}}\xi/\sqrt{1-\xi^2}$, with
-$\sigma'_{12} = A_{\mathrm{I}}$. Since $\sigma'_{11} = \partial^2\Psi/\partial\eta^2$
-and $\sigma'_{22} = \partial^2\Psi/\partial\xi^2$, direct integration
-gives
+$\sigma'_{22} = -A_{\mathrm{I}}\xi/\sqrt{1-\xi^2}$, with
+$\sigma'_{12} = A_{\mathrm{I}}$. Since
+$\sigma'_{11} = \partial^2\Psi/\partial\eta^2$ and
+$\sigma'_{22} = \partial^2\Psi/\partial\xi^2$, direct integration gives
 \begin{equation}
 \Psi_{\mathrm{I}} = \frac{A_{\mathrm{I}}}{2}
   \Bigl(\eta\sqrt{1-\eta^2} + \sin^{-1}\!\eta
-  - 2\xi\eta - \xi\sqrt{1-\xi^2} - \sin^{-1}\!\xi\Bigr).
+  + 2\xi\eta + \xi\sqrt{1-\xi^2} + \sin^{-1}\!\xi\Bigr).
 \end{equation}
 
 \paragraph{Verification.}
 The stress function satisfies the governing partial differential
-equation for the yield condition of system~(5,12), which in polar
+equation for the yield condition of system~(6,11), which in polar
 coordinates reads~\citep[Eq.~(7)]{kysar2005}
 \begin{equation}
 \tfrac{1}{2}\sin[2(\phi - \theta)]
