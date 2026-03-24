@@ -73,46 +73,16 @@ def primary_sector_II(r, theta):
 
 
 def primary_sector_III(r, theta):
-    """Sector III: compute from void surface stress at r=a, then scale.
-
-    Uses direct computation from the face equation for r=a (exact),
-    with approximate r-scaling via the β-line formula for σ'₂₂.
-    σ'₁₁ requires the reflected characteristic construction and is
-    computed at r=a only (leading order).
-    """
+    """Sector III: same functional form as Sector I (reflection cancels offset)."""
     rho = r; arg = phi_III - theta
 
-    # σ'₂₂ from β-line to void (corrected, negated)
+    d1 = 1 - rho**2 * np.sin(arg)**2
     d2 = 1 - rho**2 * np.cos(arg)**2
-    if d2 <= 0:
+    if d1 <= 0 or d2 <= 0:
         return None
+
+    s11p = A_III * rho * np.sin(arg) / np.sqrt(d1)
     s22p = -A_III * rho * np.cos(arg) / np.sqrt(d2)
-
-    # σ'₁₁: compute from void surface stress (exact at r=a)
-    # Using face V₅→V₄: (-√6/3)X + (√3/6)Y = 1 and Y = X tan(2θ)
-    c2t = np.cos(2*theta); s2t = np.sin(2*theta)
-    if abs(c2t) < 1e-10:
-        X_void = -np.sqrt(6)/2
-        Y_void = 0
-    else:
-        denom = -2*np.sqrt(6) + np.sqrt(3)*np.tan(2*theta)
-        if abs(denom) < 1e-10:
-            return None
-        X_void = 6 / denom
-        Y_void = X_void * np.tan(2*theta)
-
-    sm_void = -(X_void*c2t + Y_void*s2t)
-    sig11_void = sm_void + X_void
-    sig22_void = sm_void - X_void
-    sig12_void = Y_void
-
-    c2p = np.cos(2*phi_III); s2p = np.sin(2*phi_III)
-    s11p_void = (sig11_void+sig22_void)/2 + (sig11_void-sig22_void)/2*c2p + sig12_void*s2p
-
-    # Scale s11p from r=a to r using the α-line property (constant along α-lines)
-    # At leading order, s11p is approximately constant for moderate r
-    s11p = s11p_void  # Leading order approximation
-
     s12p = A_III
     return s11p, s22p, s12p
 

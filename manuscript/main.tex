@@ -676,47 +676,36 @@ $V_5 \to V_6$ are parallel, so the characteristic direction
 $\phi_{\mathrm{III}}$ for Sector~III is the same as
 $|\phi_{\mathrm{I}}|$ for Sector~I.
 
-In Sector~III, the $\beta$-lines intersect the void surface (giving
-$\sigma'_{22}$ via the same formula as Sector~I), but the $\alpha$-lines
-reach the $x_2$-axis symmetry boundary instead. The $\alpha$-line from
-$P_3$ at $(r, \theta)$ intersects $x_1 = 0$ at radius
-\begin{equation}
-r^*/a = (r/a)\,\frac{|\sin(\phi_{\mathrm{III}} - \theta)|}{\sin\phi_{\mathrm{III}}}.
-\end{equation}
+In Sector~III, the $\beta$-lines intersect the void surface, while the
+$\alpha$-lines reach the $x_2$-axis symmetry boundary and reflect. The
+$\alpha$-line from $P_3$ at $(r, \theta)$ intersects $x_1 = 0$ at
+$y_1 = (r/a)\cos(\theta - \phi_{\mathrm{III}})/\sin\phi_{\mathrm{III}}$.
 On the $x_2$-axis, the stress state lies at vertex
-$V_6 = (-\sqrt{6}/2, 0)$, which imposes a fixed relationship between
-$\sigma'_{11}$ and $\sigma'_{22}$ in the rotated frame:
-\begin{equation}
+$V_4 = (-\sqrt{6}/2, 0)$, which imposes
+$\sigma'_{11} - \sigma'_{22} = -\sqrt{6}\tcrss/3$
 \label{eq:axis_condition}
-\frac{\sigma'_{11} - \sigma'_{22}}{2\tcrss} = -\frac{\sqrt{6}}{6}.
-\end{equation}
-Using $\sigma'_{22}(r^*)$ from the $\beta$-line formula and propagating
-$\sigma'_{11}$ along the $\alpha$-line yields the modified expressions
+in the rotated frame. The reflected $\alpha$-line reaches the image void
+on the opposite side of the axis. The reflection and the vertex stress
+condition combine to produce the stress expressions
 \begin{align}
 \label{eq:s11_sector_III}
 \sigma'_{11} &= \frac{A_{\mathrm{III}}(r/a)\sin(\phi_{\mathrm{III}} - \theta)}
-  {\sqrt{2 - (r/a)^2\sin^2(\phi_{\mathrm{III}} - \theta)}}
-  - \frac{\sqrt{6}}{3}\,\tcrss, \\
+  {\sqrt{1 - (r/a)^2\sin^2(\phi_{\mathrm{III}} - \theta)}}, \\
 \label{eq:s22_sector_III}
 \sigma'_{22} &= \frac{-A_{\mathrm{III}}(r/a)\cos(\phi_{\mathrm{III}} - \theta)}
   {\sqrt{1 - (r/a)^2\cos^2(\phi_{\mathrm{III}} - \theta)}}, \\
 \sigma'_{12} &= A_{\mathrm{III}}.
 \end{align}
-The factor of~2 under the radical in~\eqref{eq:s11_sector_III} and the
-additive constant $-\sqrt{6}/3$ both arise from the symmetry
-condition~\eqref{eq:axis_condition}: the $\alpha$-line effectively
-``sees'' a mirror image of the void across the $x_2$-axis, doubling
-the effective distance, while the vertex stress state introduces the
-offset. The corresponding Airy stress function is
-\begin{multline}
+Remarkably, the $\alpha$-line reflection off the $x_2$-axis and the
+vertex condition~\eqref{eq:axis_condition} cancel exactly, leaving the
+\emph{same} functional form as Sector~I.
+The corresponding Airy stress function is
+\begin{equation}
 \label{eq:airy_III}
 \Psi_{\mathrm{III}}(\xi, \eta) = \frac{A_{\mathrm{III}}}{2}
-  \biggl(\eta\sqrt{2-\eta^2}
-  + 2\sin^{-1}\!\Bigl(\frac{\eta}{\sqrt{2}}\Bigr)
-  - 2\xi\eta \\
-  - \xi\sqrt{1-\xi^2} - \sin^{-1}\xi
-  - \frac{\sqrt{6}}{3}\,\eta^2\biggr),
-\end{multline}
+  \left(\eta\sqrt{1-\eta^2} + \sin^{-1}\eta
+  + 2\xi\eta + \xi\sqrt{1-\xi^2} + \sin^{-1}\xi\right),
+\end{equation}
 where $\xi = (r/a)\cos(\theta - \phi_{\mathrm{III}})$ and
 $\eta = (r/a)\sin(\theta - \phi_{\mathrm{III}})$.
 The $\beta$-line (to the void) and $\alpha$-line (to the symmetry
