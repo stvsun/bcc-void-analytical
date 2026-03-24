@@ -616,22 +616,31 @@ Substituting into the void surface stress~\eqref{eq:sector1} gives
 These formulas are valid when both characteristics from $P_1$ reach
 the void surface without crossing a sector boundary. The
 $\alpha$-line backward trace (at angle
-$\phi_{\mathrm{I}} + \pi/2 + \pi \approx 234.7^\circ$) naturally
-moves deeper into Sector~I and always reaches the void, while the
-$\beta$-line backward trace (at angle
 $\phi_{\mathrm{I}} + \pi \approx 144.7^\circ$) moves toward
 increasing~$\theta$ and may cross the boundary $\theta = \theta_1$
-before reaching the void at large~$r/a$. The binding geometric
-constraint is
+before reaching the void at large~$r/a$, while the $\beta$-line
+backward trace (at angle
+$\phi_{\mathrm{I}} + 3\pi/2 \approx 234.7^\circ$) naturally moves
+deeper into Sector~I and always reaches the void. The binding
+geometric constraint combines the characteristic-reaches-void
+condition with the requirement that the $\alpha$-line stays within
+the sector (i.e.\ does not cross the curved boundary $C_1$, which is
+the $\alpha$-line through $(a, \theta_1)$):
 \begin{equation}
 \label{eq:rcrit_I}
 \frac{r}{a} \leq r_{\mathrm{crit}}(\theta) =
   \min\!\left(\frac{1}{|\sin(\phi_{\mathrm{I}} - \theta)|},\;
-              \frac{1}{|\cos(\phi_{\mathrm{I}} - \theta)|}\right).
+              \frac{1}{|\cos(\phi_{\mathrm{I}} - \theta)|},\;
+              \frac{\sin(\theta_1 - \phi_{\mathrm{I}})}
+                   {\sin(\theta - \phi_{\mathrm{I}})}\right).
 \end{equation}
-At $\theta = 0$:
-$r_{\mathrm{crit}}/a = \sec\gamma = \sqrt{3/2} \approx 1.22$.
-As $\theta \to \theta_1$: $r_{\mathrm{crit}} \to a$.
+The first two terms ensure the characteristics reach the void circle;
+the third term ensures the $\alpha$-line does not cross the sector
+boundary. At $\theta = 0$:
+$r_{\mathrm{crit}}/a = \sec\gamma = \sqrt{3/2} \approx 1.22$
+(the first term dominates).
+As $\theta \to \theta_1$: the third term $\to 1$, giving
+$r_{\mathrm{crit}} \to a$ exactly.
 
 Introducing the change of variable
 $\xi = (r/a)\cos(\theta - \phi_{\mathrm{I}})$ and
@@ -672,10 +681,13 @@ $(x_1, x_2) = ((r/a)\cos\theta,\; (r/a)\sin\theta)$ system is
   \left(x_2\sqrt{1-x_2^2} + \sin^{-1}x_2
   - 2x_1 x_2 + x_1\sqrt{1-x_1^2} + \sin^{-1}x_1\right).
 \end{equation}
-The horizontal $\alpha$-lines and vertical $\beta$-lines must both
-reach the void, giving
-$r_{\mathrm{crit}}/a = \min(\csc\theta, \sec\theta)$.
-At $\theta = \pi/4$: $r_{\mathrm{crit}} = \sqrt{2}\,a \approx 1.41\,a$.
+The horizontal $\alpha$-lines and vertical $\beta$-lines must reach
+the void without crossing a sector boundary. The void-circle
+constraint gives $r/a \leq \min(\csc\theta, \sec\theta)$; the
+sector-boundary constraint (analogous to the third term
+in~\eqref{eq:rcrit_I}) further restricts the domain near $\theta_1$
+and $\theta_2$. At $\theta = \pi/4$:
+$r_{\mathrm{crit}} = \sqrt{2}\,a \approx 1.41\,a$.
 
 \subsection{Stress sector III}
 
@@ -756,16 +768,17 @@ sector boundary. The extent of this domain,
 $r_{\mathrm{crit}}(\theta)$, is determined by the characteristic
 geometry (Fig.~\ref{fig:domain}).
 
-In Sector~I, the $\beta$-lines (at angle
-$\phi_{\mathrm{I}} = -\gamma$) are the mirror image of the sector
-boundary (at $+\gamma$) about the $x'_1$-axis; their forward traces
-from the void surface naturally move into the sector interior, away
-from the boundary. The $\alpha$-lines (at angle
-$\phi_{\mathrm{I}} + 90^\circ \approx 54.7^\circ$), however, cross
-the sector boundary $\theta = \theta_1$ at finite radius --- the same
-mechanism that produces curved sector boundaries in
-FCC~\citep[Section~3.8]{kysar2005}. The binding constraint is
-$r_{\mathrm{crit}}/a = 1/|\cos(\phi_{\mathrm{I}} - \theta)|$, giving
+In Sector~I, the $\alpha$-lines (at angle
+$\phi_{\mathrm{I}} = -\gamma \approx -35.3^\circ$) have backward
+traces at $\phi_{\mathrm{I}} + \pi \approx 144.7^\circ$ that move
+toward increasing~$\theta$ and cross the sector boundary
+$\theta = \theta_1$ at finite radius --- the same mechanism that
+produces curved sector boundaries in
+FCC~\citep[Section~3.8]{kysar2005}. The $\beta$-lines (at angle
+$\phi_{\mathrm{I}} + 90^\circ \approx 54.7^\circ$) have backward
+traces at $\approx 234.7^\circ$ that move deeper into Sector~I, away
+from the boundary, and always reach the void. The binding constraint
+is the third term in~\eqref{eq:rcrit_I}, giving
 $r_{\mathrm{crit}} \approx 1.22\,a$ at $\theta = 0$ and
 $r_{\mathrm{crit}} \to a$ as $\theta \to \theta_1$.
 
