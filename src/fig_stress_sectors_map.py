@@ -411,6 +411,74 @@ for name in ['e', 'f', 'g', 'h']:
 ax.plot([0, r_max*np.cos(np.pi/4)], [0, r_max*np.sin(np.pi/4)],
         'k--', linewidth=0.8, alpha=0.5, zorder=2)
 
+# ============================================================
+# Curved sector boundaries C₁ and C₂
+# ============================================================
+cg = np.cos(theta1); sg = np.sin(theta1)
+ca = np.cos(theta2); sa = np.sin(theta2)
+
+# C₁: α-line from void at θ₁ (Sector I/II boundary)
+# x = cosγ + t sinγ, y = sinγ + t cosγ
+t_c1 = np.linspace(0, r_max + 1, 300)
+x_c1 = cg + t_c1 * sg
+y_c1 = sg + t_c1 * cg
+r_c1 = np.sqrt(x_c1**2 + y_c1**2)
+mask_c1 = r_c1 < r_max
+ax.plot(x_c1[mask_c1], y_c1[mask_c1], color='#1565C0', linewidth=2.0,
+        linestyle='-', zorder=5, alpha=0.85, label=r'$C_1$')
+# Mirror about x-axis
+ax.plot(x_c1[mask_c1], -y_c1[mask_c1], color='#1565C0', linewidth=2.0,
+        linestyle='-', zorder=5, alpha=0.85)
+
+# C₂: vertical β-line from void at θ₂
+# x = cos(θ₂) = const, y = sin(θ₂) + t
+x_c2_val = ca
+y_c2 = np.linspace(sa, r_max, 200)
+r_c2 = np.sqrt(x_c2_val**2 + y_c2**2)
+mask_c2 = r_c2 < r_max
+ax.plot(np.full(np.sum(mask_c2), x_c2_val), y_c2[mask_c2],
+        color='#D32F2F', linewidth=2.0, linestyle='-', zorder=5,
+        alpha=0.85, label=r'$C_2$')
+# Mirror about x-axis
+ax.plot(np.full(np.sum(mask_c2), x_c2_val), -y_c2[mask_c2],
+        color='#D32F2F', linewidth=2.0, linestyle='-', zorder=5, alpha=0.85)
+
+# Mirror C₁ and C₂ about θ = π/2 (for Sectors III/IV side)
+# C₁ mirrored: from void at π/2 + (π/2 - θ₁) = π - θ₁
+# By 4-fold symmetry, Sector IV has the mirror of Sector I about x₂-axis
+# and Sector V mirrors Sector II, etc.
+# C₁': from void at π - θ₁, direction mirrored
+# x = -cosγ - t sinγ, y = sinγ + t cosγ (reflected about y-axis)
+ax.plot(-x_c1[mask_c1], y_c1[mask_c1], color='#1565C0', linewidth=2.0,
+        linestyle='-', zorder=5, alpha=0.85)
+ax.plot(-x_c1[mask_c1], -y_c1[mask_c1], color='#1565C0', linewidth=2.0,
+        linestyle='-', zorder=5, alpha=0.85)
+
+# C₂': vertical at x = -cos(θ₂)
+ax.plot(np.full(np.sum(mask_c2), -x_c2_val), y_c2[mask_c2],
+        color='#D32F2F', linewidth=2.0, linestyle='-', zorder=5, alpha=0.85)
+ax.plot(np.full(np.sum(mask_c2), -x_c2_val), -y_c2[mask_c2],
+        color='#D32F2F', linewidth=2.0, linestyle='-', zorder=5, alpha=0.85)
+
+# Secondary sector labels
+ax.text(0.65, 1.15, r'$\mathrm{I_a}$', fontsize=10, color='#1565C0',
+        ha='center', va='center', fontweight='bold',
+        bbox=dict(boxstyle='round,pad=0.15', facecolor='white',
+                  edgecolor='#1565C0', alpha=0.9), zorder=10)
+ax.text(0.35, 1.6, r'$\mathrm{III_a}$', fontsize=10, color='#D32F2F',
+        ha='center', va='center', fontweight='bold',
+        bbox=dict(boxstyle='round,pad=0.15', facecolor='white',
+                  edgecolor='#D32F2F', alpha=0.9), zorder=10)
+# Mirror labels
+ax.text(0.65, -1.15, r'$\mathrm{VI_a}$', fontsize=10, color='#1565C0',
+        ha='center', va='center', fontweight='bold',
+        bbox=dict(boxstyle='round,pad=0.15', facecolor='white',
+                  edgecolor='#1565C0', alpha=0.9), zorder=10)
+ax.text(0.35, -1.6, r'$\mathrm{IV_a}$', fontsize=10, color='#D32F2F',
+        ha='center', va='center', fontweight='bold',
+        bbox=dict(boxstyle='round,pad=0.15', facecolor='white',
+                  edgecolor='#D32F2F', alpha=0.9), zorder=10)
+
 # Active systems labels
 ax.text(1.3, 0.25, 'sys 5,12', fontsize=9, color='#E65100',
         ha='center', rotation=0, style='italic')
@@ -418,6 +486,9 @@ ax.text(1.15, 0.85, 'sys 3,4', fontsize=9, color='#1565C0',
         ha='center', rotation=45, style='italic')
 ax.text(0.55, 1.4, 'sys 6,11', fontsize=9, color='#2E7D32',
         ha='center', rotation=65, style='italic')
+
+# Legend for curved boundaries
+ax.legend(fontsize=9, loc='lower right', framealpha=0.9)
 
 # Axes
 ax.annotate('', xy=(r_max+0.3, 0), xytext=(0, 0),
