@@ -110,10 +110,8 @@ single crystal under plane strain. The $\{110\}\langle 111\rangle$ slip
 systems produce an elongated hexagonal yield polygon whose geometry
 differs qualitatively from the FCC case, leading to a higher activation
 pressure for void growth and a non-circular plastic zone. Closed-form
-Airy stress functions are obtained in each angular sector; a geometric
-degeneracy unique to BCC --- the coincidence of the characteristic
-angle with the sector boundary angle --- eliminates the curved sector
-boundaries that arise in FCC crystals. The analysis is extended to
+Airy stress functions are obtained in each angular sector, providing
+the exact near-void stress field. The analysis is extended to
 include $\{112\}\langle 111\rangle$ slip, which modifies the yield
 polygon but preserves the BCC advantage over FCC. Crystal plasticity
 finite element simulations confirm the analytically predicted sector
@@ -604,10 +602,25 @@ Substituting into the void surface stress~\eqref{eq:sector1} gives
   {\sqrt{1 - (r/a)^2\cos^2(\phi_{\mathrm{I}} - \theta)}}, \\
 \sigma'_{12} &= A_{\mathrm{I}}.
 \end{align}
-These formulas are valid in the domain
-$r/a \leq 1/|\sin(\phi_{\mathrm{I}} - \theta)|$ and
-$r/a \leq 1/|\cos(\phi_{\mathrm{I}} - \theta)|$, which is the region
-where the characteristics from $P_1$ reach the void surface.
+These formulas are valid when both characteristics from $P_1$ reach
+the void surface without crossing a sector boundary. The
+$\alpha$-line backward trace (at angle
+$\phi_{\mathrm{I}} + \pi/2 + \pi \approx 234.7^\circ$) naturally
+moves deeper into Sector~I and always reaches the void, while the
+$\beta$-line backward trace (at angle
+$\phi_{\mathrm{I}} + \pi \approx 144.7^\circ$) moves toward
+increasing~$\theta$ and may cross the boundary $\theta = \theta_1$
+before reaching the void at large~$r/a$. The binding geometric
+constraint is
+\begin{equation}
+\label{eq:rcrit_I}
+\frac{r}{a} \leq r_{\mathrm{crit}}(\theta) =
+  \min\!\left(\frac{1}{|\sin(\phi_{\mathrm{I}} - \theta)|},\;
+              \frac{1}{|\cos(\phi_{\mathrm{I}} - \theta)|}\right).
+\end{equation}
+At $\theta = 0$:
+$r_{\mathrm{crit}}/a = \sec\gamma = \sqrt{3/2} \approx 1.22$.
+As $\theta \to \theta_1$: $r_{\mathrm{crit}} \to a$.
 
 Introducing the change of variable
 $\xi = (r/a)\cos(\theta - \phi_{\mathrm{I}})$ and
@@ -648,6 +661,10 @@ $(x_1, x_2) = ((r/a)\cos\theta,\; (r/a)\sin\theta)$ system is
   \left(x_2\sqrt{1-x_2^2} + \sin^{-1}x_2
   - 2x_1 x_2 + x_1\sqrt{1-x_1^2} + \sin^{-1}x_1\right).
 \end{equation}
+The horizontal $\alpha$-lines and vertical $\beta$-lines must both
+reach the void, giving
+$r_{\mathrm{crit}}/a = \min(\csc\theta, \sec\theta)$.
+At $\theta = \pi/4$: $r_{\mathrm{crit}} = \sqrt{2}\,a \approx 1.41\,a$.
 
 \subsection{Stress sector III}
 
@@ -702,6 +719,10 @@ offset. The corresponding Airy stress function is
 \end{multline}
 where $\xi = (r/a)\cos(\theta - \phi_{\mathrm{III}})$ and
 $\eta = (r/a)\sin(\theta - \phi_{\mathrm{III}})$.
+The $\beta$-line (to the void) and $\alpha$-line (to the symmetry
+axis) must both remain within the sector, giving
+$r_{\mathrm{crit}}/a = 1/|\cos(\phi_{\mathrm{III}} - \theta)|$ at
+the binding boundary.
 
 \subsection{Conversion to polar coordinates}
 
@@ -724,27 +745,47 @@ the isotropic solution where $\srt \equiv 0$.
 Figure~\ref{fig:interior} shows the four stress components; the
 ``star'' pattern in $\srr$ reflects the 12 slip sector boundaries.
 
-\subsection{Structural simplification relative to FCC}
+\subsection{Domain of validity and secondary sectors}
+\label{sec:domain_validity}
 
-A notable difference from the FCC solution is that the BCC sectors
-I--III extend radially without forming additional stress sectors at
-moderate $r/a$. In FCC, the characteristic angle
-$\phi_1 = \arctan(\sqrt{2}) \approx 54.7^\circ$ differs from the sector
-boundary angle $\gamma = \arctan(1/\sqrt{2}) \approx 35.3^\circ$ by
-about $19.5^\circ$, causing $\alpha$-lines from one sector to cross
-into adjacent sectors at finite radius and producing a curved sector
-boundary~\citep[Section~3.8]{kysar2005}. In BCC, $|\phi_1| = \gamma$
-exactly: the characteristic direction coincides with the sector
-boundary. The $\alpha$-lines of system~(5,12) run \emph{along} the
-sector boundary rather than crossing it, so the curved boundary
-construction degenerates and no additional sectors arise in the
-near-void region. The six primary sectors (I--VI) therefore provide
-the complete exact stress field.
+The Airy stress functions derived above are exact within the domain
+where both characteristic families from each interior point trace
+backward to the void surface or a symmetry axis without crossing a
+sector boundary. The extent of this domain,
+$r_{\mathrm{crit}}(\theta)$, is determined by the characteristic
+geometry (Fig.~\ref{fig:domain}).
 
-This structural simplification is a geometric consequence of the BCC
-yield polygon: the elongation that produces
-$\arctan(2\sqrt{2})$ in both the vertex angle and the characteristic
-angle ensures $|\phi_1| = \gamma$. It does not occur in FCC or HCP.
+In Sector~I, the $\beta$-lines (at angle
+$\phi_{\mathrm{I}} = -\gamma$) are the mirror image of the sector
+boundary (at $+\gamma$) about the $x'_1$-axis; their forward traces
+from the void surface naturally move into the sector interior, away
+from the boundary. The $\alpha$-lines (at angle
+$\phi_{\mathrm{I}} + 90^\circ \approx 54.7^\circ$), however, cross
+the sector boundary $\theta = \theta_1$ at finite radius --- the same
+mechanism that produces curved sector boundaries in
+FCC~\citep[Section~3.8]{kysar2005}. The binding constraint is
+$r_{\mathrm{crit}}/a = 1/|\cos(\phi_{\mathrm{I}} - \theta)|$, giving
+$r_{\mathrm{crit}} \approx 1.22\,a$ at $\theta = 0$ and
+$r_{\mathrm{crit}} \to a$ as $\theta \to \theta_1$.
+
+Beyond $r_{\mathrm{crit}}$, characteristics from one primary sector
+cross into adjacent sectors, and the stress field requires additional
+\emph{curved} transition sectors~--- analogous to the secondary stress
+sectors identified by \citet{kysar2005} in FCC. The sector boundaries,
+which are radial lines at the void surface, become curved at larger
+$r/a$ as the active slip system changes along the characteristics. The
+construction of these secondary sectors for BCC, including the
+determination of the curved boundary shape, is deferred to future work.
+
+For the void growth problem, the near-void field
+($r/a \lesssim 1.2$) is the physically relevant domain: it controls
+the stress triaxiality and strain-rate pattern at the void surface.
+The Airy stress functions derived above provide the exact field in
+this domain. We note a partial geometric simplification relative to
+FCC: the coincidence $|\phi_1| = \gamma$ (a consequence of the BCC
+yield polygon geometry) ensures that $\beta$-lines in Sector~I
+remain within the sector to larger radii than in FCC, even though
+$\alpha$-lines cross sector boundaries in both structures.
 
 \subsection{Non-circular plastic zone}
 
@@ -758,10 +799,15 @@ zone boundary:
 Since $\abs{\stt(a, \theta)}$ varies with $\theta$ --- from a minimum of
 $\sqrt{6}\,\tcrss$ at $\theta = 0^\circ$ and $90^\circ$ to a maximum of
 $\frac{3\sqrt{6}}{2}\,\tcrss$ at the sector boundaries --- the plastic
-zone is \emph{non-circular} (Fig.~\ref{fig:interior}). The zone is
+zone is \emph{non-circular}. The zone is
 elongated along the $\be'_1 = [001]$ and $\be'_2 = [1\bar{1}0]/\sqrt{2}$
 directions and compressed at the sector boundaries, producing a
-four-lobed shape that reflects the crystal symmetry of the $(110)$ plane.
+four-lobed shape that reflects the crystal symmetry of the $(110)$
+plane. Equation~\eqref{eq:plastic_zone} is quantitatively valid for
+moderate far-field pressures such that $R(\theta) < r_{\mathrm{crit}}(\theta)$;
+for larger pressures, the plastic zone extends beyond the primary
+sector domain and its shape requires the secondary sector construction
+discussed in Section~\ref{sec:domain_validity}.
 
 \subsection{Remark on the velocity field}
 
@@ -792,14 +838,33 @@ single-crystal analogue of the Rice--Tracey~\citep{rice1969} formula
 \begin{figure}[htb]
 \centering
 \includegraphics[width=0.95\textwidth]{../figures/exact_interior_kysar}
-\caption{Exact interior stress field from the Airy stress function
-solution (Sections~5.1). (a)~$\srr/\tcrss$, (b)~$\stt/\tcrss$,
+\caption{Near-void interior stress field from the Airy stress function
+solution (Sections~5.1--5.3), plotted within the primary sector domain.
+(a)~$\srr/\tcrss$, (b)~$\stt/\tcrss$,
 (c)~$\srt/\tcrss$, (d)~$\sm/\tcrss$. The ``star'' pattern in $\srr$
 reflects the 12 slip sector boundaries. Note that $\srt \neq 0$ away
-from the void surface (panel c), in contrast to the isotropic solution
+from the void surface (panel~c), in contrast to the isotropic solution
 where $\srt \equiv 0$. Dashed lines indicate sector boundaries at
-$\theta_1$ and $\theta_2$.}
+$\theta_1$ and $\theta_2$. The field is exact within the validity
+domain $r < r_{\mathrm{crit}}(\theta)$ shown in
+Fig.~\ref{fig:domain}.}
 \label{fig:interior}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.95\textwidth]{../figures/domain_of_validity}
+\caption{Domain of validity for the Airy stress functions.
+(a)~The shaded regions show the near-void domain where both
+characteristic families trace back to the void surface without
+crossing a sector boundary; thin lines are representative $\alpha$-
+and $\beta$-characteristics emanating from the void.
+(b)~Critical radius $r_{\mathrm{crit}}(\theta)/a$ in each sector.
+The binding constraint is $r_{\mathrm{crit}} = \sec\gamma \approx
+1.22$ for Sector~I at $\theta = 0$ and $r_{\mathrm{crit}} = \sqrt{2}
+\approx 1.41$ for Sector~II at $\theta = \pi/4$. Beyond
+$r_{\mathrm{crit}}$, curved secondary sectors are required.}
+\label{fig:domain}
 \end{figure}
 
 % ============================================================
@@ -1363,17 +1428,16 @@ FCC persists regardless of which slip families are active.
 
 \item Closed-form Airy stress functions $\Psi_{\mathrm{I}}$,
 $\Psi_{\mathrm{II}}$, $\Psi_{\mathrm{III}}$ are derived in each
-sector, providing the exact two-dimensional stress field
+sector, providing the exact near-void stress field
 $\sigma_{ij}(r, \theta)$ including $\srt \neq 0$. In Sector~III, the
 $\alpha$-lines reach the $x_2$-axis symmetry boundary rather than the
 void surface, introducing a $\sqrt{2}$ factor and a $-\sqrt{6}/3$
-offset in the stress expression.
-
-\item The characteristic angle $\phi_1 = \frac{1}{2}\arctan(2\sqrt{2})$
-coincides with the sector boundary angle $\gamma$. This degeneracy,
-absent in FCC and HCP, means the six primary sectors provide the
-complete exact stress field without the curved sector boundaries
-required in FCC~\citep[Section~3.8]{kysar2005}.
+offset in the stress expression. The Airy solutions are valid within
+a domain $r < r_{\mathrm{crit}}(\theta)$ bounded by the first
+characteristic that crosses a sector boundary
+($r_{\mathrm{crit}}/a \approx 1.2$--$1.4$). Beyond this domain,
+curved secondary sectors analogous to those in
+FCC~\citep{kysar2005} are required.
 \end{enumerate}
 
 \begin{acknowledgements}
