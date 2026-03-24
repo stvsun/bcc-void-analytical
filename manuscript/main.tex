@@ -1523,8 +1523,8 @@ at $P_1$ equals $\sigma'_{11}$ on the void at $\theta = \theta_{s1}$.
 On the void surface, $\srr = \srt = 0$ and the circumferential stress
 is given by~\eqref{eq:sector1}. Resolving the void surface stress into
 the rotated $(x'_1, x'_2)$ frame and using the
-identities~$\sin[\arcsin^{-1}x] = \sqrt{1-x^2}$ and
-$\cos[\arccos^{-1}x] = \sqrt{1-x^2}$ yields
+identities~$\cos[\arcsin x] = \sqrt{1-x^2}$ and
+$\sin[\arccos x] = \sqrt{1-x^2}$ yields
 \begin{align}
 \sigma'_{11} &= \frac{A_{\mathrm{I}}(r/a)\sin(\phi_{\mathrm{I}} - \theta)}
   {\sqrt{1 - (r/a)^2\sin^2(\phi_{\mathrm{I}} - \theta)}}, \\
@@ -1599,16 +1599,18 @@ At $(r^*, \pi/2)$ on the $x_2$-axis, $\sigma'_{22}$ is determined by
 the $\beta$-line that reaches the void surface, and $\sigma'_{11}$
 follows from the symmetry condition. Since $\sigma'_{11}$ is constant
 along the $\alpha$-line, its value at $P_3$ equals the value at
-$(r^*, \pi/2)$. Combining with the $\beta$-line formula for
-$\sigma'_{22}$ at $P_3$ yields the modified Sector~III
-expressions~\eqref{eq:s11_sector_III}--\eqref{eq:s22_sector_III}.
+$(r^*, \pi/2)$.
 
-The factor of~$2$ under the radical in~\eqref{eq:s11_sector_III}
-arises because the $\alpha$-line from $P_3$ reaches the $x_2$-axis at
-$r^*$ where the effective ``source'' is the mirror image of the void
-across the symmetry axis, doubling the geometric path factor from
-$1$ to $2$. The additive constant $-\sqrt{6}/3\,\tcrss$ is the offset
-from the vertex stress state at $V_6$.
+In principle, the image construction introduces a factor of $\sqrt{2}$
+under the radical and an additive offset $-\sqrt{6}/3\,\tcrss$ from the
+vertex stress. However, when the $\beta$-line formula for $\sigma'_{22}$
+at $(r^*, \pi/2)$ is combined with the symmetry condition and evaluated
+explicitly, these modifications cancel exactly for BCC
+(where $\cos(2\phi_{\mathrm{III}}) = 1/3$), yielding
+expressions~\eqref{eq:s11_sector_III}--\eqref{eq:s22_sector_III} with
+the \emph{same} functional form as Sector~I. This cancellation,
+verified symbolically with SymPy, is a geometric consequence of the BCC
+yield polygon and does not occur for FCC.
 
 \end{appendices}
 
