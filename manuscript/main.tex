@@ -757,24 +757,56 @@ $r_{\mathrm{crit}}/a = 1/|\cos(\phi_{\mathrm{I}} - \theta)|$, giving
 $r_{\mathrm{crit}} \approx 1.22\,a$ at $\theta = 0$ and
 $r_{\mathrm{crit}} \to a$ as $\theta \to \theta_1$.
 
-Beyond $r_{\mathrm{crit}}$, characteristics from one primary sector
-cross into adjacent sectors, and the stress field requires additional
-\emph{curved} transition sectors~--- analogous to the secondary stress
-sectors identified by \citet{kysar2005} in FCC. The sector boundaries,
-which are radial lines at the void surface, become curved at larger
-$r/a$ as the active slip system changes along the characteristics. The
-construction of these secondary sectors for BCC, including the
-determination of the curved boundary shape, is deferred to future work.
+Beyond $r_{\mathrm{crit}}$, two secondary sectors emerge between the
+primary sectors~(Fig.~\ref{fig:complete_map}):
 
-For the void growth problem, the near-void field
-($r/a \lesssim 1.2$) is the physically relevant domain: it controls
-the stress triaxiality and strain-rate pattern at the void surface.
-The Airy stress functions derived above provide the exact field in
-this domain. We note a partial geometric simplification relative to
-FCC: the coincidence $|\phi_1| = \gamma$ (a consequence of the BCC
-yield polygon geometry) ensures that $\beta$-lines in Sector~I
-remain within the sector to larger radii than in FCC, even though
-$\alpha$-lines cross sector boundaries in both structures.
+\paragraph{Secondary sector Ia.}
+The $\alpha$-line emanating from the void surface at $\theta = \gamma$
+defines a curved boundary $C_1$ that separates the primary Sector~I
+domain from the secondary sector. Its parametric equation is
+\begin{equation}
+\label{eq:C1}
+C_1:\quad \frac{x'_1}{a} = \cos\gamma + t\sin\gamma,\quad
+\frac{x'_2}{a} = \sin\gamma + t\cos\gamma, \quad t \geq 0,
+\end{equation}
+which asymptotically approaches $\theta = \arctan(\sqrt{2}) = \theta_2$.
+In the region between $\theta = \theta_1$ and $C_1$, the same slip
+system as Sector~I remains active but the $\beta$-line backward trace
+reaches $C_1$ (not the void). Since $C_1$ is an $\alpha$-line,
+$\sigma'_{11}$ is constant along it; its value, inherited from the void
+surface at $(\theta = \gamma)$, is $\sigma'_{11} = -4\sqrt{6}\,\tcrss/3$.
+The $\beta$-line backward trace determines $\sigma'_{22}$ at each point.
+The resulting stress field has constant mean stress
+$\sigma_m = -\sqrt{3}/\sin(2\gamma)\;\tcrss \approx -1.84\,\tcrss$
+throughout the secondary sector, making it a \emph{constant-stress sector}.
+
+\paragraph{Secondary sector IIIa.}
+By symmetry about $\theta = \pi/4$, a second curved boundary $C_2$
+arises from the $\beta$-line emanating from the void at $\theta =
+\theta_2$. Since $\phi_{\mathrm{II}} = 0$, this $\beta$-line is the
+vertical line $x'_1 = \cos\theta_2 = 1/\sqrt{3}$. The secondary
+sector between $C_2$ and the radial boundary $\theta = \theta_2$
+inherits Sector~III's slip system, with $\sigma'_{22}$ constant along
+$C_2$ and $\sigma'_{11}$ from the $\alpha$-line to the void.
+
+\paragraph{Reduced Sector II.}
+The primary Sector~II domain is bounded by $C_1$ and $C_2$
+rather than by the radial lines $\theta = \theta_1$ and
+$\theta_2$, reducing its angular span at large $r/a$.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.98\textwidth]{../figures/complete_sector_map}
+\caption{Complete sector map in the first quadrant.
+(a)~Sector boundaries: radial lines $\theta_1$ and $\theta_2$ (dashed),
+curved boundaries $C_1$ (blue, Eq.~\ref{eq:C1}) and $C_2$ (red,
+vertical line at $x'_1 = 1/\sqrt{3}$). The secondary sectors Ia and
+IIIa lie between the radial and curved boundaries.
+(b)~Mean stress $\sigma_m/\tcrss$: the secondary sectors have
+constant $\sigma_m \approx -1.84\,\tcrss$.
+(c)~Hoop stress $\stt/\tcrss$.}
+\label{fig:complete_map}
+\end{figure}
 
 \subsection{Non-circular plastic zone}
 
