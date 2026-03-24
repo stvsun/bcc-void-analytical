@@ -785,34 +785,36 @@ $r_{\mathrm{crit}} \to a$ as $\theta \to \theta_1$.
 Beyond $r_{\mathrm{crit}}$, two secondary sectors emerge between the
 primary sectors~(Fig.~\ref{fig:complete_map}):
 
-\paragraph{Secondary sector Ia.}
-The $\alpha$-line emanating from the void surface at $\theta = \gamma$
-defines a curved boundary $C_1$ that separates the primary Sector~I
-domain from the secondary sector. Its parametric equation is
+\paragraph{Curved boundaries.}
+The $\alpha$-line emanating from the void surface at $\theta = \theta_1$
+defines a curved boundary $C_1$. Its parametric equation is
 \begin{equation}
 \label{eq:C1}
 C_1:\quad \frac{x'_1}{a} = \cos\gamma + t\sin\gamma,\quad
 \frac{x'_2}{a} = \sin\gamma + t\cos\gamma, \quad t \geq 0,
 \end{equation}
-which asymptotically approaches $\theta = \arctan(\sqrt{2}) = \theta_2$.
-In the region between $\theta = \theta_1$ and $C_1$, the same slip
-system as Sector~I remains active but the $\beta$-line backward trace
-reaches $C_1$ (not the void). Since $C_1$ is an $\alpha$-line,
-$\sigma'_{11}$ is constant along it; its value, inherited from the void
-surface at $(\theta = \gamma)$, is $\sigma'_{11} = -4\sqrt{6}\,\tcrss/3$.
-The $\beta$-line backward trace determines $\sigma'_{22}$ at each point.
-The resulting stress field has constant mean stress
-$\sigma_m = -\sqrt{3}/\sin(2\gamma)\;\tcrss \approx -1.84\,\tcrss$
-throughout the secondary sector, making it a \emph{constant-stress sector}.
+which asymptotically approaches $\theta = \theta_2$. By the symmetry
+of Sector~II's characteristics ($\phi_{\mathrm{II}} = 0$), a second
+curved boundary $C_2$ arises from the $\beta$-line at
+$\theta = \theta_2$: the vertical line
+$x'_1 = \cos\theta_2 = 1/\sqrt{3}$.
 
-\paragraph{Secondary sector IIIa.}
-By symmetry about $\theta = \pi/4$, a second curved boundary $C_2$
-arises from the $\beta$-line emanating from the void at $\theta =
-\theta_2$. Since $\phi_{\mathrm{II}} = 0$, this $\beta$-line is the
-vertical line $x'_1 = \cos\theta_2 = 1/\sqrt{3}$. The secondary
-sector between $C_2$ and the radial boundary $\theta = \theta_2$
-inherits Sector~III's slip system, with $\sigma'_{22}$ constant along
-$C_2$ and $\sigma'_{11}$ from the $\alpha$-line to the void.
+\paragraph{Secondary sectors.}
+In the region between the radial boundary $\theta = \theta_1$ and $C_1$
+(and its mirror between $C_2$ and $\theta_2$), the characteristics of
+the adjacent sectors overlap: the horizontal $\alpha$-lines of
+Sector~II reach the void in Sector~I's angular range ($\theta < \theta_1$),
+while the vertical $\beta$-lines hit $C_1$ where the stress is at vertex
+$V_5$. Computing the stress in these secondary sectors requires matching
+the Sector~I and Sector~II solutions along $C_1$. Since $C_1$ is a fan
+line (the stress transitions through vertex $V_5$ there), the matching
+involves: (i)~propagating $\sigma_{11}$ from the void surface in Sector~I
+along horizontal lines into the secondary region, (ii)~propagating
+$\sigma_{22}$ from $C_1$ along vertical lines, and (iii)~determining
+$\sigma_{12}$ from the equilibrium equations with these boundary data.
+This characteristic matching, analogous to the secondary sector
+construction in FCC~\citep[Section~3.8]{kysar2005}, is the subject of
+ongoing work.
 
 \paragraph{Reduced Sector II.}
 The primary Sector~II domain is bounded by $C_1$ and $C_2$
