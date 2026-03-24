@@ -598,7 +598,7 @@ Substituting into the void surface stress~\eqref{eq:sector1} gives
 \sigma'_{11} &= \frac{A_{\mathrm{I}}(r/a)\sin(\phi_{\mathrm{I}} - \theta)}
   {\sqrt{1 - (r/a)^2\sin^2(\phi_{\mathrm{I}} - \theta)}}, \\
 \label{eq:s22_sector_I}
-\sigma'_{22} &= \frac{A_{\mathrm{I}}(r/a)\cos(\phi_{\mathrm{I}} - \theta)}
+\sigma'_{22} &= \frac{-A_{\mathrm{I}}(r/a)\cos(\phi_{\mathrm{I}} - \theta)}
   {\sqrt{1 - (r/a)^2\cos^2(\phi_{\mathrm{I}} - \theta)}}, \\
 \sigma'_{12} &= A_{\mathrm{I}}.
 \end{align}
@@ -626,13 +626,13 @@ Introducing the change of variable
 $\xi = (r/a)\cos(\theta - \phi_{\mathrm{I}})$ and
 $\eta = (r/a)\sin(\theta - \phi_{\mathrm{I}})$, the stresses take the form
 $\sigma'_{11} = -A_{\mathrm{I}}\eta/\sqrt{1-\eta^2}$,
-$\sigma'_{22} = A_{\mathrm{I}}\xi/\sqrt{1-\xi^2}$. The Airy stress
+$\sigma'_{22} = -A_{\mathrm{I}}\xi/\sqrt{1-\xi^2}$. The Airy stress
 function in the $(\xi, \eta)$ system is obtained by integration:
 \begin{equation}
 \label{eq:airy_I}
 \Psi_{\mathrm{I}}(\xi, \eta) = \frac{A_{\mathrm{I}}}{2}
   \left(\eta\sqrt{1-\eta^2} + \sin^{-1}\eta
-  - 2\xi\eta - \xi\sqrt{1-\xi^2} - \sin^{-1}\xi\right).
+  + 2\xi\eta + \xi\sqrt{1-\xi^2} + \sin^{-1}\xi\right).
 \end{equation}
 
 \subsection{Stress sector II}
@@ -698,7 +698,7 @@ $\sigma'_{11}$ along the $\alpha$-line yields the modified expressions
   {\sqrt{2 - (r/a)^2\sin^2(\phi_{\mathrm{III}} - \theta)}}
   - \frac{\sqrt{6}}{3}\,\tcrss, \\
 \label{eq:s22_sector_III}
-\sigma'_{22} &= \frac{A_{\mathrm{III}}(r/a)\cos(\phi_{\mathrm{III}} - \theta)}
+\sigma'_{22} &= \frac{-A_{\mathrm{III}}(r/a)\cos(\phi_{\mathrm{III}} - \theta)}
   {\sqrt{1 - (r/a)^2\cos^2(\phi_{\mathrm{III}} - \theta)}}, \\
 \sigma'_{12} &= A_{\mathrm{III}}.
 \end{align}

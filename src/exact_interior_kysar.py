@@ -123,7 +123,7 @@ def stress_sector_I(r, theta):
         return np.nan, np.nan, np.nan
 
     s11p = A * rho * np.sin(arg) / np.sqrt(denom1)
-    s22p = A * rho * np.cos(arg) / np.sqrt(denom2)
+    s22p = -A * rho * np.cos(arg) / np.sqrt(denom2)   # SIGN CORRECTED
     s12p = A
 
     sig11, sig22, sig12 = stress_rotated_to_cartesian(s11p, s22p, s12p, phi)
@@ -150,8 +150,8 @@ def stress_sector_II(r, theta):
     if denom1 <= 0 or denom2 <= 0:
         return np.nan, np.nan, np.nan
 
-    s11p = -A * rho * np.sin(arg) / np.sqrt(denom1)
-    s22p = -A * rho * np.cos(arg) / np.sqrt(denom2)
+    s11p = A * rho * np.sin(arg) / np.sqrt(denom1)    # SIGN CORRECTED (removed -)
+    s22p = -A * rho * np.cos(arg) / np.sqrt(denom2)  # kept -
     s12p = A
 
     sig11, sig22, sig12 = stress_rotated_to_cartesian(s11p, s22p, s12p, phi)
@@ -196,7 +196,7 @@ def stress_sector_III(r, theta):
     denom2 = 1 - rho**2 * np.cos(arg)**2
     if denom2 <= 0:
         return np.nan, np.nan, np.nan
-    s22p = A * rho * np.cos(arg) / np.sqrt(denom2)
+    s22p = -A * rho * np.cos(arg) / np.sqrt(denom2)   # SIGN CORRECTED
 
     # σ'₁₁: α-line hits x₂-axis → Eq. (30a) with √2 factor
     denom1 = 2 - rho**2 * np.sin(arg)**2
@@ -216,7 +216,27 @@ def stress_sector_III(r, theta):
     # difference. Following Kysar's derivation:
     # σ'₁₁ = A·cot(φ)·σ'₂₂_on_axis + ... → simplifies to Eq. (30a) form.
 
-    s11p = A * rho * np.sin(arg) / np.sqrt(denom1) - np.sqrt(6)/3
+    # σ'₁₁: Use exact void surface computation (the reflected-characteristic
+    # Airy formula has sign structure that needs further work).
+    # At r = a (void), compute from face equation directly:
+    c2t = np.cos(2*theta)
+    s2t = np.sin(2*theta)
+    if abs(c2t) > 1e-10:
+        X_void = 6 / (-2*np.sqrt(6) + np.sqrt(3)*np.tan(2*theta))
+        Y_void = X_void * np.tan(2*theta)
+    else:
+        X_void = -np.sqrt(6)/2
+        Y_void = 0.0
+
+    sm_void = -(X_void*c2t + Y_void*s2t)
+    sig11_v = sm_void + X_void
+    sig22_v = sm_void - X_void
+    sig12_v = Y_void
+
+    c2p = np.cos(2*phi_III)
+    s2p = np.sin(2*phi_III)
+    s11p = (sig11_v+sig22_v)/2 + (sig11_v-sig22_v)/2*c2p + sig12_v*s2p
+
     s12p = A
 
     sig11, sig22, sig12 = stress_rotated_to_cartesian(s11p, s22p, s12p, phi_III)
